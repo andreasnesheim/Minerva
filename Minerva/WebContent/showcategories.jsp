@@ -23,7 +23,7 @@
 			<td><b><%=maincat.get(i).getName()%></b></td>
 		</tr>
 		<%
-			List<SubCategory> subcat = CategoryCon.getSubCategories(i + 1);
+			List<SubCategory> subcat = CategoryCon.getSubCategories();
 				for (int j = 0; j < subcat.size(); j++) {
 		%>
 		<tr>
