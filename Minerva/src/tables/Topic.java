@@ -1,9 +1,28 @@
 package tables;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class Topic {
+	
+	@Id
+	@GenericGenerator(name = "generator", strategy = "increment") 
+    @GeneratedValue(generator = "generator")
 	private long id;
 	private String name;
 	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name="subCategoryID")
+	private SubCategory subCategory;
+	
+	
 
 	public Topic() {
 	}
@@ -12,9 +31,6 @@ public class Topic {
 		return id;
 	}
 
-	private void setId(long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -30,5 +46,13 @@ public class Topic {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public SubCategory getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(SubCategory subCategory) {
+		this.subCategory = subCategory;
 	}
 }

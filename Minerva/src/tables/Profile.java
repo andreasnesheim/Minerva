@@ -19,11 +19,14 @@ public class Profile {
 	@GenericGenerator(name = "generator", strategy = "increment") 
     @GeneratedValue(generator = "generator")
 	private long userId;
-//	private Image image;
+	private byte[] image;
 	private String information;
 	private String location;
 	private String lastName;
 	private String firstName;
+	private String interests;
+	private String sex;
+	private int age;
 	
 	@OneToMany(targetEntity=User.class, mappedBy="profile", cascade=CascadeType.REMOVE, fetch=FetchType.LAZY)
 	private List<User> users;
@@ -79,5 +82,39 @@ public class Profile {
 	
 	public List<User> getUsers() {
 		return users;
+	}
+
+	public String getInterests() {
+		return interests;
+	}
+
+	public void setInterests(String interests) {
+		this.interests = interests;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 }

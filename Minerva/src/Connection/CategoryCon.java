@@ -54,11 +54,11 @@ public class CategoryCon {
 
 	}
 
-	public static List<SubCategory> getSubCategories(int mainCategory) {
+	public static List<SubCategory> getSubCategories() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 
-		List<SubCategory> result = session.createQuery("from SubCategory where mainCategoryID =" + mainCategory + "").list();
+		List<SubCategory> result = session.createQuery("from SubCategory").list();
 
 		session.getTransaction().commit();
 

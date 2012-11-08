@@ -1,6 +1,18 @@
 package tables;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class Rating {
+	
+	@Id
+	@GenericGenerator(name = "generator", strategy = "increment") 
+    @GeneratedValue(generator = "generator")
+	private long id;
 	private long userId;
 	private int rating;
 	private long raterId;
@@ -14,6 +26,10 @@ public class Rating {
 	}
 
 	public Rating() {
+	}
+	
+	public long getId() {
+		return id;
 	}
 
 	public long getUserId() {

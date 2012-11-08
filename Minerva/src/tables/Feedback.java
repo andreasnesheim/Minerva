@@ -1,6 +1,19 @@
 package tables;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class Feedback {
+	
+	@Id
+	@GenericGenerator(name = "generator", strategy = "increment") 
+    @GeneratedValue(generator = "generator")
+	private long id;
+	
 	private long senderId;
 	private long revieverId;
 	private String feedback;
@@ -12,7 +25,7 @@ public class Feedback {
 		return senderId;
 	}
 
-	private void setSenderId(long senderId) {
+	public void setSenderId(long senderId) {
 		this.senderId = senderId;
 	}
 
@@ -30,5 +43,9 @@ public class Feedback {
 
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
+	}
+
+	public long getId() {
+		return id;
 	}
 }

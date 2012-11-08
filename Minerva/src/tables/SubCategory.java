@@ -1,5 +1,7 @@
 package tables;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +22,9 @@ public class SubCategory {
 	@ManyToOne
 	@JoinColumn(name="mainCategoryID")
 	private MainCategory mainCategory;
+	
+	@OneToMany(targetEntity=Topic.class, mappedBy="subCategory")
+	private List<Topic> topics;
 
 	
 
@@ -28,10 +33,6 @@ public class SubCategory {
 
 	public long getId() {
 		return id;
-	}
-
-	private void setId(long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -48,5 +49,9 @@ public class SubCategory {
 
 	public void setMainCategory(MainCategory mainCategory) {
 		this.mainCategory = mainCategory;
+	}
+	
+	public List<Topic> getTopicss() {
+		return topics;
 	}
 }
