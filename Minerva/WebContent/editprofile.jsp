@@ -14,36 +14,31 @@
 <body>
 	<div class="container">
 		<div class="span6">
-			<h1>Edit Profile</h1>
+			<h1>Endre profil</h1>
 		</div>
 		<div class="well span6">
-			<button class="btn btn-primary">Upload picture...</button>
+			<form action="uploadProfileImage" method="post">
+				Velg bilde <input type="file" name="img">
+				<input type="submit" value="Last opp">
+			</form>
 		</div>
 		<br> <br>
 		<form id="userInfo" class="well span6">
-			<label>First name <input type="text" class="span3 pull-right" />
-			</label><br> <label>Last name <input type="text"
-				class="span3 pull-right" />
-			</label><br> Date of Birth <input type="text" class="span1 pull-right"
-				placeholder="DD" /> <input type="text" class="span1 pull-right"
-				placeholder="MM" /> <input type="text" class="span1 pull-right"
-				placeholder="YYYY" /> <br> <br> <label>E-mail <input
-				type="text" class="span3 pull-right" />
-			</label><br> <label>Confirm e-mail <input type="text"
-				class="span3 pull-right" />
-			</label><br> <label>New Pasword <input type="text"
-				class="span3 pull-right" />
-			</label><br> <label>Confirm new password <input type="text"
-				class="span3 pull-right" />
-			</label><br>
+			<label>Fornavn <input type="text" name="firstname" class="span3 pull-right" /></label><br> 
+			<label>Etternavn <input type="text" name="lastname" class="span3 pull-right" /></label><br> 
+			<label>Alder <input type="text" name="age" class="span3 pull-right" /></label><br>
+			<label>Bosted <input type="text" name="location" class="span3 pull-right" /></label><br>
+			<label>Interesser <input type="text" name="interests" class="span3 pull-right" /></label><br>
+			<label>Kjønn <input type="text" name="sex" class="span3 pull-right" /></label><br><br> 
+			
 		</form>
 		<br>
 		<div class="well span6">
-			<strong>Bio:</strong> <br>
-			<textarea class="field span6" id="textarea" rows="6"
-				placeholder="Write your bio here..."></textarea>
+			<strong>Informasjon:</strong> <br>
+			<textarea class="field span6" name="information" id="textarea" rows="6"
+			placeholder="Write your bio here..."></textarea>
 			<br>
-			<button type="submit" class="btn btn-primary">Submit changes</button>
+			<button type="submit" class="btn btn-primary">Lagre endringer</button>
 		</div>
 	</div>
 
