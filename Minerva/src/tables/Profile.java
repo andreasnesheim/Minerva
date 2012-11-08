@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -16,8 +18,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class Profile {
 //	@GeneratedValue (strategy=GenerationType.TABLE, generator="userid")
 	@Id
-	@GenericGenerator(name = "generator", strategy = "increment") 
-    @GeneratedValue(generator = "generator")
 	private long userId;
 //	private Image image;
 	private String information;
@@ -25,12 +25,16 @@ public class Profile {
 	private String lastName;
 	private String firstName;
 	
-	@OneToMany(targetEntity=User.class, mappedBy="profile", cascade=CascadeType.REMOVE, fetch=FetchType.LAZY)
-	private List<User> users;
+	@OneToOne
+	@JoinColumn
+	private User user;
 
 	public Profile() {
 	}
-
+	
+	public void setUserId() {
+		this.userId = user.getId();
+	}
 	public long getUserId() {
 		return userId;
 	}
@@ -77,7 +81,10 @@ public class Profile {
 		this.firstName = firstName;
 	}
 	
-	public List<User> getUsers() {
-		return users;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

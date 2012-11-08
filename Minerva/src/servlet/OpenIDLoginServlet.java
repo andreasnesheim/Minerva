@@ -102,7 +102,7 @@ public class OpenIDLoginServlet extends HttpServlet {
 						
 						if (!userExistsInDB) {
 							//store the new user in DB
-							ProfileCon.createUser(email, 123578, firstname, lastname, country);
+							ProfileCon.createUser(email, verifiedID, firstname, lastname, country);
 						}
 
 						HttpSession session = httpRequest.getSession();
@@ -111,6 +111,7 @@ public class OpenIDLoginServlet extends HttpServlet {
 						session.setAttribute("lastname", lastname);
 						session.setAttribute("country", country);
 						session.setAttribute("language", language);
+						session.setAttribute("id",  ProfileCon.getUserId(email, verifiedID));
 
 						// Sending results to index.jsp
 						httpResponse.sendRedirect("index.jsp?openid=" + verifiedID

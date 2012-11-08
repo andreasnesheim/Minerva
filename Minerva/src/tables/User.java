@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 
@@ -13,25 +14,25 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class User {
-	private long thirdPartId;
+	private String thirdPartId;
 	@Id
 	@GenericGenerator(name = "generator", strategy = "increment") 
     @GeneratedValue(generator = "generator")
 	private long id;
 	private String email;
 	
-	@ManyToOne
-	@JoinColumn(name="profileID")
+	@OneToOne
+	@JoinColumn
 	private Profile profile;
 
 	public User() {
 	}
 
-	public long getThirdPartId() {
+	public String getThirdPartId() {
 		return thirdPartId;
 	}
 
-	public void setThirdPartId(long thirdPartId) {
+	public void setThirdPartId(String thirdPartId) {
 		this.thirdPartId = thirdPartId;
 	}
 
