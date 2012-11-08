@@ -17,14 +17,15 @@ public class EmailTest {
 	public static void main(String[] args) {
 		
 		//lager brukere
-		ProfileCon.createUser("test45", 567, "Ola", "Normann", "NO");
-        ProfileCon.createUser("hjem@gogle.com", 37, "Hans", "Hansen", "NO");
-        ProfileCon.createUser("test@gogle.com", 57, "Oskar", "Berg", "NO");
-        ProfileCon.createUser("ekstra@gogle.com", 67, "Tom", "Trulsen", "NO");
+//		ProfileCon.createUser("test45", 567, "Ola", "Normann", "NO","tomt","dyr","man",30);
+//        ProfileCon.createUser("hjem@gogle.com", 37, "Hans", "Hansen", "NO","tomt","ikke noe","dame",0);
+//        ProfileCon.createUser("test@gogle.com", 57, "Oskar", "Berg", "NO","","sove","usikker",22);
+//        ProfileCon.createUser("ekstra@gogle.com", 67, "Tom", "Trulsen", "NO","tomt","musikk","begge",23);
 		
 		
 		boolean test = ProfileCon.emailExcists("hjem@gogle.com");
 		boolean test2 = ProfileCon.emailExcists("test@google.com");
+		String test3 = ProfileCon.getEmail(2);
 		
 		if (test && !test2) {
 			System.out.println("Test 1 og 2 var vellykket");
@@ -39,6 +40,8 @@ public class EmailTest {
 				System.out.println("Testen 1 og 2 feilet");
 
 		}
+		
+	System.out.println("mailen er: "+ test3);
 	}
 
 }
