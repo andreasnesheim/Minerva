@@ -64,7 +64,7 @@ public class TopicCon {
 		return result;
 	}
 	
-	public Topic getTopic(int id) {
+	public static Topic getTopic(long id) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

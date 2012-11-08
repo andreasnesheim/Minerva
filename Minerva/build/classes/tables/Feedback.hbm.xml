@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<hibernate-mapping package="src.tables">
-    <class name="Feedback" table="feedback">
-        <property name="feedback"/>
-        <property name="senderId" column="sender_id"/>
-        <property name="recieverId" column="reviever_id"/>
-    </class>
-</hibernate-mapping>

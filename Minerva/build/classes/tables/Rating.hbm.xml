@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<hibernate-mapping package="src.tables">
-    <class name="Rating" table="rating">
-        <property name="userId" column="user_id"/>
-        <property name="rating"/>
-        <many-to-one name="Profile" constrained="true"/>
-    </class>
-</hibernate-mapping>
