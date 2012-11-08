@@ -19,11 +19,16 @@ if (contentPage == "" || contentPage == null) {
 	contentPage = "home";
 }
 %>
+<!--
 
-
-
+ Script hentet fra http://twitter.github.com/bootstrap/assets/js/"navn på script".js
+ Oversikt over script http://twitter.github.com/bootstrap/javascript.html 
+ 
+ -->
+		
 		<script src="js/bootstrap.js"></script> 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="js/dropdown.js"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/tooltip.js"></script>
 		<script src="js/popover.js"></script>	
 		<script src="js/collapse.js"></script>	
@@ -52,6 +57,7 @@ BODY {
 				</a>
 				<ul class="dropdown-menu">
 					<li><a tabindex="-1" href="#"><img alt="no" src="img/no.png" />&nbsp;Norsk</a></li>
+				
 				</ul>
 			</div>
 		</div>
