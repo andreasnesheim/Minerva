@@ -12,6 +12,9 @@ public class CreateInserts {
 	 */
 	public static void main(String[] args) {
 		createUsers();
+		createMainCategories();
+		createSubCategories();
+		createProfilesEkstra();
 	}
 
 	private static void createUsers() {
@@ -24,7 +27,7 @@ public class CreateInserts {
 	
 	private static void createMainCategories(){
 		CategoryCon.createMainCategory("Programmering");
-		CategoryCon.createMainCategory("Netverk");
+		CategoryCon.createMainCategory("Nettverk");
 		CategoryCon.createMainCategory("Annet");
 	}
 	
