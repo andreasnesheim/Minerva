@@ -1,6 +1,4 @@
 	<%@ page import = "lang.LangEng" %>
-	
-	<div class="container">
 
 		<div class="row">
 			<div class="span6">
@@ -27,4 +25,3 @@
 				<li class="divider"></li>
 			</ul>
 		</div>
-	</div>
