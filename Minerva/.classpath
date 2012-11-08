@@ -16,7 +16,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate3.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/OpenID"/>
-
-	<classpathentry kind="lib" path="C:/Users/Andy/Dropbox/Minerva/OpenID/JAR-filer/openid4java-0.9.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
