@@ -37,6 +37,9 @@
         <mapping class="tables.Profile"/>
         <mapping class="tables.MainCategory"/>
         <mapping class="tables.SubCategory"/>
+         <mapping class="tables.Feedback"/>
+        <mapping class="tables.Rating"/>
+        <mapping class="tables.Topic"/>
 
     </session-factory>
 

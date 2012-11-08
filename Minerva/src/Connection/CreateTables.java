@@ -24,7 +24,7 @@ public class CreateTables {
 		
 		new SchemaExport(config).create(true, true);
 		
-		System.out.println("taofmaofonfjanfjnjoafnjoanfjonajfnjanfjanjofnajonfjoan");
+//		System.out.println("taofmaofonfjanfjnjoafnjoanfjonajfnjanfjanjofnajonfjoan");
 		
 		
 

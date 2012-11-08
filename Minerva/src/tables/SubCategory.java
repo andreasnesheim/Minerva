@@ -23,7 +23,7 @@ public class SubCategory {
 	@JoinColumn(name="mainCategoryID")
 	private MainCategory mainCategory;
 	
-	@OneToMany(targetEntity=Topic.class, mappedBy="topic")
+	@OneToMany(targetEntity=Topic.class, mappedBy="subCategory")
 	private List<Topic> topics;
 
 	
