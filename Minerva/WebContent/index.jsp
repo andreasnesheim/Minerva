@@ -11,14 +11,13 @@
 <meta name="author" content="dj" />
 <link rel="shortcut icon" href="" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
-
-
 <%
 String contentPage = request.getParameter("page");
 if (contentPage == "" || contentPage == null) {
 	contentPage = "home";
 }
 %>
+<<<<<<< HEAD
 <!--
 
  Script hentet fra http://twitter.github.com/bootstrap/assets/js/"navn på script".js
@@ -33,14 +32,16 @@ if (contentPage == "" || contentPage == null) {
 		<script src="js/collapse.js"></script>	
 		<script src="js/modals.js"></script>	
 
+=======
+>>>>>>> 5296189dca4d865686a6d9b2ac31b0af2d51ce86
 </head>
-
 
 <style type="text/css">
 BODY {
 	padding-top: 15px;
 }
 </style>
+
 <body>
 <div class="container"><!-- begin CONTAINER -->
 
@@ -135,7 +136,9 @@ BODY {
 
 </div><!-- end CONTAINER -->
 
-
+<!-- Include javascript files at bottom to load page faster -->
+<script src="js/jquery-1.8.2.js"></script>
+<script src="js/bootstrap.js"></script>
 
 
 </body>
