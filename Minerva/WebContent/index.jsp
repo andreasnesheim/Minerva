@@ -103,19 +103,32 @@ BODY {
 	(also experiments with different types of include conventions) */
 	if (contentPage.equals("home")) {%>
 		<%@ include file="home.jsp" %>
-<%	}
-	if (contentPage.equals("topics")) {%>
-		<%@ include file="topic_chooser.jsp" %>
-<%	}
-	if (contentPage.equals("news")) {%>
-		<%@ include file="news.jsp" %>
-<%	}
-	if (contentPage.equals("search")) {%>
-		<jsp:include page="search.jsp"></jsp:include>
-<%	}
-	if (contentPage.equals("info")) {%>
-		<jsp:include page="info.jsp" />
 <%	} %>
+
+<% 	if (contentPage.equals("topics")) {%>
+		<%@ include file="topic_chooser.jsp" %>
+<%	} %>
+<% 	if (contentPage.equals("news")) {%>
+		<%@ include file="news.jsp" %>
+<%	} %>
+<%	if (contentPage.equals("search")) {%>
+		<jsp:include page="search.jsp"></jsp:include>
+<%	} %>
+<% 	if (contentPage.equals("info")) {%>
+		<jsp:include page="info.jsp" />
+<%	} %> 
+
+<% 	/* subtopics*/ 
+	if (contentPage.equals("chosen_webdevelopment_subtopic_html")) {%>
+		<jsp:include page="chosen_webdevelopment_subtopic_html.jsp" />
+<%	} %>
+
+<% 	/* HTML leafnodes*/ 
+	if (contentPage.equals("chosen_leafnode_pseudo_elements")) {%>
+		<jsp:include page="chosen_leafnode_pseudo_elements.jsp" />
+<%	} %>
+
+
 
 </div><!-- end CONTAINER -->
 
