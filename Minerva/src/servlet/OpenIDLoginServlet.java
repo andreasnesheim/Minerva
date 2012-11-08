@@ -102,7 +102,8 @@ public class OpenIDLoginServlet extends HttpServlet {
 						
 						if (!userExistsInDB) {
 							//store the new user in DB
-							ProfileCon.createUser(email, 123578, firstname, lastname, country);
+//							ProfileCon.createUser(email, 123578, firstname, lastname, country);
+							ProfileCon.createUser(email, 78678, firstname, lastname, country, null, null, null, 0);
 						}
 
 						HttpSession session = httpRequest.getSession();
