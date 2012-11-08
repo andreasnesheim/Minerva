@@ -12,4 +12,12 @@
     <servlet-name>openidlogin</servlet-name>
     <url-pattern>/openidlogin</url-pattern>
   </servlet-mapping>
+   <servlet>
+        <servlet-name>upload</servlet-name>
+        <servlet-class>servlet.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>upload</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
 </web-app>
