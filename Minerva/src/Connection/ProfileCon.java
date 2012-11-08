@@ -114,12 +114,19 @@ public class ProfileCon {
 
         return profile;
     }
-    public static Set<Profile> getListOfUsersMentoringTopic(long topicId) {
+    public static Set<Profile> getListOfMentorsInTopic(long topicId) {
     	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
     	session.beginTransaction();
     	Topic topic = TopicCon.getTopic(topicId);
     	session.getTransaction().commit();
     	return topic.getMentors();
+    }
+    public static Set<Profile> getListOfTraineesInTopic(long topicId) {
+    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    	session.beginTransaction();
+    	Topic topic = TopicCon.getTopic(topicId);
+    	session.getTransaction().commit();
+    	return topic.getTrainees();
     }
     
     public static List<User> getListOfUsersInDatabase() {
