@@ -11,8 +11,8 @@
 <meta name="author" content="dj" />
 <link rel="shortcut icon" href="" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
-<script src="js/bootstrap.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+
 <%
 String contentPage = request.getParameter("page");
 if (contentPage == "" || contentPage == null) {
@@ -21,7 +21,17 @@ if (contentPage == "" || contentPage == null) {
 %>
 
 
+
+		<script src="js/bootstrap.js"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="js/tooltip.js"></script>
+		<script src="js/popover.js"></script>	
+		<script src="js/collapse.js"></script>	
+
+
 </head>
+
+
 <style type="text/css">
 BODY {
 	padding-top: 15px;
@@ -102,5 +112,9 @@ BODY {
 <%	} %>
 
 </div><!-- end CONTAINER -->
+
+
+
+
 </body>
 </html>
