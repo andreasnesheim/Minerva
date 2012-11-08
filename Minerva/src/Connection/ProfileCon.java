@@ -16,9 +16,9 @@ public class ProfileCon {
 
     // lager en user og en profli til brukeren
     // går forløpig utifra at hver profil bare har en bruker
-    public static void createUser(String email, int thirdPartId, String firstName, String lastName, String location) {
+    public static void createUser(String email, int thirdPartId, String firstName, String lastName, String location, String information, String interests, String sex, int age) {
 
-        Profile profile = createProfile(firstName, lastName, location, "Information");
+        Profile profile = createProfile(firstName, lastName, location, information, interests, sex, age);
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -48,7 +48,7 @@ public class ProfileCon {
 
     }
 
-    public boolean changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation) {
+    public boolean changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, int newAge) {
 
         Profile profile = null;
 
@@ -69,6 +69,15 @@ public class ProfileCon {
         if (newInformation  != "" && newInformation != null ) {
             profile.setInformation(newInformation);
         }
+        if (newInterests  != "" && newInterests != null ) {
+            profile.setInterests(newInterests);
+        }
+        if (newSex  != "" && newSex != null ) {
+            profile.setSex(newSex);
+        }
+        if (newAge  != 0) {
+            profile.setAge(newAge);
+        }
         //        if (newImage  != "" && newImage != null ) {
         //            profile.setImage(newImage);
         //        }
@@ -82,7 +91,7 @@ public class ProfileCon {
         return true;
     }
     
-    public static Profile createProfile(String FirstName, String LastName, String Location, String Information) {
+    public static Profile createProfile(String FirstName, String LastName, String Location, String information, String interests, String sex, int age) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -94,7 +103,10 @@ public class ProfileCon {
             profile.setFirstName(FirstName);
             profile.setLastName(LastName);
             profile.setLocation(Location);
-            profile.setInformation(Information);
+            profile.setInformation(information);
+            profile.setInterests(interests);
+            profile.setSex(sex);
+            profile.setAge(age);
 
         session.save(profile);
 
@@ -168,6 +180,41 @@ public class ProfileCon {
         session.update(profile);
 
         session.getTransaction().commit();
+    }
+    
+    public static String getEmail(long id) {
+
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+
+        Profile profile = (Profile) session.get(Profile.class, id);
+
+
+        Criteria crit = session.createCriteria(User.class)
+                .add(Restrictions.like("profile", profile
+                ));
+        crit.setMaxResults(1);
+        List<User> users = crit.list();    
+        
+        session.getTransaction().commit();  
+        try {
+			if (users.get(0) != null) {
+				
+			    return users.get(0).getEmail();
+			}
+
+
+			
+		} catch (IndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			
+		} 
+       // session.close();
+
+        return "fail";
+
     }
     
 } 

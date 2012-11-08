@@ -27,7 +27,6 @@ public class Profile {
 	private String interests;
 	private String sex;
 	private int age;
-	private String bio;
 	
 	@OneToMany(targetEntity=User.class, mappedBy="profile", cascade=CascadeType.REMOVE, fetch=FetchType.LAZY)
 	private List<User> users;
@@ -109,13 +108,7 @@ public class Profile {
 		this.age = age;
 	}
 
-	public String getBio() {
-		return bio;
-	}
-
-	public void setBio(String bio) {
-		this.bio = bio;
-	}
+	
 
 	public byte[] getImage() {
 		return image;
