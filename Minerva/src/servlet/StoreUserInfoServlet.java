@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/StoreUserInfoServlet")
 public class StoreUserInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private byte[] image;
+	private String firstname, lastname, age, location, interests, sex,  information;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,14 +28,14 @@ public class StoreUserInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		image = request.getParameter("img");
 		
 		
 		
