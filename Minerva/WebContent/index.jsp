@@ -25,14 +25,13 @@ if (contentPage == "" || contentPage == null) {
  Oversikt over script http://twitter.github.com/bootstrap/javascript.html 
  
  -->
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script> 
 		<script src="js/dropdown.js"></script> 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/tooltip.js"></script>
 		<script src="js/popover.js"></script>	
 		<script src="js/collapse.js"></script>	
-
+		<script src="js/modals.js"></script>	
 
 </head>
 
@@ -128,6 +127,10 @@ BODY {
 		<jsp:include page="chosen_leafnode_pseudo_elements.jsp" />
 <%	} %>
 
+<% 	/* Profiles*/ 
+	if (contentPage.equals("viewprofile_daniel")) {%>
+		<jsp:include page="viewprofile_daniel.jsp" />
+<%	} %>
 
 
 </div><!-- end CONTAINER -->
