@@ -8,7 +8,7 @@
 <title>Project:Minerva</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="generator" content="Eclipse Juno" />
-<meta name="author" content="dj" />
+<meta name="author" content="dj,rab,bhb,jaj,aan,rf" />
 <link rel="shortcut icon" href="" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 <%
@@ -17,23 +17,6 @@ if (contentPage == "" || contentPage == null) {
 	contentPage = "home";
 }
 %>
-<<<<<<< HEAD
-<!--
-
- Script hentet fra http://twitter.github.com/bootstrap/assets/js/"navn på script".js
- Oversikt over script http://twitter.github.com/bootstrap/javascript.html 
- 
- -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="js/bootstrap.js"></script> 
-		<script src="js/dropdown.js"></script> 
-		<script src="js/tooltip.js"></script>
-		<script src="js/popover.js"></script>	
-		<script src="js/collapse.js"></script>	
-		<script src="js/modals.js"></script>	
-
-=======
->>>>>>> 5296189dca4d865686a6d9b2ac31b0af2d51ce86
 </head>
 
 <style type="text/css">
@@ -53,11 +36,10 @@ BODY {
 		<div class="span1">
 			<div class="btn-group">
 				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-					<img alt="gb" src="img/gb.png" />&nbsp;<span class="caret"></span>
+					<img alt="gb" src="img/gb.png" />&nbsp;English&nbsp;<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a tabindex="-1" href="#"><img alt="no" src="img/no.png" />&nbsp;Norsk</a></li>
-				
+					<li><a class="btn-mini" tabindex="-1" href="#"><img alt="no" src="img/no.png" />&nbsp;Norsk</a></li>
 				</ul>
 			</div>
 		</div>
@@ -119,13 +101,13 @@ BODY {
 <%	} %> 
 
 <% 	/* subtopics*/ 
-	if (contentPage.equals("chosen_webdevelopment_subtopic_html")) {%>
-		<jsp:include page="chosen_webdevelopment_subtopic_html.jsp" />
+	if (contentPage.equals("subtopic")) {%>
+		<jsp:include page="subtopic.jsp" />
 <%	} %>
 
 <% 	/* HTML leafnodes*/ 
-	if (contentPage.equals("chosen_leafnode_pseudo_elements")) {%>
-		<jsp:include page="chosen_leafnode_pseudo_elements.jsp" />
+	if (contentPage.equals("leafnode")) {%>
+		<jsp:include page="leafnode.jsp" />
 <%	} %>
 
 <% 	/* Profiles*/ 
@@ -139,7 +121,6 @@ BODY {
 <!-- Include javascript files at bottom to load page faster -->
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/bootstrap.js"></script>
-
 
 </body>
 </html>
