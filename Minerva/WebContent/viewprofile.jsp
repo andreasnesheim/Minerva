@@ -18,6 +18,10 @@
 
 			<div id="overskrift" class="well span4">
 
+<% if (request.getParameter("myprofile") != null) { %>
+		<h3>my profile!</h3>
+<% } %>
+
 				<h1>Daniel Jajevski</h1>
 				<!--    session.setAttribute( "EmpList", Connection.ProfileCon.getProfile(1));-->
 
