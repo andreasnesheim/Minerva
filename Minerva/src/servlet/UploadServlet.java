@@ -62,6 +62,7 @@ public class UploadServlet extends HttpServlet {
                         String fileName = item.getName();
  
                         String root = getServletContext().getRealPath("/");
+                     
                         File path = new File(root + "/uploads");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
@@ -69,7 +70,7 @@ public class UploadServlet extends HttpServlet {
  
                         File uploadedFile = new File(path + "/" + fileName);
                         System.out.println(uploadedFile.getAbsolutePath());
-                        ProfileCon.uploadImage(request.getSession().getAttribute("id"), fileString)
+                        ProfileCon.uploadImage(1, uploadedFile.getAbsolutePath());
                         item.write(uploadedFile);
                     }
                 }

@@ -154,7 +154,7 @@ public class ProfileCon {
         return false;
     }
     
-    public static void uploadImage(int id, String fileString) {
+    public static void uploadImage(long id, String fileString) {
     	 Profile profile = null;
 
          Session session = HibernateUtil.getSessionFactory().getCurrentSession();
