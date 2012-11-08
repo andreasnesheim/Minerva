@@ -1,9 +1,18 @@
 package tables;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Topic {
 	private long id;
 	private String name;
 	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name="subCategoryID")
+	private SubCategory subCategory;
+	
+	
 
 	public Topic() {
 	}
@@ -30,5 +39,13 @@ public class Topic {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public SubCategory getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(SubCategory subCategory) {
+		this.subCategory = subCategory;
 	}
 }
