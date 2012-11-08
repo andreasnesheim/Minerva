@@ -17,23 +17,6 @@ if (contentPage == "" || contentPage == null) {
 	contentPage = "home";
 }
 %>
-<<<<<<< HEAD
-<!--
-
- Script hentet fra http://twitter.github.com/bootstrap/assets/js/"navn på script".js
- Oversikt over script http://twitter.github.com/bootstrap/javascript.html 
- 
- -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="js/bootstrap.js"></script> 
-		<script src="js/dropdown.js"></script> 
-		<script src="js/tooltip.js"></script>
-		<script src="js/popover.js"></script>	
-		<script src="js/collapse.js"></script>	
-		<script src="js/modals.js"></script>	
-
-=======
->>>>>>> 5296189dca4d865686a6d9b2ac31b0af2d51ce86
 </head>
 
 <style type="text/css">
@@ -119,13 +102,13 @@ BODY {
 <%	} %> 
 
 <% 	/* subtopics*/ 
-	if (contentPage.equals("chosen_webdevelopment_subtopic_html")) {%>
-		<jsp:include page="chosen_webdevelopment_subtopic_html.jsp" />
+	if (contentPage.equals("subtopic")) {%>
+		<jsp:include page="subtopic.jsp" />
 <%	} %>
 
 <% 	/* HTML leafnodes*/ 
-	if (contentPage.equals("chosen_leafnode_pseudo_elements")) {%>
-		<jsp:include page="chosen_leafnode_pseudo_elements.jsp" />
+	if (contentPage.equals("leafnode")) {%>
+		<jsp:include page="leafnode.jsp" />
 <%	} %>
 
 <% 	/* Profiles*/ 
