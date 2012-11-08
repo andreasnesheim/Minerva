@@ -1,5 +1,26 @@
+<%@ page import="Connection.CategoryCon"%>
+	<%@ page import="tables.MainCategory"%>
+	<%@ page import="tables.SubCategory"%>
+	<%@ page import="java.util.List"%>
 
 
+
+		<%
+			List<MainCategory> maincat = CategoryCon.getMainCategories();
+			for (int i = 0; i < maincat.size(); i++) {
+		%>
+
+		
+		<%
+			List<SubCategory> subcat = CategoryCon.getSubCategories(i + 1);
+				for (int j = 0; j < subcat.size(); j++) {
+		%>
+		<%
+			}
+		}
+			%>
+	
+	
 	<br>
 	<br>
 	<div class ="span3"  id="MainMenu" >
@@ -8,12 +29,12 @@
 			<!-- Web Development-->
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#MainMenu" href="#WebDevelopment"> Web Development
+					data-parent="#MainMenu" href="#WebDevelopment"> <%maincat.get(0).getName(); %>
 				</a>
 			</div>
 			<div id="WebDevelopment" class="accordion-body collapse">
 				<div class="accordion-inner">
-					<a href=?page=chosen_webdevelopment_subtopic_html>HTML</a> <br> 
+					<a href=?page=chosen_webdevelopment_subtopic_html><%maincat.get(1).getName(); %></a> <br> 
 					<a href=#>Javascript</a> <br> 
 					<a href=#>PHP</a> <br>
 				</div>
@@ -70,3 +91,11 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+			
+		
+		
+	
+	
