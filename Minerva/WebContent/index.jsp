@@ -8,7 +8,7 @@
 <title>Project:Minerva</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="generator" content="Eclipse Juno" />
-<meta name="author" content="dj" />
+<meta name="author" content="dj,rab,bhb,jaj,aan,rf" />
 <link rel="shortcut icon" href="" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 <%
@@ -121,7 +121,6 @@ BODY {
 <!-- Include javascript files at bottom to load page faster -->
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/bootstrap.js"></script>
-
 
 </body>
 </html>
