@@ -8,7 +8,7 @@
 <title>Project:Minerva</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="generator" content="Eclipse Juno" />
-<meta name="author" content="dj" />
+<meta name="author" content="dj,rab,bhb,jaj,aan,rf" />
 <link rel="shortcut icon" href="" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 <%
@@ -36,11 +36,10 @@ BODY {
 		<div class="span1">
 			<div class="btn-group">
 				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-					<img alt="gb" src="img/gb.png" />&nbsp;<span class="caret"></span>
+					<img alt="gb" src="img/gb.png" />&nbsp;English&nbsp;<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a tabindex="-1" href="#"><img alt="no" src="img/no.png" />&nbsp;Norsk</a></li>
-				
+					<li><a class="btn-mini" tabindex="-1" href="#"><img alt="no" src="img/no.png" />&nbsp;Norsk</a></li>
 				</ul>
 			</div>
 		</div>
@@ -102,15 +101,19 @@ BODY {
 <%	} %> 
 
 <% 	/* subtopics*/ 
-	if (contentPage.equals("chosen_webdevelopment_subtopic_html")) {%>
-		<jsp:include page="chosen_webdevelopment_subtopic_html.jsp" />
+	if (contentPage.equals("subtopic")) {%>
+		<jsp:include page="subtopic.jsp" />
 <%	} %>
 
 <% 	/* HTML leafnodes*/ 
-	if (contentPage.equals("chosen_leafnode_pseudo_elements")) {%>
-		<jsp:include page="chosen_leafnode_pseudo_elements.jsp" />
+	if (contentPage.equals("leafnode")) {%>
+		<jsp:include page="leafnode.jsp" />
 <%	} %>
 
+<% 	/* Profiles*/ 
+	if (contentPage.equals("viewprofile_daniel")) {%>
+		<jsp:include page="viewprofile_daniel.jsp" />
+<%	} %>
 
 
 </div><!-- end CONTAINER -->
@@ -118,7 +121,6 @@ BODY {
 <!-- Include javascript files at bottom to load page faster -->
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/bootstrap.js"></script>
-
 
 </body>
 </html>

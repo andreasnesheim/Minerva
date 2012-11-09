@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -33,7 +34,7 @@ public class ProfileCon {
 
     }
 
-    public Profile getProfile(int id) {
+    public static Profile getProfile(int id) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -42,7 +43,6 @@ public class ProfileCon {
 
         Profile profile = (Profile) session.get(Profile.class, id);
         session.getTransaction().commit();  
-        session.close();
 
         return profile;
 
@@ -113,6 +113,20 @@ public class ProfileCon {
         session.getTransaction().commit();  
 
         return profile;
+    }
+    public static Set<Profile> getListOfMentorsInTopic(long topicId) {
+    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    	session.beginTransaction();
+    	Topic topic = TopicCon.getTopic(topicId);
+    	session.getTransaction().commit();
+    	return topic.getMentors();
+    }
+    public static Set<Profile> getListOfTraineesInTopic(long topicId) {
+    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    	session.beginTransaction();
+    	Topic topic = TopicCon.getTopic(topicId);
+    	session.getTransaction().commit();
+    	return topic.getTrainees();
     }
     
     public static List<User> getListOfUsersInDatabase() {

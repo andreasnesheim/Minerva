@@ -27,7 +27,7 @@
 				<th>Rating</th>
 			</tr>
 			<tr>
-				<td><a href="#">Daniel Jajevski</a></td>
+				<td><a href="?page=viewprofile_daniel">Daniel Jajevski</a></td>
 				<td>Stavanger</td>
 				<td>4,5/5</td>
 			</tr>

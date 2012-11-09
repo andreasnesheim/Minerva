@@ -37,7 +37,9 @@ public class StoreUserInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+//		image = request.getParameter("img");
+
 		firstname = request.getParameter("firstname");
 		lastname = request.getParameter("lastname");
 		age = request.getParameter("age");

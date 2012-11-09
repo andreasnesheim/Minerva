@@ -18,11 +18,7 @@
 
 			<div id="overskrift" class="well span4">
 
-<% if (request.getParameter("myprofile") != null) { %>
-		<h3>my profile!</h3>
-<% } %>
-
-				<h1><%request.getParameter("id"); %></h1>
+				<h1>Daniel Jajevski</h1>
 				<!--    session.setAttribute( "EmpList", Connection.ProfileCon.getProfile(1));-->
 
 			</div>
@@ -39,10 +35,10 @@
 				</div>
 				<div class="modal-body">
 					<form>
-						<label>Subject</label> <input type="email" class="span8" name="subject"
+						<label>Subject</label> <input type="email" class="span8"
 							placeholder="Enter Subject here..." /><br> <label>Write
 							here</label>
-						<textarea class="field span8" id="textarea" rows="6" name="message"
+						<textarea class="field span8" id="textarea" rows="6"
 							placeholder="Write your message here..."></textarea>
 						<br> <br>
 						<button type="submit" class="btn btn-success">Send</button>
