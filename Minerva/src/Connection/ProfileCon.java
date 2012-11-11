@@ -2,6 +2,7 @@ package Connection;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.nio.channels.SeekableByteChannel;
 import java.sql.*;
 import java.util.List;
 import java.util.Set;
@@ -19,19 +20,27 @@ public class ProfileCon {
 	// går forløpig utifra at hver profil bare har en bruker
 	public static void createUser(String email, String thirdPartId, String firstName, String lastName, String location, String information, String interests, String sex, int age) {
 
-		Profile profile = createProfile(firstName, lastName, location, information, interests, sex, age);
-
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 
 		User user = new User();
 		user.setEmail(email);
 		user.setThirdPartId(thirdPartId);
-		user.setProfile(profile);
-		profile.setUser(user);
-		profile.setUserId();
 		
 		session.save(user);
+		session.getTransaction().commit();
+		
+		Profile profile = createProfile(firstName, lastName, location, information, interests, sex, age, user);
+
+		
+		
+		
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		
+		user.setProfile(profile);
+		
+		session.update(user);
 		session.getTransaction().commit();
 
 	}
@@ -104,7 +113,7 @@ public class ProfileCon {
 //        return true;
     }
     
-    public static Profile createProfile(String FirstName, String LastName, String Location, String information, String interests, String sex, int age) {
+    public static Profile createProfile(String FirstName, String LastName, String Location, String information, String interests, String sex, int age, User user) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -120,6 +129,8 @@ public class ProfileCon {
             profile.setInterests(interests);
             profile.setSex(sex);
             profile.setAge(age);
+            profile.setUser(user);
+    		profile.setUserId();
 
         session.save(profile);
 

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
@@ -55,6 +56,7 @@ public class UploadServlet extends HttpServlet {
             try {
                 List items = upload.parseRequest(request);
                 Iterator iterator = items.iterator();
+                HttpSession session = request.getSession();
                 while (iterator.hasNext()) {
                     FileItem item = (FileItem) iterator.next();
  
@@ -70,7 +72,7 @@ public class UploadServlet extends HttpServlet {
  
                         File uploadedFile = new File(path + "/" + fileName);
                         System.out.println(uploadedFile.getAbsolutePath());
-                        ProfileCon.uploadImage(1, uploadedFile.getAbsolutePath());
+                        ProfileCon.uploadImage((long) session.getAttribute("id"), uploadedFile.getAbsolutePath());
                         item.write(uploadedFile);
                     }
                 }
@@ -80,6 +82,7 @@ public class UploadServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        response.sendRedirect("viewprofile.jsp?myprofile=true");
 	}
 
 }
