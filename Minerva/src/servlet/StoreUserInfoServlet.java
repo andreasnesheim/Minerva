@@ -43,10 +43,16 @@ public class StoreUserInfoServlet extends HttpServlet {
 		firstname = request.getParameter("firstname");
 		lastname = request.getParameter("lastname");
 		age = request.getParameter("age");
+		int ageIntoInt = Integer.parseInt(age);
 		location = request.getParameter("location");
 		interests = request.getParameter("interests");
 		sex = request.getParameter("sex");
 		information = request.getParameter("information");
+		
+		ProfileCon.changeProfile(request.getParameter("id"), firstname, lastname, location, information,
+				interests, sex, ageIntoInt);
+		
+		response.sendRedirect("viewprofile.jsp?myprofile=true");
 		
 	}
 

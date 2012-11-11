@@ -10,17 +10,23 @@
 <script src="js/bootstrap.js"></script>
 </head>
 <body>
+<%@ page import="Connection.ProfileCon"%>
+<%@ page import="tables.Profile"%>
+
+<%
+	int id = (int) session.getAttribute("id");
+	Profile profile = ProfileCon.getProfile(id);
+%>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
-				<img src="img/ProfilBilde.jpg">
+				<img src=<%=profile.getImage()%>>
 			</div>
 
 			<div id="overskrift" class="well span4">
 
-<% if (request.getParameter("myprofile") != null) { %>
-		<h3>my profile!</h3>
-<% } %>
+
+
 
 				<h1><%request.getParameter("id"); %></h1>
 				<!--    session.setAttribute( "EmpList", Connection.ProfileCon.getProfile(1));-->

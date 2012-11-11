@@ -34,7 +34,7 @@ public class ProfileCon {
 
     }
 
-    public static Profile getProfile(int id) {
+    public static Profile getProfile(long id) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
