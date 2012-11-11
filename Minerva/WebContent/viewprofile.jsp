@@ -14,13 +14,18 @@
 <%@ page import="tables.Profile"%>
 
 <%
-	int id = (int) session.getAttribute("id");
-	Profile profile = ProfileCon.getProfile(id);
+	//Her skal profilens id som lagres i session bli lagret.
+	// Enkel testløsning for å fikse dette nå.
+	Profile profile = ProfileCon.getProfile(1);
 %>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
-				<img src=<%=profile.getImage()%>>
+			<% if (profile.getSex().equals("mann") || profile.getSex().equals("man") || profile.getSex().equals("male")) { %>
+				<img src="img/profilemale.png">
+			<% } if (profile.getSex().equals("dame") || profile.getSex().equals("kvinne") || profile.getSex().equals("female")) { %>
+				<img src="img/profilefemale.png">
+				<% } %>
 			</div>
 
 			<div id="overskrift" class="well span4">
@@ -28,7 +33,7 @@
 
 
 
-				<h1><%request.getParameter("id"); %></h1>
+				<h1><%=profile.getFirstName() %> <%=profile.getLastName() %></h1>
 				<!--    session.setAttribute( "EmpList", Connection.ProfileCon.getProfile(1));-->
 
 			</div>
