@@ -10,19 +10,30 @@
 <script src="js/bootstrap.js"></script>
 </head>
 <body>
+<%@ page import="Connection.ProfileCon"%>
+<%@ page import="tables.Profile"%>
+
+<%
+	//Her skal profilens id som lagres i session bli lagret.
+	// Enkel testløsning for å fikse dette nå.
+	Profile profile = ProfileCon.getProfile(1);
+%>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
-				<img src="img/ProfilBilde.jpg">
+			<% if (profile.getSex().equals("mann") || profile.getSex().equals("man") || profile.getSex().equals("male")) { %>
+				<img src="img/profilemale.png">
+			<% } if (profile.getSex().equals("dame") || profile.getSex().equals("kvinne") || profile.getSex().equals("female")) { %>
+				<img src="img/profilefemale.png">
+				<% } %>
 			</div>
 
 			<div id="overskrift" class="well span4">
 
-<% if (request.getParameter("myprofile") != null) { %>
-		<h3>my profile!</h3>
-<% } %>
 
-				<h1><%request.getParameter("id"); %></h1>
+
+
+				<h1><%=profile.getFirstName() %> <%=profile.getLastName() %></h1>
 				<!--    session.setAttribute( "EmpList", Connection.ProfileCon.getProfile(1));-->
 
 			</div>

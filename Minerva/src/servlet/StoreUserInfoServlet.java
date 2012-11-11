@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Connection.ProfileCon;
+
 /**
  * Servlet implementation class StoreUserInfoServlet
  */
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class StoreUserInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private byte[] image;
-	private String firstname, lastname, age, location, interests, sex,  information;
+	private String firstname, lastname, location, interests, sex, age, information;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,10 +37,22 @@ public class StoreUserInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 //		image = request.getParameter("img");
+
+		firstname = request.getParameter("firstname");
+		lastname = request.getParameter("lastname");
+		age = request.getParameter("age");
+		int ageIntoInt = Integer.parseInt(age);
+		location = request.getParameter("location");
+		interests = request.getParameter("interests");
+		sex = request.getParameter("sex");
+		information = request.getParameter("information");
 		
+		ProfileCon.changeProfile(request.getParameter("id"), firstname, lastname, location, information,
+				interests, sex, ageIntoInt);
 		
-		
+		response.sendRedirect("viewprofile.jsp?myprofile=true");
 		
 	}
 

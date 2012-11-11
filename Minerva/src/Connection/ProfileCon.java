@@ -34,7 +34,7 @@ public class ProfileCon {
 
     }
 
-    public static Profile getProfile(int id) {
+    public static Profile getProfile(long id) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -48,7 +48,7 @@ public class ProfileCon {
 
     }
 
-    public boolean changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, int newAge) {
+    public static void changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, int newAge) {
 
         Profile profile = null;
 
@@ -88,7 +88,7 @@ public class ProfileCon {
         //session.close();
 
     
-        return true;
+//        return true;
     }
     
     public static Profile createProfile(String FirstName, String LastName, String Location, String information, String interests, String sex, int age) {
@@ -168,7 +168,7 @@ public class ProfileCon {
         return false;
     }
     
-    public static void uploadImage(int id, String fileString) {
+    public static void uploadImage(long id, String fileString) {
     	 Profile profile = null;
 
          Session session = HibernateUtil.getSessionFactory().getCurrentSession();
