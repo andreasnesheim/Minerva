@@ -12,6 +12,14 @@
     <servlet-name>openidlogin</servlet-name>
     <url-pattern>/openidlogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>mail</servlet-name>
+    <servlet-class>servlet.MailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mail</servlet-name>
+    <url-pattern>/mail</url-pattern>
+  </servlet-mapping>
    <servlet>
         <servlet-name>upload</servlet-name>
         <servlet-class>servlet.UploadServlet</servlet-class>

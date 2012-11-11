@@ -13,26 +13,39 @@ import org.hibernate.criterion.Restrictions;
 import tables.*;
 
 public class ProfileCon {
-    
 
-    // lager en user og en profli til brukeren
-    // går forløpig utifra at hver profil bare har en bruker
-    public static void createUser(String email, int thirdPartId, String firstName, String lastName, String location, String information, String interests, String sex, int age) {
+	
+	// lager en user og en profli til brukeren
+	// går forløpig utifra at hver profil bare har en bruker
+	public static void createUser(String email, String thirdPartId, String firstName, String lastName, String location, String information, String interests, String sex, int age) {
 
-        Profile profile = createProfile(firstName, lastName, location, information, interests, sex, age);
+		Profile profile = createProfile(firstName, lastName, location, information, interests, sex, age);
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 
-        User user = new User();
-        user.setEmail(email);
-        user.setThirdPartId(thirdPartId);
-        user.setProfile(profile);
+		User user = new User();
+		user.setEmail(email);
+		user.setThirdPartId(thirdPartId);
+		user.setProfile(profile);
+		profile.setUser(user);
+		profile.setUserId();
+		
+		session.save(user);
+		session.getTransaction().commit();
 
-        session.save(user);
-        session.getTransaction().commit();
-
-    }
+	}
+	public static long getUserId(String email, String thirdPartId) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		
+		Criteria crit = session.createCriteria(User.class)
+				.add(Restrictions.like("email", email))
+				.add(Restrictions.like("thirdPartId", thirdPartId));
+		crit.setMaxResults(1);
+		List<User> results = crit.list();
+		return results.get(0).getId();
+	}
 
     public static Profile getProfile(long id) {
 

@@ -11,16 +11,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Profile {
 //	@GeneratedValue (strategy=GenerationType.TABLE, generator="userid")
 	@Id
-	@GenericGenerator(name = "generator", strategy = "increment") 
-    @GeneratedValue(generator = "generator")
 	private long userId;
 	private byte[] image;
 	private String information;
@@ -40,9 +39,17 @@ public class Profile {
 	@ManyToMany(mappedBy="trainees")
 	private Set<Topic> topicsTraineed = new HashSet<Topic>();
 	
+	@OneToOne
+	@JoinColumn
+	private User user;
+
+
 	public Profile() {
 	}
-
+	
+	public void setUserId() {
+		this.userId = user.getId();
+	}
 	public long getUserId() {
 		return userId;
 	}
@@ -89,8 +96,11 @@ public class Profile {
 		this.firstName = firstName;
 	}
 	
-	public List<User> getUsers() {
-		return users;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getInterests() {
