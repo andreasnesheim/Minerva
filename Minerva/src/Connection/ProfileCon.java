@@ -70,7 +70,7 @@ public class ProfileCon {
 
     }
 
-    public static void changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, int newAge) {
+    public static void changeProfile(long id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, String newAge) {
 
         Profile profile = null;
 
@@ -97,8 +97,9 @@ public class ProfileCon {
         if (newSex  != "" && newSex != null ) {
             profile.setSex(newSex);
         }
-        if (newAge  != 0) {
-            profile.setAge(newAge);
+        if (newAge  != "" && newAge != null) {
+        	int newAgeInInt = Integer.parseInt(newAge);
+            profile.setAge(newAgeInInt);
         }
         //        if (newImage  != "" && newImage != null ) {
         //            profile.setImage(newImage);

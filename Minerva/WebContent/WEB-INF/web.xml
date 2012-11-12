@@ -21,12 +21,12 @@
     <url-pattern>/mail</url-pattern>
   </servlet-mapping>
    <servlet>
-        <servlet-name>upload</servlet-name>
-        <servlet-class>servlet.UploadServlet</servlet-class>
+        <servlet-name>uploadimage</servlet-name>
+        <servlet-class>servlet.UploadImageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>upload</servlet-name>
-        <url-pattern>/upload</url-pattern>
+        <servlet-name>uploadimage</servlet-name>
+        <url-pattern>/uploadimage</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>storeuserinfo</servlet-name>

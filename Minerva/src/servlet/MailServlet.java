@@ -36,14 +36,13 @@ public class MailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		from = (String) request.getSession().getAttribute("email");
 		from ="minervatester";
 //		from.replaceAll("@gmail.com", "");
 		signature = "This is a mail sent from us by the user " + from;
-//		to = ;
+		to = "evilmonkey2k5@gmail.com";
 		password = "minervatester1234";
 		subject = request.getParameter("subject");
-		message = request.getParameter("text");
+		message = request.getParameter("message");
 		GoogleMail.Send(from, password, to, subject, message);
 	}
 

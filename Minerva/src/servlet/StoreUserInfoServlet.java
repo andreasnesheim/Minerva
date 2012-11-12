@@ -38,21 +38,22 @@ public class StoreUserInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		image = request.getParameter("img");
-
 		firstname = request.getParameter("firstname");
 		lastname = request.getParameter("lastname");
 		age = request.getParameter("age");
-		int ageIntoInt = Integer.parseInt(age);
+//		int ageIntoInt = Integer.parseInt(age);
 		location = request.getParameter("location");
 		interests = request.getParameter("interests");
 		sex = request.getParameter("sex");
 		information = request.getParameter("information");
 		
-		ProfileCon.changeProfile(request.getParameter("id"), firstname, lastname, location, information,
-				interests, sex, ageIntoInt);
+		ProfileCon.changeProfile((long) request.getSession().getAttribute("id"), firstname, lastname, location, information,
+				interests, sex, age);
 		
 		response.sendRedirect("viewprofile.jsp?myprofile=true");
+		System.out.println("");
+		System.out.println("servleten blir kalt");
+		System.out.println("");
 		
 	}
 

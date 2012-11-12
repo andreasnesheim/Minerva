@@ -13,32 +13,26 @@
 <%@ page import="Connection.ProfileCon"%>
 <%@ page import="tables.Profile"%>
 
-<%
+<%	
 	//Her skal profilens id som lagres i session bli lagret.
 	// Enkel testløsning for å fikse dette nå.
 	Long id = (Long) session.getAttribute("id");
 	Profile profile = ProfileCon.getProfile(id);
 	
+	
 %>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
-			<% if (profile.getImage() == null) { %>
-				<img src="img/imagenull.png">
-			<% } else if (profile.getImage() != null) { %>
-				<img src="img/profilefemale.png">
-				<% } %>
+			
+				<img src="img/profile/profilefemale.png">
+				
 			</div>
 
-			<div id="overskrift" class="well span4">
-
-
-
-
+			<div id="brukernavn" class="well span4">
 				<h1><%=profile.getFirstName() %> <%=profile.getLastName() %></h1>
-				<!--    session.setAttribute( "EmpList", Connection.ProfileCon.getProfile(1));-->
-
 			</div>
+			
 			<div id="sendMessage_button" class="well span2 pull-right">
 				<a href="#myModal" class="btn btn-success" data-toggle="modal"><i
 					class="icon-envelope icon-white"></i>Send Message</a>
@@ -51,8 +45,8 @@
 					</h2>
 				</div>
 				<div class="modal-body">
-					<form>
-						<label>Subject</label> <input type="email" class="span8" name="subject"
+					<form action="mail" method="post">
+						<label>Subject</label> <input type="text" class="span8" name="subject"
 							placeholder="Enter Subject here..." /><br> <label>Write
 							here</label>
 						<textarea class="field span8" id="textarea" rows="6" name="message"
@@ -69,19 +63,22 @@
 
 				</div>
 			</div>
+			<form class="well pull-right" action="editprofile.jsp">
+				<button type="submit" class="btn btn-primary">Endre profil</button>
+			</form>
 
 
 			<br>
 			<div class="row-fluid">
 				<div class="well span12">
-					<b>Age:</b> 22 <br> <strong>Location:</strong> Stavanger,
-					Hordaland, Norway<br> <strong>Interests:</strong> Science<br>
-					<strong>Sex:</strong> Male<br>
+					<b>Age:</b> <%=profile.getAge() %> <br>
+					<strong>Location:</strong> <%=profile.getLocation() %><br>
+					<strong>Interests:</strong> <%=profile.getInterests() %><br>
+					<strong>Sex:</strong> <%=profile.getSex() %><br>
 
 				</div>
 				<div class="span12">
-					<strong>Bio:</strong> This is me and i like computers and science.
-					And i don't like turtles, and people who are mean.<br>
+					<strong>Bio:</strong> <%=profile.getInformation() %><br>
 				</div>
 			</div>
 
