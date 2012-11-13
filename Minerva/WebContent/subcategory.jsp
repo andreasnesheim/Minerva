@@ -32,16 +32,17 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 			</thead>
 			<tbody>
 			<% for (int i = 0; i < topics.size(); i++) { %>
-			<tr>
-				<td><a href="?page=topic&topicId=<%=topics.get(i).getId()%>">
-					<%= topics.get(i).getName() %></a></td>
-				<td>
-					<%= TopicCon.getNumberOfMentorInTopic(topics.get(i).getId()) %>
-				</td>
-				<td>
-					<%= TopicCon.getNumberOfTraineesInTopic(topics.get(i).getId()) %>
-				</td>
-			</tr>
+				<tr>
+					<td><a href="?page=topic&topicId=<%=topics.get(i).getId()%>">
+						<%= topics.get(i).getName() %></a>
+					</td>
+					<td>
+						<%= TopicCon.getNumberOfMentorInTopic(topics.get(i).getId()) %>
+					</td>
+					<td>
+						<%= TopicCon.getNumberOfTraineesInTopic(topics.get(i).getId()) %>
+					</td>
+				</tr>
 			<%} %>
 			</tbody>
 		</table>
