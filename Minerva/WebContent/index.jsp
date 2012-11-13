@@ -58,22 +58,23 @@ BODY {
 			<div class="navbar"><div class="navbar-inner">
 				<a class="brand" href="./">Minerva</a>
 				<ul class="nav">
+				 <!-- <li class="divider-vertical"></li> -->
 				 <li<%if(contentPage.equals("home"))out.print(" class=\"active\"");%>>
 				 	<a href="./"><i class="icon-home"></i>&nbsp;Hjem</a>
 				 </li>
-				 <li class="divider-vertical"></li>
+				 <!-- <li class="divider-vertical"></li> -->
 				 <li<%if(contentPage.equals("categories"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=categories"><i class="icon-star"></i>&nbsp;Emner</a>
 				 </li>
-				 <li class="divider-vertical"></li>
+				 <!-- <li class="divider-vertical"></li> -->
 				 <li<%if(contentPage.equals("news"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=news"><i class="icon-list-alt"></i>&nbsp;Nyheter</a>
 				 </li>
-				 <li class="divider-vertical"></li>
+				 <!-- <li class="divider-vertical"></li> -->
 				 <li<%if(contentPage.equals("search"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=search"><i class="icon-search"></i>&nbsp;S&oslash;k</a>
 				 </li>
-				 <li class="divider-vertical"></li>
+				 <!-- <li class="divider-vertical"></li> -->
 				 <li<%if(contentPage.equals("info"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=info"><i class="icon-asterisk"></i>&nbsp;Informasjon</a>
 				 </li>
