@@ -61,8 +61,8 @@ BODY {
 				 	<a href="./"><i class="icon-home"></i>&nbsp;Hjem</a>
 				 </li>
 				 <li class="divider-vertical"></li>
-				 <li<%if(contentPage.equals("topics"))out.print(" class=\"active\"");%>>
-				 	<a href="?page=topics"><i class="icon-star"></i>&nbsp;Emner</a>
+				 <li<%if(contentPage.equals("categories"))out.print(" class=\"active\"");%>>
+				 	<a href="?page=categories"><i class="icon-star"></i>&nbsp;Emner</a>
 				 </li>
 				 <li class="divider-vertical"></li>
 				 <li<%if(contentPage.equals("news"))out.print(" class=\"active\"");%>>
@@ -84,36 +84,49 @@ BODY {
   
 <%	/* Include page content files
 	(also experiments with different types of include conventions) */
+	
+	//	Home page
 	if (contentPage.equals("home")) {%>
 		<%@ include file="home.jsp" %>
-<%	} %>
+<%	}
 
-<% 	if (contentPage.equals("topics")) {%>
-		<%@ include file="topic_chooser.jsp" %>
-<%	} %>
-<% 	if (contentPage.equals("news")) {%>
+	//	Categories
+ 	if (contentPage.equals("categories")) {%>
+		<%@ include file="categories.jsp" %>
+<%	}
+	
+	//	News
+ 	if (contentPage.equals("news")) {%>
 		<%@ include file="news.jsp" %>
-<%	} %>
-<%	if (contentPage.equals("search")) {%>
+<%	}
+	
+	//	Search
+	if (contentPage.equals("search")) {%>
 		<jsp:include page="search.jsp"></jsp:include>
-<%	} %>
-<% 	if (contentPage.equals("info")) {%>
+<%	}
+	
+	//	Information
+ 	if (contentPage.equals("info")) {%>
 		<jsp:include page="info.jsp" />
-<%	} %> 
+<%	}
 
-<% 	/* subtopics*/ 
-	if (contentPage.equals("subtopic")) {%>
-		<jsp:include page="subtopic.jsp" />
-<%	} %>
+ 	//	Subcategories
+	if (contentPage.equals("subcategory")) {%>
+		<jsp:include page="subcategory.jsp" />
+<%	}
 
-<% 	/* HTML leafnodes*/ 
+ 	// HTML leafnodes
 	if (contentPage.equals("leafnode")) {%>
 		<jsp:include page="leafnode.jsp" />
-<%	} %>
-<% 	if (contentPage.equals("viewprofile")) {%>
+<%	}
+ 	
+ 	// View profile
+ 	if (contentPage.equals("viewprofile")) {%>
 		<%@ include file="viewprofile.jsp" %>
-<%	} %>
-<% 	if (contentPage.equals("editprofile")) {%>
+<%	}
+ 	
+ 	//	Edit profile
+ 	if (contentPage.equals("editprofile")) {%>
 		<%@ include file="editprofile.jsp" %>
 <%	} %>
 

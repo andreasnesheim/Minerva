@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -29,13 +30,13 @@ public class Topic {
 	@JoinColumn(name="subCategoryID")
 	private SubCategory subCategory;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "hasMentor", 
 	joinColumns= {@JoinColumn(name = "id")},
 	inverseJoinColumns = { @JoinColumn(name = "userId") })
 	private Set<Profile> mentors = new HashSet<Profile>();
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "hasTrainee", 
 	joinColumns= {@JoinColumn(name = "id")},
 	inverseJoinColumns = { @JoinColumn(name = "userId") })

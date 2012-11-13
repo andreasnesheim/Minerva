@@ -11,17 +11,18 @@ import tables.*;
 
 public class TopicCon {
 
-	public static void createTopic(String name, String description, SubCategory subCategory) {
+	
+	public static void createTopic(String name, String description, long subCategoryId) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
+		SubCategory sub = (SubCategory) session.get(SubCategory.class, subCategoryId);
+		
 		Topic topic= new Topic();
 		topic.setName(name);
 		topic.setDescription(description);
-		topic.setSubCategory(subCategory);
-
-
+		topic.setSubCategory(sub);
+		
 		session.save(topic);
 		session.getTransaction().commit();
 
@@ -80,18 +81,19 @@ public class TopicCon {
 		return topic;
 
 	}
-
+	
+	
 	public static Set<Profile> getListOfMentorsInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Topic topic = TopicCon.getTopic(topicId);
+		Topic topic = (Topic) session.get(Topic.class, topicId);
 		session.getTransaction().commit();
 		return topic.getMentors();
 	}
 	public static Set<Profile> getListOfTraineesInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Topic topic = TopicCon.getTopic(topicId);
+		Topic topic = (Topic) session.get(Topic.class, topicId);
 		session.getTransaction().commit();
 		return topic.getTrainees();
 	}
