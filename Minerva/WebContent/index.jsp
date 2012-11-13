@@ -76,6 +76,7 @@ BODY {
 				 <li<%if(contentPage.equals("info"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=info"><i class="icon-asterisk"></i>&nbsp;Informasjon</a>
 				 </li>
+				 
 				</ul>
 			</div></div>
     	</div>
@@ -109,10 +110,11 @@ BODY {
 	if (contentPage.equals("leafnode")) {%>
 		<jsp:include page="leafnode.jsp" />
 <%	} %>
-
-<% 	/* Profiles*/ 
-	if (contentPage.equals("viewprofile_daniel")) {%>
-		<jsp:include page="viewprofile_daniel.jsp" />
+<% 	if (contentPage.equals("viewprofile")) {%>
+		<%@ include file="viewprofile.jsp" %>
+<%	} %>
+<% 	if (contentPage.equals("editprofile")) {%>
+		<%@ include file="editprofile.jsp" %>
 <%	} %>
 
 
