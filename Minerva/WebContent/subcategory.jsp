@@ -22,15 +22,18 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 			<%= subCategories.get(Integer.parseInt(request.getParameter("subcategoryId")) - 1).getName() %>
 		</h1>
 		<br />
-		<table class="table table-hover">
-			<tr>
-				<th>Tr&aring;d</th>
-				<th>Antall mentorer</th>
-				<th>Antall elever</th>
-			</tr>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Tr&aring;d</th>
+					<th>Antall mentorer</th>
+					<th>Antall elever</th>
+				</tr>
+			</thead>
+			<tbody>
 			<% for (int i = 0; i < topics.size(); i++) { %>
 			<tr>
-				<td><a href="?page=topic&topicId= <%=topics.get(i).getId()%>">
+				<td><a href="?page=topic&topicId=<%=topics.get(i).getId()%>">
 					<%= topics.get(i).getName() %></a></td>
 				<td>
 					<%= TopicCon.getNumberOfMentorInTopic(topics.get(i).getId()) %>
@@ -40,6 +43,7 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 				</td>
 			</tr>
 			<%} %>
+			</tbody>
 		</table>
 	</div>
 	
