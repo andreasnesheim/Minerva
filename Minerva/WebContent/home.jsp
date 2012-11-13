@@ -1,4 +1,4 @@
-	<%@ page import = "lang.LangEng" %>
+<%@ page import = "lang.LangEng" %>
 
 		<div class="row">
 			<div class="span6">
