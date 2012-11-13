@@ -75,7 +75,7 @@ public class TopicCon {
 
 		Topic topic = (Topic) session.get(Topic.class, id);
 		session.getTransaction().commit();  
-		session.close();
+//		session.close();
 
 		return topic;
 
@@ -134,5 +134,36 @@ public class TopicCon {
 		session.getTransaction().commit();
 	}
 
+	public static Set<Topic> getTopicsTraineeIn(long profileId) {
+
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		Profile profile = (Profile) session.get(Profile.class, profileId);
+		Set<Topic> topics = profile.getTopicsTraineed();
+
+		session.getTransaction().commit();
+//		session.close();
+
+		return topics;
+
+	}
+	
+	public static Set<Topic> getTopicsMentorIn(long profileId) {
+
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		Profile profile = (Profile) session.get(Profile.class, profileId);
+		Set<Topic> topics = profile.getTopicsMentored();
+
+		session.getTransaction().commit();
+//		session.close();
+
+		return topics;
+
+	}
 
 }
