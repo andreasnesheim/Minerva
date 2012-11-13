@@ -28,7 +28,7 @@ public class CreateInserts {
 	
 	private static void createMainCategories(){
 		CategoryCon.createMainCategory("Programmering");
-		CategoryCon.createMainCategory("Netverk");
+		CategoryCon.createMainCategory("Nettverk");
 		CategoryCon.createMainCategory("Annet");
 	}
 	
