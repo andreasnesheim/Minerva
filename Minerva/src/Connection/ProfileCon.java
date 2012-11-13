@@ -138,28 +138,7 @@ public class ProfileCon {
 
         return profile;
     }
-    public static Set<Profile> getListOfMentorsInTopic(long topicId) {
-    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-    	session.beginTransaction();
-    	Topic topic = TopicCon.getTopic(topicId);
-    	session.getTransaction().commit();
-    	return topic.getMentors();
-    }
-    public static Set<Profile> getListOfTraineesInTopic(long topicId) {
-    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-    	session.beginTransaction();
-    	Topic topic = TopicCon.getTopic(topicId);
-    	session.getTransaction().commit();
-    	return topic.getTrainees();
-    }
-    
-    public static int getNumberOfMentorInTopic (long topicId) {
-    	return getListOfMentorsInTopic(topicId).size();
-    }
-    
-    public static int getNumberOfTraineesInTopic (long topicId) {
-    	return getListOfTraineesInTopic(topicId).size();
-    }
+   
     
     public static List<User> getListOfUsersInDatabase() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
