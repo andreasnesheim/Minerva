@@ -146,6 +146,9 @@ public class TopicCon {
 		session.getTransaction().commit();
 //		session.close();
 
+		if (topics.size() == 0) {
+			return null;
+		}
 		return topics;
 
 	}
@@ -161,6 +164,9 @@ public class TopicCon {
 
 		session.getTransaction().commit();
 //		session.close();
+		if (topics.size() == 0) {
+			return null;
+		}
 
 		return topics;
 
