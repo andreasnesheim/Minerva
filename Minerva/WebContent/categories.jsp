@@ -6,11 +6,11 @@
 List<MainCategory> maincat = CategoryCon.getMainCategories();
 List<SubCategory> subcat = CategoryCon.getSubCategories();
 %>
-
+<h1>Emner</h1>
 <br />
 <br />
-<div class="span3" id="MainMenu">
-	<div class="accordion" id="accordion1">
+<div class="row">
+	<div class="accordion span3" id="accordion1">
 
 		<% for (int i = 0; i < maincat.size(); i++) { %>
 		<div class="accordion-group">
