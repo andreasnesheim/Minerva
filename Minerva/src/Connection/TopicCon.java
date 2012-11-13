@@ -11,17 +11,18 @@ import tables.*;
 
 public class TopicCon {
 
-	public static void createTopic(String name, String description, SubCategory subCategory) {
+	
+	public static void createTopic(String name, String description, long subCategoryId) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
+		SubCategory sub = (SubCategory) session.get(SubCategory.class, subCategoryId);
+		
 		Topic topic= new Topic();
 		topic.setName(name);
 		topic.setDescription(description);
-		topic.setSubCategory(subCategory);
-
-
+		topic.setSubCategory(sub);
+		
 		session.save(topic);
 		session.getTransaction().commit();
 
