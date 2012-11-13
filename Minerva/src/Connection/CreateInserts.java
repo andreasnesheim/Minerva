@@ -13,9 +13,9 @@ public class CreateInserts {
 	public static void main(String[] args) {
 
 		createUsers();
-		createMainCategories();
+//		createMainCategories();
 //		createSubCategories();
-		createProfilesEkstra();
+//		createProfilesEkstra();
 
 	}
 

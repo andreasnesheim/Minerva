@@ -1,15 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>View Profile - Username here</title>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-</head>
-<body>
 <%@ page import="Connection.ProfileCon"%>
 <%@ page import="tables.Profile"%>
 
@@ -19,8 +7,6 @@
 	Long id = (Long) session.getAttribute("id");
 	Profile profile = ProfileCon.getProfile(id);
 	String image = profile.getImage();
-	
-	
 %>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
@@ -45,31 +31,31 @@
 
 				<div class="modal-header">
 					<h2>
-						Send e-mail to person<small>This mail is private</small>
+						Send e-mail til person <small>Denne e-mailen er privat</small>
 					</h2>
 				</div>
 				<div class="modal-body">
 					<form action="mail" method="post">
-						<label>Subject</label> <input type="text" class="span8" name="subject"
-							placeholder="Enter Subject here..." /><br> <label>Write
-							here</label>
+						<label>Emne: </label> <input type="text" class="span8" name="subject"
+							placeholder="Emnetittel " /><br> 
+							<label>Skriv din melding her</label>
 						<textarea class="field span8" id="textarea" rows="6" name="message"
-							placeholder="Write your message here..."></textarea>
+							placeholder="Skriv din melding her..."></textarea>
 						<br> <br>
 						<button type="submit" class="btn btn-success">Send</button>
-						<button type="reset" class="btn">Clear</button>
+						<button type="reset" class="btn">Fjern alt</button>
 					</form>
 
 				</div>
 
 				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Lukk</button>
 
 				</div>
 			</div>
-			<form class="well pull-right" action="editprofile.jsp">
-				<button type="submit" class="btn btn-primary">Endre profil</button>
-			</form>
+			
+				<a href="?page=editprofile"><button type="submit" class="btn btn-primary">Endre profil</button></a>
+			
 
 
 			<br>
@@ -155,6 +141,3 @@
 			</footer> 
 		-->
 	</div>
-
-</body>
-</html>

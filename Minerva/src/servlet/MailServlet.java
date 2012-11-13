@@ -44,6 +44,7 @@ public class MailServlet extends HttpServlet {
 		subject = request.getParameter("subject");
 		message = request.getParameter("message");
 		GoogleMail.Send(from, password, to, subject, message);
+		response.sendRedirect("?page=viewprofile");
 	}
 
 }
