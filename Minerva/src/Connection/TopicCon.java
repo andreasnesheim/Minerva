@@ -1,5 +1,6 @@
 package Connection;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -129,13 +130,13 @@ public class TopicCon {
 		Profile profile = (Profile) session.get(Profile.class, profileId);
 		Set<Profile> trainee = topic.getTrainees();
 		trainee.add(profile);
-		topic.setMentors(trainee);
+		topic.setTrainees(trainee);
 		
 		session.update(topic);
 		session.getTransaction().commit();
 	}
 
-	public static Set<Topic> getTopicsTraineeIn(long profileId) {
+	public static List<Topic> getTopicsTraineeIn(long profileId) {
 
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -144,14 +145,16 @@ public class TopicCon {
 		Profile profile = (Profile) session.get(Profile.class, profileId);
 		Set<Topic> topics = profile.getTopicsTraineed();
 
+		List<Topic> topicsToArray = new ArrayList<Topic>();
+		topicsToArray.addAll(topics);
+		
 		session.getTransaction().commit();
-//		session.close();
-
-		return topics;
+		
+		return topicsToArray;
 
 	}
 	
-	public static Set<Topic> getTopicsMentorIn(long profileId) {
+	public static List<Topic> getTopicsMentorIn(long profileId) {
 
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -159,11 +162,13 @@ public class TopicCon {
 
 		Profile profile = (Profile) session.get(Profile.class, profileId);
 		Set<Topic> topics = profile.getTopicsMentored();
+		
+		List<Topic> topicsToArray = new ArrayList<Topic>();
+		topicsToArray.addAll(topics);
 
 		session.getTransaction().commit();
-//		session.close();
 
-		return topics;
+		return topicsToArray;
 
 	}
 
