@@ -1,12 +1,28 @@
 <%@ page import="Connection.ProfileCon"%>
+<%@ page import="Connection.TopicCon"%>
 <%@ page import="tables.Profile"%>
+<%@ page import="tables.Topic"%>
+<%@ page import="java.util.List"%>
 
 <%	
-	//Her skal profilens id som lagres i session bli lagret.
-	// Enkel testløsning for å fikse dette nå.
 	Long id = (Long) session.getAttribute("id");
 	Profile profile = ProfileCon.getProfile(id);
 	String image = profile.getImage();
+	
+	List<Topic> topicsPersonIsMentorIn = TopicCon.getTopicsMentorIn(1);
+	List<Topic> topicsPersonIsTraineeIn = TopicCon.getTopicsTraineeIn(1);
+	
+	int tableSize = 0;
+	int table1 = topicsPersonIsMentorIn.size();
+	int table2 = topicsPersonIsTraineeIn.size();
+	if (table1 > table2)
+		tableSize = table1;
+	else if (table1 < table2)
+		tableSize = table2;
+	else if (table1 == table2)
+		tableSize = table1;
+		
+	
 %>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
@@ -77,32 +93,29 @@
 
 					<thead>
 						<tr>
-							<th>Mentor in</th>
-							<th>mentoree in</th>
+							<th>Mentor i: </th>
+							<th>Trainee i: </th>
 
 						</tr>
 					</thead>
 					<tbody>
+					
+					<% for (int i=0; i<tableSize; i++) { %>
 						<tr>
-							<td>Java</td>
-							<td>HTML5</td>
-
-						</tr>
-						<tr>
+					<% if (topicsPersonIsMentorIn.size() > i) {  %>
+						
+							<td><%= topicsPersonIsMentorIn.get(i).getName() %></td>
+							
+					<% } else { %>
 							<td></td>
-							<td>CSS</td>
-
+					<% } if (topicsPersonIsTraineeIn.size() > i) { %>		
+							
+							<td><%= topicsPersonIsTraineeIn.get(i).getName() %></td>
+							
+							<% } %>
 						</tr>
-						<tr>
-							<td></td>
-							<td>C#</td>
-
-						</tr>
-						<tr>
-							<td></td>
-							<td>php</td>
-
-						</tr>
+					<% } %>
+						
 					</tbody>
 				</table>
 			</div>

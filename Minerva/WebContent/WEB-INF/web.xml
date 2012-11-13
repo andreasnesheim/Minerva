@@ -20,20 +20,28 @@
     <servlet-name>mail</servlet-name>
     <url-pattern>/mail</url-pattern>
   </servlet-mapping>
-   <servlet>
-        <servlet-name>uploadimage</servlet-name>
-        <servlet-class>servlet.UploadImageServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>uploadimage</servlet-name>
-        <url-pattern>/uploadimage</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>storeuserinfo</servlet-name>
-        <servlet-class>servlet.StoreUserInfoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>storeuserinfo</servlet-name>
-        <url-pattern>/storeuserinfo</url-pattern>
-    </servlet-mapping>
+  <servlet>
+    <servlet-name>uploadimage</servlet-name>
+    <servlet-class>servlet.UploadImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>uploadimage</servlet-name>
+    <url-pattern>/uploadimage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>storeuserinfo</servlet-name>
+    <servlet-class>servlet.StoreUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>storeuserinfo</servlet-name>
+    <url-pattern>/storeuserinfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>addtopic</servlet-name>
+    <servlet-class>servlet.AddTopicServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addtopic</servlet-name>
+    <url-pattern>/addtopic</url-pattern>
+  </servlet-mapping>
 </web-app>

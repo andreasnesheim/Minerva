@@ -12,10 +12,14 @@ public class CreateInserts {
 	 */
 	public static void main(String[] args) {
 
-		createUsers();
+//		createUsers();
 //		createMainCategories();
 //		createSubCategories();
+//		createTopics();
+		linkingPersonToTopic();
+		
 //		createProfilesEkstra();
+		
 
 	}
 
@@ -38,6 +42,24 @@ public class CreateInserts {
 		CategoryCon.createSubCategory("Java", 1);
 		CategoryCon.createSubCategory("TCP", 2);
 		CategoryCon.createSubCategory("tull", 3);
+	}
+	
+	private static void createTopics(){
+		TopicCon.createTopic("Socket", "Socket-programmering", 1);
+		TopicCon.createTopic("GUI", "Hsdfsdfdft", 1);
+//		TopicCon.createTopic("Tull 2.0", "Implementasjon av tull 2.0", 3);
+	}
+	
+	private static void linkingPersonToTopic(){
+		//Ola Normann er mentor i Tull 2.0
+//		TopicCon.addMentorToTopic(1, 3);
+		TopicCon.addMentorToTopic(1, 8);
+		TopicCon.addMentorToTopic(1, 7);
+		
+		
+		//Ola Normann er trainee innen java3d og tcp
+		TopicCon.addTraineeToTopic(1, 2);
+		TopicCon.addTraineeToTopic(1, 1);
 	}
 
 	public static void createProfilesEkstra(){
