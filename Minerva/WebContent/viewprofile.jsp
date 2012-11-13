@@ -10,19 +10,32 @@
 <script src="js/bootstrap.js"></script>
 </head>
 <body>
+<%@ page import="Connection.ProfileCon"%>
+<%@ page import="tables.Profile"%>
+
+<%
+	//Her skal profilens id som lagres i session bli lagret.
+	// Enkel testløsning for å fikse dette nå.
+	Long id = (Long) session.getAttribute("id");
+	Profile profile = ProfileCon.getProfile(id);
+	
+%>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
-				<img src="img/ProfilBilde.jpg">
+			<% if (profile.getImage() == null) { %>
+				<img src="img/imagenull.png">
+			<% } else if (profile.getImage() != null) { %>
+				<img src="img/profilefemale.png">
+				<% } %>
 			</div>
 
 			<div id="overskrift" class="well span4">
 
-<% if (request.getParameter("myprofile") != null) { %>
-		<h3>my profile!</h3>
-<% } %>
 
-				<h1>Daniel Jajevski</h1>
+
+
+				<h1><%=profile.getFirstName() %> <%=profile.getLastName() %></h1>
 				<!--    session.setAttribute( "EmpList", Connection.ProfileCon.getProfile(1));-->
 
 			</div>
@@ -39,10 +52,10 @@
 				</div>
 				<div class="modal-body">
 					<form>
-						<label>Subject</label> <input type="email" class="span8"
+						<label>Subject</label> <input type="email" class="span8" name="subject"
 							placeholder="Enter Subject here..." /><br> <label>Write
 							here</label>
-						<textarea class="field span8" id="textarea" rows="6"
+						<textarea class="field span8" id="textarea" rows="6" name="message"
 							placeholder="Write your message here..."></textarea>
 						<br> <br>
 						<button type="submit" class="btn btn-success">Send</button>
