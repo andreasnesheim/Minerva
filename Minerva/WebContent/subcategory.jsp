@@ -30,7 +30,7 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 			</tr>
 			<% for (int i = 0; i < topics.size(); i++) { %>
 			<tr>
-				<td><a href="?page=topic&topicId= <% %>">
+				<td><a href="?page=topic&topicId= <%=topics.get(i).getId()%>">
 					<%= topics.get(i).getName() %></a></td>
 				<td>
 					<%= TopicCon.getNumberOfMentorInTopic(topics.get(i).getId()) %>
