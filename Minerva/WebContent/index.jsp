@@ -116,8 +116,8 @@ BODY {
 <%	}
 
  	// HTML leafnodes
-	if (contentPage.equals("leafnode")) {%>
-		<jsp:include page="leafnode.jsp" />
+	if (contentPage.equals("topic")) {%>
+		<jsp:include page="topic.jsp" />
 <%	}
  	
  	// View profile
