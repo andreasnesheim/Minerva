@@ -14,8 +14,8 @@
 	<div class="span6">
 	<h1>Edit Profile</h1>
 	</div>
-	<form id="uploadimage" class="well span6">
-		Velg bilde<input type="file" name="img">
+	<form action="uploadimage" class="well span6" enctype="multipart/form-data" method="post">
+		Velg bilde<input type="file" name="file" >
 				  <input type="submit" value="Last opp">
 	</form>
 	<br>

@@ -18,14 +18,18 @@
 	// Enkel testløsning for å fikse dette nå.
 	Long id = (Long) session.getAttribute("id");
 	Profile profile = ProfileCon.getProfile(id);
+	String image = profile.getImage();
 	
 	
 %>
 	<div class="container">
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
-			
-				<img src="img/profile/profilefemale.png">
+			<% if (image != null) { %>
+				<img src="<%=image%>">
+				<% } else { %>
+				<img src="img/imagenull.png">
+				<% } %>
 				
 			</div>
 
