@@ -39,6 +39,34 @@ public class CategoryCon {
 		session.getTransaction().commit();
 
 	}
+	
+	public static SubCategory getSubCategory(long id) {
+
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+
+        SubCategory subCategory = (SubCategory) session.get(SubCategory.class, id);
+        session.getTransaction().commit();  
+
+        return subCategory;
+
+    }
+	
+	public static MainCategory getMainCategory(long id) {
+
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+
+        MainCategory mainCategory = (MainCategory) session.get(MainCategory.class, id);
+        session.getTransaction().commit();  
+
+        return mainCategory;
+
+    }
 
 	public static List<MainCategory> getMainCategories() {
 

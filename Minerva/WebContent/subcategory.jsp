@@ -11,9 +11,9 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 <div id="mainpage" class="row">
 	<div id="breadcrumb" class="span5">
 		<ul class="breadcrumb">
-			<li><a href="#">Topic</a> <span class="divider">/</span></li>
-			<li><a href="#">Web development</a> <span class="divider">/</span></li>
-			<li class="active">HTML</li>
+			<li><a href="?page=categories">Emner</a> <span class="divider">/</span></li>
+			<li><a href="?page=categories"><%=CategoryCon.getSubCategory(Integer.parseInt(request.getParameter("subcategoryId"))).getMainCategory().getName() %></a> <span class="divider">/</span></li>
+			<li class="active"><%=CategoryCon.getSubCategory(Integer.parseInt(request.getParameter("subcategoryId"))).getName() %></li>
 		</ul>
 	</div>
 
@@ -42,11 +42,12 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 			<%} %>
 		</table>
 	</div>
-
+	
 	<div class="span4">
 		<div class="well">
-			<p>Can't find the subject you're looking for?</p>
-			<button class="btn btn-small" type="button">Add a topic</button>
+			<p>Kan du ikke finne tr&aring;den du leter etter?</p>
+			<form action="?page=addtopic&subcategoryId=<%=request.getParameter("subcategoryId")%>"></form>
+			<button class="btn btn-small" type="button">Legg til ny tr&aring;d</button>
 		</div>
 	</div>
 </div>
