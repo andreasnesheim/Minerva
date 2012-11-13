@@ -154,6 +154,14 @@ public class ProfileCon {
     	return topic.getTrainees();
     }
     
+    public static int getNumberOfMentorInTopic (long topicId) {
+    	return getListOfMentorsInTopic(topicId).size();
+    }
+    
+    public static int getNumberOfTraineesInTopic (long topicId) {
+    	return getListOfTraineesInTopic(topicId).size();
+    }
+    
     public static List<User> getListOfUsersInDatabase() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();

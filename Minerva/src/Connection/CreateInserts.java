@@ -11,9 +11,12 @@ public class CreateInserts {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		createUsers();
-//		createMainCategories();
-		createSubCategories();
+
+		createUsers();
+		createMainCategories();
+//		createSubCategories();
+		createProfilesEkstra();
+
 	}
 
 	private static void createUsers() {
