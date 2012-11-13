@@ -1,5 +1,7 @@
-	<%@ page import = "lang.LangEng" %>
+Velkommen til Minerva!
 
+<%--
+<%@ page import = "lang.LangEng" %> 
 		<div class="row">
 			<div class="span6">
 				<h4><%= LangEng.homeIntroHeader %></h4>
@@ -25,3 +27,4 @@
 				<li class="divider"></li>
 			</ul>
 		</div>
+--%>

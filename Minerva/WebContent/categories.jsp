@@ -1,8 +1,6 @@
-<%@ page import="Connection.CategoryCon"%>
-<%@ page import="tables.MainCategory"%>
-<%@ page import="tables.SubCategory"%>
+<%@ page import="Connection.*"%>
+<%@ page import="tables.*"%>
 <%@ page import="java.util.List"%>
-
 
 
 <%
