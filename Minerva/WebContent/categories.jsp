@@ -16,11 +16,11 @@ List<SubCategory> subcat = CategoryCon.getSubCategories();
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#accordion1" href="#<%=maincat.get(i).getName()%>"> <%=maincat.get(i).getName() %>
+					data-parent="#accordion1" href="#<%=maincat.get(i).getName().replace(' ', '_')%>"><%=maincat.get(i).getName() %>
 				</a>
 			</div>
 		
-			<div id="<%= maincat.get(i).getName() %>" class="accordion-body collapse">
+			<div id="<%= maincat.get(i).getName().replace(' ', '_') %>" class="accordion-body collapse">
 				<div class="accordion-inner">
 			
 					<% for (int j = 0; j < subcat.size(); j++) { %>
