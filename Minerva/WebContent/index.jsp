@@ -36,10 +36,10 @@ BODY {
 		<div class="span1">
 			<div class="btn-group">
 				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
-					<img alt="gb" src="img/gb.png" />&nbsp;English&nbsp;<span class="caret"></span>
+					<img alt="no" src="img/no.png" />&nbsp;Norsk&nbsp;<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a class="btn-mini" tabindex="-1" href="#"><img alt="no" src="img/no.png" />&nbsp;Norsk</a></li>
+					<li><a class="btn-mini" tabindex="-1" href="#"><img alt="gb" src="img/gb.png" />&nbsp;English</a></li>
 				</ul>
 			</div>
 		</div>
