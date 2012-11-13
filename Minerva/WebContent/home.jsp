@@ -1,4 +1,4 @@
-Velkommen til Minerva!
+<h1>Velkommen til Minerva!</h1>
 
 <%--
 <%@ page import = "lang.LangEng" %> 
