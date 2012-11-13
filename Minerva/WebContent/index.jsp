@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="generator" content="Eclipse Juno" />
 <meta name="author" content="dj,rab,bhb,jaj,aan,rf" />
-<link rel="shortcut icon" href="" />
+<link rel="shortcut icon" href="img/favicon.ico" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 <%
 String contentPage = request.getParameter("page");
