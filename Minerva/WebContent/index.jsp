@@ -128,7 +128,15 @@ BODY {
  	//	Edit profile
  	if (contentPage.equals("editprofile")) {%>
 		<%@ include file="editprofile.jsp" %>
-<%	} %>
+<%	}	
+ 	
+ 	// Add (sub)topic
+ 	if (contentPage.equals("addtopic")) {%>
+		<%@ include file="addtopic.jsp" %>
+<%	}%>
+
+
+
 
 
 </div><!-- end CONTAINER -->
