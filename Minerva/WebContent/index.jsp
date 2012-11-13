@@ -118,7 +118,7 @@ BODY {
 
  	// HTML leafnodes
 	if (contentPage.equals("topic")) {%>
-		<jsp:include page="topic.jsp" />
+		<%@ include file="topic.jsp" %>
 <%	}
  	
  	// View profile

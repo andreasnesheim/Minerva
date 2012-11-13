@@ -1,13 +1,15 @@
-
-
+<%@ page import="Connection.*"%>
+<%@ page import="tables.*"%>
+<%@ page import="java.util.List"%>
 
 <div id="mainpage" class="row">
 	<div id=breadcrumb class="span5">
 		<ul class="breadcrumb">
-			<li><a href="#">Topic</a> <span class="divider">/</span></li>
-			<li><a href="#">Web development</a> <span class="divider">/</span></li>
-			<li><a href="#">HTML</a> <span class="divider">/</span></li>
-			<li class="active">Pseudu elements</li>
+			<li><a href="?page=categories">Emner</a> <span class="divider">/</span></li>
+			<li><a href="?page=categories"><%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getSubCategory().getMainCategory().getName()%></a> <span class="divider">/</span></li>
+			<li><a href="?page=categories&subcategoryId=<%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getSubCategory().getName() %>">
+			<%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getSubCategory().getName()%></a> <span class="divider">/</span></li>
+			<li class="active"><%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getName()%></li>
 		</ul>
 	</div>
 
@@ -15,7 +17,7 @@
 
 	<div id="table" class="span12">
 
-		<h1>List of Mentors in chosen topic</h1>
+		<h1>Mentorer i valgt tråd</h1>
 
 
 		<br>
@@ -23,7 +25,7 @@
 		<table class="table table-hover">
 			<tr>
 				<th>Mentor</th>
-				<th>Location</th>
+				<th>Lokasjon</th>
 				<th>Rating</th>
 			</tr>
 			<tr>
