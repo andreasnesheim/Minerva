@@ -46,8 +46,8 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 	<div class="span4">
 		<div class="well">
 			<p>Kan du ikke finne tr&aring;den du leter etter?</p>
-			<form action="?page=addtopic&subcategoryId=<%=request.getParameter("subcategoryId")%>"></form>
-			<button class="btn btn-small" type="button">Legg til ny tr&aring;d</button>
+			<a href="?page=addtopic&subcategoryId=<%=request.getParameter("subcategoryId")%>">
+			<button class="btn btn-small" type="button">Legg til ny tr&aring;d</button></a>
 		</div>
 	</div>
 </div>
