@@ -81,18 +81,19 @@ public class TopicCon {
 		return topic;
 
 	}
-
+	
+	
 	public static Set<Profile> getListOfMentorsInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Topic topic = TopicCon.getTopic(topicId);
+		Topic topic = (Topic) session.get(Topic.class, topicId);
 		session.getTransaction().commit();
 		return topic.getMentors();
 	}
 	public static Set<Profile> getListOfTraineesInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Topic topic = TopicCon.getTopic(topicId);
+		Topic topic = (Topic) session.get(Topic.class, topicId);
 		session.getTransaction().commit();
 		return topic.getTrainees();
 	}

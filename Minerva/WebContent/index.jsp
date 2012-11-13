@@ -101,12 +101,12 @@ BODY {
 		<jsp:include page="info.jsp" />
 <%	} %> 
 
-<% 	/* subtopics*/ 
-	if (contentPage.equals("subtopic")) {%>
-		<jsp:include page="subtopic.jsp" />
+<% 	//	Subcategories
+	if (contentPage.equals("subcategory")) {%>
+		<jsp:include page="subcategory.jsp" />
 <%	} %>
 
-<% 	/* HTML leafnodes*/ 
+<% 	// HTML leafnodes
 	if (contentPage.equals("leafnode")) {%>
 		<jsp:include page="leafnode.jsp" />
 <%	} %>
