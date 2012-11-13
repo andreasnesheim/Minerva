@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="span6">
-		<h1>Edit Profile</h1>
+		<h1>Legg til tråd</h1>
 	</div>
 	<br>
 	<form action="addtopic?subcategoryId=<%=request.getParameter("subcategoryId") %>" method="post" class="well span6">

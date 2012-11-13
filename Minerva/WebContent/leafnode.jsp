@@ -56,12 +56,10 @@
 
 
 	<div class="span2">
-		<button class="btn btn-small" type="button">Add me as a
-			mentor</button>
+		<button class="btn btn-small" type="button">Legg meg til som mentor</button>
 	</div>
 	<div class="span2">
-		<button class="btn btn-small" type="button">Add me as a
-			mentoree</button>
+		<button class="btn btn-small" type="button">Legg meg til som trainee</button>
 	</div>
 
 </div>

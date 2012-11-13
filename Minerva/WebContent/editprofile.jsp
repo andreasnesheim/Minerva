@@ -1,7 +1,7 @@
 
 <div class="container">
 	<div class="span6">
-	<h1>Edit Profile</h1>
+	<h1>Endre profil</h1>
 	</div>
 	<form action="uploadimage" class="well span6" enctype="multipart/form-data" method="post">
 		Velg bilde<input type="file" name="file" >
