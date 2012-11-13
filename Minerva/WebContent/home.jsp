@@ -9,7 +9,7 @@
 
 
 			<div class="span6">
-				<img src="img/statue.jpg" height="10">
+				<img src="img/statue.png" height="10">
 			</div>
 
 		</div>

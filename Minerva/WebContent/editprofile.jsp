@@ -12,9 +12,9 @@
 </head>
 <body>
 	<div class="container">
-		<div class="span6">
-			<h1>Endre profil</h1>
-		</div>
+	<div class="span6">
+		<h1>Endre profil</h1>
+	</div>
 		<form action="storeuserinfo" method="post">
 		<div class="well span6">
 				Velg bilde <input type="file" name="img">
@@ -26,6 +26,14 @@
 			<label>Alder <input type="text" name="age" class="span3 pull-right" /></label><br>
 			<label>Bosted <input type="text" name="location" class="span3 pull-right" /></label><br>
 			<label>Interesser <input type="text" name="interests" class="span3 pull-right" /></label><br>
+			
+			<label>Sex: 
+			<select>
+  				<option value="volvo">Male</option>
+  				<option value="saab">Female</option>
+			</select>
+			</label>
+			
 			<label>Kjønn <input type="text" name="sex" class="span3 pull-right" /></label><br><br> 
 			
 		<br>

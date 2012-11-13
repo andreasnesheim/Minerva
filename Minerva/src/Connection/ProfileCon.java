@@ -2,6 +2,7 @@ package Connection;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.nio.channels.SeekableByteChannel;
 import java.sql.*;
 import java.util.List;
 import java.util.Set;
@@ -13,28 +14,49 @@ import org.hibernate.criterion.Restrictions;
 import tables.*;
 
 public class ProfileCon {
-    
 
-    // lager en user og en profli til brukeren
-    // går forløpig utifra at hver profil bare har en bruker
-    public static void createUser(String email, int thirdPartId, String firstName, String lastName, String location, String information, String interests, String sex, int age) {
+	
+	// lager en user og en profli til brukeren
+	// går forløpig utifra at hver profil bare har en bruker
+	public static void createUser(String email, String thirdPartId, String firstName, String lastName, String location, String information, String interests, String sex, int age) {
 
-        Profile profile = createProfile(firstName, lastName, location, information, interests, sex, age);
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+		User user = new User();
+		user.setEmail(email);
+		user.setThirdPartId(thirdPartId);
+		
+		session.save(user);
+		session.getTransaction().commit();
+		
+		Profile profile = createProfile(firstName, lastName, location, information, interests, sex, age, user);
 
-        User user = new User();
-        user.setEmail(email);
-        user.setThirdPartId(thirdPartId);
-        user.setProfile(profile);
+		
+		
+		
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		
+		user.setProfile(profile);
+		
+		session.update(user);
+		session.getTransaction().commit();
 
-        session.save(user);
-        session.getTransaction().commit();
+	}
+	public static long getUserId(String email, String thirdPartId) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		
+		Criteria crit = session.createCriteria(User.class)
+				.add(Restrictions.like("email", email))
+				.add(Restrictions.like("thirdPartId", thirdPartId));
+		crit.setMaxResults(1);
+		List<User> results = crit.list();
+		return results.get(0).getId();
+	}
 
-    }
-
-    public static Profile getProfile(int id) {
+    public static Profile getProfile(long id) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -48,7 +70,7 @@ public class ProfileCon {
 
     }
 
-    public boolean changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, int newAge) {
+    public static void changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, int newAge) {
 
         Profile profile = null;
 
@@ -88,10 +110,10 @@ public class ProfileCon {
         //session.close();
 
     
-        return true;
+//        return true;
     }
     
-    public static Profile createProfile(String FirstName, String LastName, String Location, String information, String interests, String sex, int age) {
+    public static Profile createProfile(String FirstName, String LastName, String Location, String information, String interests, String sex, int age, User user) {
 
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -107,6 +129,8 @@ public class ProfileCon {
             profile.setInterests(interests);
             profile.setSex(sex);
             profile.setAge(age);
+            profile.setUser(user);
+    		profile.setUserId();
 
         session.save(profile);
 
@@ -168,7 +192,7 @@ public class ProfileCon {
         return false;
     }
     
-    public static void uploadImage(int id, String fileString) {
+    public static void uploadImage(long id, String fileString) {
     	 Profile profile = null;
 
          Session session = HibernateUtil.getSessionFactory().getCurrentSession();
