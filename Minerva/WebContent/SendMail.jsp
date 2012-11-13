@@ -10,7 +10,7 @@
 <form action="mail" method="post">
 	subject:<input type="text" name="subject"/>
 	<br>
-	text:<textarea rows="6" name="text"></textarea>
+	text:<textarea rows="6" name="message"></textarea>
 	<br>
 	<button type="submit">SUBBAMITTA</button>
 </form>

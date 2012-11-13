@@ -21,7 +21,7 @@ public class Profile {
 //	@GeneratedValue (strategy=GenerationType.TABLE, generator="userid")
 	@Id
 	private long userId;
-	private byte[] image;
+	private String image;
 	private String information;
 	private String location;
 	private String lastName;
@@ -129,11 +129,11 @@ public class Profile {
 
 	
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

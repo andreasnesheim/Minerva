@@ -70,7 +70,7 @@ public class ProfileCon {
 
     }
 
-    public static void changeProfile(String id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, int newAge) {
+    public static void changeProfile(long id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, String newAge, String newImage) {
 
         Profile profile = null;
 
@@ -97,12 +97,13 @@ public class ProfileCon {
         if (newSex  != "" && newSex != null ) {
             profile.setSex(newSex);
         }
-        if (newAge  != 0) {
-            profile.setAge(newAge);
+        if (newAge  != "" && newAge != null) {
+        	int newAgeInInt = Integer.parseInt(newAge);
+            profile.setAge(newAgeInInt);
         }
-        //        if (newImage  != "" && newImage != null ) {
-        //            profile.setImage(newImage);
-        //        }
+        if (newImage  != "" && newImage != null ) {
+            profile.setImage(newImage);
+        }
 
         session.update(profile);
 
@@ -179,33 +180,33 @@ public class ProfileCon {
         return false;
     }
     
-    public static void uploadImage(long id, String fileString) {
-    	 Profile profile = null;
-
-         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-         session.beginTransaction();
-
-         profile = (Profile) session.get(Profile.class, id);
- 
-        //save image into database
-    	File file = new File(fileString);
-        byte[] bFile = new byte[(int) file.length()];
- 
-        try {
-	     FileInputStream fileInputStream = new FileInputStream(file);
-	     //convert file into array of bytes
-	     fileInputStream.read(bFile);
-	     fileInputStream.close();
-        } catch (Exception e) {
-	     e.printStackTrace();
-        }
- 
-        profile.setImage(bFile);
- 
-        session.update(profile);
-
-        session.getTransaction().commit();
-    }
+//    public static void uploadImage(long id, String fileString) {
+//    	 Profile profile = null;
+//
+//         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//         session.beginTransaction();
+//
+//         profile = (Profile) session.get(Profile.class, id);
+// 
+//        //save image into database
+//    	File file = new File(fileString);
+//        byte[] bFile = new byte[(int) file.length()];
+// 
+//        try {
+//	     FileInputStream fileInputStream = new FileInputStream(file);
+//	     //convert file into array of bytes
+//	     fileInputStream.read(bFile);
+//	     fileInputStream.close();
+//        } catch (Exception e) {
+//	     e.printStackTrace();
+//        }
+// 
+//        profile.setImage(bFile);
+// 
+//        session.update(profile);
+//
+//        session.getTransaction().commit();
+//    }
     
     public static String getEmail(long id) {
 
