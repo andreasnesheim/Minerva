@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"--%>
 <html lang="no">
 <head>
-<title>Project:Minerva</title>
+<title>Minerva</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="generator" content="Eclipse Juno" />
 <meta name="author" content="dj,rab,bhb,jaj,aan,rf" />
@@ -28,7 +28,7 @@ BODY {
 <body>
 <div class="container"><!-- begin CONTAINER -->
 
-	<%--	Header + login field	--%>
+	<%--	HEADER + LOGIN FIELD	--%>
 	<div class="row"><!-- begin ROW -->
 		<div class="span8">
 			<a href="./"><img src="img/logo.png" style="width:50%;height:50%" /></a>
@@ -52,10 +52,11 @@ BODY {
  		 <%} %>
 	</div><!-- end ROW -->
   
-  <%--	Navigation	--%>
+  <%--	NAVIGATION	--%>
   <div class="row"><!-- begin ROW -->
     	<div class="span12">
-			<div class="navbar nav-tabs navbar-static-top"><div class="navbar-inner">
+			<div class="navbar"><div class="navbar-inner">
+				<a class="brand" href="./">Minerva</a>
 				<ul class="nav">
 				 <li<%if(contentPage.equals("home"))out.print(" class=\"active\"");%>>
 				 	<a href="./"><i class="icon-home"></i>&nbsp;Hjem</a>
@@ -82,7 +83,7 @@ BODY {
     	</div>
   </div><!-- end ROW -->
   
-<%	/* Include page content files
+<%	/* Include PAGE CONTENT files
 	(also experiments with different types of include conventions) */
 	
 	//	Home page
@@ -141,7 +142,7 @@ BODY {
 
 </div><!-- end CONTAINER -->
 
-<!-- Include javascript files at bottom to load page faster -->
+<%-- Include javascript files at bottom to load page faster --%>
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/bootstrap.js"></script>
 
