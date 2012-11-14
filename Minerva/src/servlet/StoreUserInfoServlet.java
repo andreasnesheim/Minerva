@@ -48,10 +48,7 @@ public class StoreUserInfoServlet extends HttpServlet {
 		ProfileCon.changeProfile((long) request.getSession().getAttribute("id"), firstname, lastname, location, information,
 				interests, sex, age, null);
 		
-		response.sendRedirect("?page=viewprofile");
-		System.out.println("");
-		System.out.println("servleten blir kalt");
-		System.out.println("");
+		response.sendRedirect("?page=viewprofile&profileId=" + request.getSession().getAttribute("id"));
 		
 	}
 
