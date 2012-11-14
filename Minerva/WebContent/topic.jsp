@@ -85,7 +85,7 @@ List<Profile> mentors = TopicCon.getListOfMentorsInTopic(topicId);
 		</form>
 	</div>
 	<div class="span2">
-	<form action="AddAsMentorServlet" method="post">
+	<form action="AddAsTraineeServlet" method="post">
 		<button class="btn btn-small" type="submit">Legg meg til som trainee</button>
 		<input type="hidden" name="topicId" value="<%=currentTopic.getId() %>"/>
 		<input type="hidden" name="userId" value="<%=request.getSession().getAttribute("id") %>"/>

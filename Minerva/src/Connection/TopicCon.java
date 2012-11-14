@@ -149,7 +149,7 @@ public class TopicCon {
 		Profile profile = (Profile) session.get(Profile.class, profileId);
 		Set<Profile> trainee = topic.getTrainees();
 		trainee.add(profile);
-		topic.setMentors(trainee);
+		topic.setTrainees(trainee);
 		
 		session.update(topic);
 		session.getTransaction().commit();
