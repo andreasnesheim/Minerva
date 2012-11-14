@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Connection.TopicCon;
+
 /**
  * Servlet implementation class AddAsMentorServlet
  */
@@ -26,14 +28,17 @@ public class AddAsMentorServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		long topicId = Long.parseLong(request.getParameter("topicId"));
+		long userId = Long.parseLong(request.getParameter("userId"));
+		TopicCon.addMentorToTopic(userId, topicId);
+		response.sendRedirect("?page=topic&topicId="+topicId);
 	}
 
 }

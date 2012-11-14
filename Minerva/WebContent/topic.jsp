@@ -47,7 +47,11 @@
 
 
 	<div class="span2">
+	<form action="AddAsMentorServlet" method="post">
 		<button class="btn btn-small" type="button">Legg meg til som mentor</button>
+		<input type="hidden" name="topicId" value=<%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))) %>/>
+		<input type="hidden" name="userId" value=<%=request.getSession().getAttribute("id") %>/>
+		</form>
 	</div>
 	<div class="span2">
 		<button class="btn btn-small" type="button">Legg meg til som trainee</button>
