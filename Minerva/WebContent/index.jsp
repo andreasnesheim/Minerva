@@ -55,7 +55,7 @@ BODY {
   <%--	NAVIGATION	--%>
   <div class="row"><!-- begin ROW -->
     	<div class="span12">
-			<div class="navbar"><div class="navbar-inner">
+			<div class="navbar"><div class="navbar-inner"><div class="container">
 				<a class="brand" href="./">Minerva</a>
 				<ul class="nav">
 				 <!-- <li class="divider-vertical"></li> -->
@@ -78,9 +78,17 @@ BODY {
 				 <li<%if(contentPage.equals("info"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=info"><i class="icon-asterisk"></i>&nbsp;Informasjon</a>
 				 </li>
-				 
 				</ul>
-			</div></div>
+				<% if (!contentPage.equals("search")) { %>
+				<form action="search" class="form-search navbar-search pull-right" method="post">
+					<div class="input-append">
+						<input type="text" name="searchQuery" class="input-medium search-query"
+							placeholder="S&oslash;k" />
+						<button type="submit" class="btn"><i class="icon-search"></i></button>
+					</div>
+				</form>	
+				<% } %>
+			</div></div></div>
     	</div>
   </div><!-- end ROW -->
   
