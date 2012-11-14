@@ -2,6 +2,10 @@
 <%@ page import="tables.*"%>
 <%@ page import="java.util.List"%>
 
+<%
+	List<Profile> mentors = TopicCon.getListOfMentorsInTopic(Long.parseLong(request.getParameter("topicId")));
+%>
+
 <div id="mainpage" class="row">
 	<div id=breadcrumb class="span5">
 		<ul class="breadcrumb">
@@ -18,41 +22,27 @@
 	<div id="table" class="span12">
 
 		<h1>Mentorer i valgt tråd</h1>
-
+		
+		<% 
+		
+		%>
 
 		<br>
 
 		<table class="table table-hover">
+		
 			<tr>
 				<th>Mentor</th>
 				<th>Lokasjon</th>
-				<th>Rating</th>
+				
 			</tr>
+			<% for (int i=0; i<mentors.size(); i++) { %>
 			<tr>
-				<td><a href="?page=viewprofile_daniel">Daniel Jajevski</a></td>
-				<td>Stavanger</td>
-				<td>4,5/5</td>
+				<td><a href="?page=viewprofile&profileId=<%=mentors.get(i).getUserId()%>"><%=mentors.get(i).getFirstName()%> <%=mentors.get(i).getLastName()%></a></td>
+				<td><%=mentors.get(i).getLocation()%></td>
+				<td>Rating</td>
 			</tr>
-			<tr>
-				<td><a href="#">Bård Helland Bø</a></td>
-				<td>Sola</td>
-				<td>4,5/5</td>
-			</tr>
-			<tr>
-				<td><a href="#">Rikard Finnesand</a></td>
-				<td>Mosterøy</td>
-				<td>4,5/5</td>
-			</tr>
-			<tr>
-				<td><a href="#">Joacim Jacobsen </a></td>
-				<td>Tasta</td>
-				<td>4,5/5</td>
-			</tr>
-			<tr>
-				<td><a href="#">Rolf Andreas Boiten </a></td>
-				<td>Stavanger</td>
-				<td>4,5/5</td>
-			</tr>
+			<% } %>
 		</table>
 	</div>
 
