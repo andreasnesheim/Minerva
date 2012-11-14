@@ -50,9 +50,13 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(request.getParameter("s
 	
 	<div class="span4">
 		<div class="well">
-			<p>Kan du ikke finne tr&aring;den du leter etter?</p>
-			<a href="?page=addtopic&subcategoryId=<%=request.getParameter("subcategoryId")%>">
-			<button class="btn btn-small" type="button">Legg til ny tr&aring;d</button></a>
+			<p>
+				Kan du ikke finne tr&aring;den du leter etter?
+			</p>
+			<button class="btn btn-small" type="button"
+				onclick="window.location='?page=addtopic&subcategoryId=<%=request.getParameter("subcategoryId")%>'">
+				Legg til ny tr&aring;d
+			</button>
 		</div>
 	</div>
 </div>
