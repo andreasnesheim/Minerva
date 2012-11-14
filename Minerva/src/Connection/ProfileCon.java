@@ -152,6 +152,17 @@ public class ProfileCon {
         return users;
     }
     
+    public static List<Profile> getListOfProfilesInDatabase() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+        List<Profile> profiles = session.createQuery("from Profile").list();
+        session.getTransaction().commit();  
+        
+
+        return profiles;
+    }
+    
     public static boolean emailExcists(String email) {
         
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
