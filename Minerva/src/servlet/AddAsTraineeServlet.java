@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import Connection.TopicCon;
 
 /**
- * Servlet implementation class AddAsMentorServlet
+ * Servlet implementation class AddAsTraineeServlet
  */
-@WebServlet("/AddAsMentorServlet")
-public class AddAsMentorServlet extends HttpServlet {
+@WebServlet("/AddAsTraineeServlet")
+public class AddAsTraineeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddAsMentorServlet() {
+    public AddAsTraineeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +28,14 @@ public class AddAsMentorServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TopicCon.addMentorToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
+		TopicCon.addTraineeToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
 		response.sendRedirect("?page=topic&topicId="+request.getParameter("topicId"));
 	}
 

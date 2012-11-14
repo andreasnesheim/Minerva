@@ -52,4 +52,12 @@
     <servlet-name>AddAsMentorServlet</servlet-name>
     <url-pattern>/AddAsMentorServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AddAsTraineeServlet</servlet-name>
+    <servlet-class>servlet.AddAsTraineeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAsTraineeServlet</servlet-name>
+    <url-pattern>/AddAsTraineeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
