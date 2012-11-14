@@ -13,14 +13,13 @@ public class CreateInserts {
 	public static void main(String[] args) {
 
 		createUsers();
-//		createMainCategories();
-//		createSubCategories();
-//		createTopics();
+		createMainCategories();
+		createSubCategories();
+		createTopics();
 //		linkingPersonToTopic();
 		
-//		createProfilesEkstra();
-		
-//hrur	
+		createProfilesEkstra();
+
 	}
 
 	private static void createUsers() {
@@ -33,20 +32,37 @@ public class CreateInserts {
 	}
 	
 	private static void createMainCategories(){
-		CategoryCon.createMainCategory("Programmering");
-		CategoryCon.createMainCategory("Nettverk");
-		CategoryCon.createMainCategory("Annet");
+		CategoryCon.createMainCategory("Objektorientert programmering");
+		CategoryCon.createMainCategory("Webprogrammering");
+		CategoryCon.createMainCategory("Nettverksteknologi");
 	}
 	
 	private static void createSubCategories(){
 		CategoryCon.createSubCategory("Java", 1);
-		CategoryCon.createSubCategory("TCP", 2);
-		CategoryCon.createSubCategory("tull", 3);
+		CategoryCon.createSubCategory("C/C++", 1);
+		CategoryCon.createSubCategory("C#", 1);
+		CategoryCon.createSubCategory("Python", 1);
+		
+		CategoryCon.createSubCategory("HTML", 2);
+		CategoryCon.createSubCategory("CSS", 2);
+		CategoryCon.createSubCategory("JavaScript", 2);
+		
+		CategoryCon.createSubCategory("TCP/IP", 3);
+		CategoryCon.createSubCategory("DNS", 3);
+		CategoryCon.createSubCategory("Microsoft Server", 3);
+		CategoryCon.createSubCategory("Novell NetWare", 3);
+		CategoryCon.createSubCategory("Linux", 3);
 	}
 	
 	private static void createTopics(){
-		TopicCon.createTopic("Socket", "Socket-programmering", 1);
-		TopicCon.createTopic("GUI", "Hsdfsdfdft", 1);
+		TopicCon.createTopic("Sockets", "Socket-programmering i Java", 1);
+		TopicCon.createTopic("GUI", "Graphical User Interface i Java", 1);
+		TopicCon.createTopic("Nybegynner", "Java for nybegynnere", 1);
+		TopicCon.createTopic("Tr&aring;dh&aring;dtering", "Tråder i Java", 1);
+		
+		TopicCon.createTopic("Form-elementer", "Form-elementer", 5);
+		
+		TopicCon.createTopic("Font-stilering", "Endre stil på fonter ved hjelp av CSS", 6);
 //		TopicCon.createTopic("Tull 2.0", "Implementasjon av tull 2.0", 3);
 	}
 	
