@@ -68,4 +68,13 @@
     <servlet-name>logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>addfeedback</servlet-name>
+    <servlet-class>servlet.AddFeedbackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addfeedback</servlet-name>
+    <url-pattern>/addfeedback</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

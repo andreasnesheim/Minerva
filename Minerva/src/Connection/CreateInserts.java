@@ -12,13 +12,13 @@ public class CreateInserts {
 	 */
 	public static void main(String[] args) {
 
-		createUsers();
-		createMainCategories();
-		createSubCategories();
-		createTopics();
-//		linkingPersonToTopic();
+//		createUsers();
+//		createMainCategories();
+//		createSubCategories();
+//		createTopics();
+		linkingPersonToTopic();
 		
-		createProfilesEkstra();
+//		createProfilesEkstra();
 
 	}
 
@@ -69,12 +69,12 @@ public class CreateInserts {
 	private static void linkingPersonToTopic(){
 		//Ola Normann er mentor i Tull 2.0
 //		TopicCon.addMentorToTopic(1, 3);
-		TopicCon.addMentorToTopic(1, 8);
-		TopicCon.addMentorToTopic(1, 7);
+		TopicCon.addMentorToTopic(1, 2);
+		TopicCon.addMentorToTopic(1, 1);
 		
 		
 		//Ola Normann er trainee innen java3d og tcp
-		TopicCon.addTraineeToTopic(1, 2);
+		TopicCon.addTraineeToTopic(5, 2);
 		TopicCon.addTraineeToTopic(1, 1);
 	}
 

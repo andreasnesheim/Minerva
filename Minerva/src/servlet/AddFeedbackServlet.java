@@ -6,19 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import Connection.FeedbackCon;
 
 /**
- * Servlet implementation class LoggedInWhenCheckingProfileServlet
+ * Servlet implementation class AddFeedbackServlet
  */
-@WebServlet("/LoggedInWhenCheckingProfileServlet")
-public class LoggedInWhenCheckingProfileServlet extends HttpServlet {
+@WebServlet("/AddFeedbackServlet")
+public class AddFeedbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoggedInWhenCheckingProfileServlet() {
+    public AddFeedbackServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,10 +35,16 @@ public class LoggedInWhenCheckingProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") != null) {
-			response.sendRedirect("index.jsp");
-		}
+		String header = (String) request.getParameter("header");
+		String info = (String) request.getParameter("info");
+		Long recieverId = Long.parseLong(request.getParameter("recieverId"));
+		Long senderId = Long.parseLong(request.getParameter("senderId"));
+		
+//		String header1 ="Kjempeflink!";
+//		String info1 = "han var kjempeflink ogs dkfsdfk sdfk ds";
+		
+		FeedbackCon.createFeedback(header, info, recieverId, senderId);
+		response.sendRedirect("?page=viewprofile&profileId=" + recieverId);
 	}
 
 }
