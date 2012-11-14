@@ -6,20 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import Connection.TopicCon;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class AddAsMentorServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/AddAsMentorServlet")
-public class AddAsMentorServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddAsMentorServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +34,9 @@ public class AddAsMentorServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("id") != null) {
-			TopicCon.addMentorToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
-			response.sendRedirect("?page=topic&topicId="+request.getParameter("topicId"));
-		}
-		else {
-			response.sendRedirect("?page=error");
-		}
+		HttpSession session = request.getSession();
+		session.invalidate();
+		response.sendRedirect("index.jsp");
 	}
 
 }

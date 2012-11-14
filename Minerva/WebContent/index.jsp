@@ -134,8 +134,14 @@ BODY {
  	
  	// Add (sub)topic
  	if (contentPage.equals("addtopic")) {%>
-		<%@ include file="addtopic.jsp" %>
+		<%@ include file="addtopic.jsp" %>	
+<%	}
+ 	
+ 	//	Error message
+ 	if (contentPage.equals("error")) {%>
+		<%@ include file="error.jsp" %>	
 <%	}%>
+
 
 
 

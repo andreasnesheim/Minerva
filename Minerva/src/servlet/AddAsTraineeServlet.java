@@ -15,14 +15,14 @@ import Connection.TopicCon;
 @WebServlet("/AddAsTraineeServlet")
 public class AddAsTraineeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddAsTraineeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AddAsTraineeServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,8 +35,13 @@ public class AddAsTraineeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TopicCon.addTraineeToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
-		response.sendRedirect("?page=topic&topicId="+request.getParameter("topicId"));
+		if (request.getSession().getAttribute("id") != null) {
+			TopicCon.addTraineeToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
+			response.sendRedirect("?page=topic&topicId="+request.getParameter("topicId"));
+		} 
+		else {
+			response.sendRedirect("?page=error");
+		}
 	}
 
 }

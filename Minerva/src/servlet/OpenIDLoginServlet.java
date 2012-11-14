@@ -27,14 +27,12 @@ import org.openid4java.message.ax.FetchResponse;
 import Connection.ProfileCon;
 import tables.User;
 
-/**
- * Servlet implementation class AttexConsumer
- */
 public class OpenIDLoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private ConsumerManager manager = null;
 	private String receivingUrl = null;
+	private boolean userExistsInDB = false;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -91,7 +89,7 @@ public class OpenIDLoginServlet extends HttpServlet {
 						// Checks if the e-mail exists in the User-table. If so,
 						// does login stuff. If not, creates a new user. 
 						List<User> users = ProfileCon.getListOfUsersInDatabase();
-						boolean userExistsInDB = false;
+						
 						
 						for (int i=0; i<users.size(); i++) {
 							if (users.get(i).getEmail().equals(email) && users.get(i).getEmail() != null) {
@@ -115,14 +113,18 @@ public class OpenIDLoginServlet extends HttpServlet {
 						session.setAttribute("id",  ProfileCon.getUserId(email, verifiedID));
 
 						// Sending results to index.jsp
-						httpResponse.sendRedirect("index.jsp?openid=" + verifiedID
+						if (!userExistsInDB) {							
+							httpResponse.sendRedirect("?page=topic");
+						} else {
+							httpResponse.sendRedirect("index.jsp?openid=" + verifiedID
 								+ "&email= " + email + "&firstname="
 								+ firstname + "&lastname=" + lastname
 								+ "&country=" + country + "&language="
 								+ language);
+						}
 
 					} else { // OP has not sent any attribute
-						httpResponse.sendRedirect("out.jsp?email=Error");
+						httpResponse.sendRedirect("?page=error");
 					}
 
 				}

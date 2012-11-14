@@ -16,6 +16,7 @@ public class Feedback {
 	
 	private long senderId;
 	private long revieverId;
+	private String header;
 	private String feedback;
 
 	public Feedback() {
@@ -43,6 +44,14 @@ public class Feedback {
 
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
+	}
+
+	public String getHeader() {
+		return header;
+	}
+
+	public void setHeader(String header) {
+		this.header = header;
 	}
 
 	public long getId() {
