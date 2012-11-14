@@ -5,7 +5,9 @@
 <%
 List<MainCategory> maincat = CategoryCon.getMainCategories();
 List<SubCategory> subcat = CategoryCon.getSubCategories();
+String categoryId = request.getParameter("categoryId");
 %>
+
 <h1>Emner</h1>
 <br />
 <div class="row">
@@ -19,7 +21,12 @@ List<SubCategory> subcat = CategoryCon.getSubCategories();
 				</a>
 			</div>
 		
-			<div id="<%= maincat.get(i).getName().replace(' ', '_') %>" class="accordion-body collapse">
+			<%	if (categoryId != null && maincat.get(i).getId() == Long.parseLong(categoryId)) { %>
+				<div id="<%= maincat.get(i).getName().replace(' ', '_') %>" class="accordion-body collapse in">
+			<%}
+				else {
+				out.println("<div id=\""+ maincat.get(i).getName().replace(' ', '_') +"\" class=\"accordion-body collapse\">");
+			} %>
 				<div class="accordion-inner">
 			
 					<% for (int j = 0; j < subcat.size(); j++) { %>
