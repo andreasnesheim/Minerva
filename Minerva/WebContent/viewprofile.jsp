@@ -58,6 +58,7 @@
 						<textarea class="field span8" id="textarea" rows="6" name="message"
 							placeholder="Skriv din melding her..."></textarea>
 						<br> <br>
+						<input type="hidden" name="reciever" value=<%=profile.getUser().getEmail()%>/>
 						<button type="submit" class="btn btn-success">Send</button>
 						<button type="reset" class="btn">Fjern alt</button>
 					</form>
