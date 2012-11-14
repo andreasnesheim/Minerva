@@ -27,9 +27,6 @@ import org.openid4java.message.ax.FetchResponse;
 import Connection.ProfileCon;
 import tables.User;
 
-/**
- * Servlet implementation class AttexConsumer
- */
 public class OpenIDLoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
