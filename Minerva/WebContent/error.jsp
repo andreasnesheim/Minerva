@@ -1,1 +1,2 @@
-Du må logge inn for å få tilgang til denne funksjonen. Klikk "Logg inn med Google" til høyre for å få tilgang.
+Du må være logget inn for å utføre denne handlingen. Trykk "Logg inn med Google" oppe til høyre for å utføre handlingen.
+

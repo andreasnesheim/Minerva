@@ -10,6 +10,7 @@
 	Long id = 0L;
 	boolean isMyProfile = false;
 	Profile profile = null;
+	
 	if (sessionId == profileId) 
 		profile = ProfileCon.getProfile(sessionId);
 	else
