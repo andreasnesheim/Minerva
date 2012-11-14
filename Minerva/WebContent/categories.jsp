@@ -8,7 +8,6 @@ List<SubCategory> subcat = CategoryCon.getSubCategories();
 %>
 <h1>Emner</h1>
 <br />
-<br />
 <div class="row">
 	<div class="accordion span3" id="accordion1">
 
