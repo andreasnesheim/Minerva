@@ -3,15 +3,9 @@
 <%@ page import="java.util.List"%>
 
 <%
-<<<<<<< HEAD
 Long topicId = Long.parseLong(request.getParameter("topicId"));
 List<Profile> mentors = TopicCon.getListOfMentorsInTopic(topicId);
 Topic currentTopic = TopicCon.getTopic(topicId);
-=======
-	Long topicId = Long.parseLong(request.getParameter("topicId"));
-	List<Profile> mentors = TopicCon.getListOfMentorsInTopic(topicId);
-	Topic currentTopic = TopicCon.getTopic(topicId);
->>>>>>> f60d69fc0fab997a0d87c39c9c1a687e165de808
 %>
 
 <div id="mainpage" class="row">
@@ -59,9 +53,7 @@ Topic currentTopic = TopicCon.getTopic(topicId);
 					<td><%=mentors.get(i).getLocation()%></td>
 					<td>Rating</td>
 				</tr>
-<<<<<<< HEAD
-			<% } %>
-=======
+
 			<% } else { %>
 					<tr>
 					<td><a href="?page=error"><%=mentors.get(i).getFirstName()%> <%=mentors.get(i).getLastName()%></a></td>
@@ -69,17 +61,13 @@ Topic currentTopic = TopicCon.getTopic(topicId);
 					<td>Rating</td>
 				</tr>
 				<% } } %>
->>>>>>> f60d69fc0fab997a0d87c39c9c1a687e165de808
 			</tbody>
 		</table>
 	</div>
 
-<<<<<<< HEAD
-	<% if (request.getParameter("email") != null || session.getAttribute("email") != null) { %>
-=======
 
 <% if (request.getParameter("email") != null || session.getAttribute("email") != null) { %>
->>>>>>> f60d69fc0fab997a0d87c39c9c1a687e165de808
+
 	<div class="span2">
 	<form action="AddAsMentorServlet" method="post">
 		<button class="btn btn-small" type="submit">Legg meg til som mentor</button>

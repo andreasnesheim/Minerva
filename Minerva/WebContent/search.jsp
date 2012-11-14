@@ -3,16 +3,16 @@
 <%
 String search = request.getParameter("search");
 %>
-<form class="form-search">
+<form action="search" class="form-search" method="post">
 	<div class="input-append">
-		<input type="text" class="span2 search-query" />
+		<input type="text" name="searchQuery" class="span2 search-query" />
 		<button type="submit" class="btn">S&oslash;k</button>
 	</div>
 </form>
 
 <%	if (search != null) {
 	List<Profile> searchProfiles = ProfileCon.searchProfiles(search);
-	List<Topic> searchTopics = TopicCon.%>
+	List<Topic> searchTopics = TopicCon.searchTopics(search);%>
 	<h2>Profiler</h2>
 	<div class="span12">
 		<table class="table table-bordered table-striped">
@@ -29,7 +29,9 @@ String search = request.getParameter("search");
 						<a href="?page=viewprofile&profileId=<%=searchProfiles.get(i).getUserId() %>">
 						<%=searchProfiles.get(i).getFirstName() %>&nbsp;<%=searchProfiles.get(i).getLastName() %></a>
 					</td>
-					<td><%=searchProfiles.get(i).getLocation() %></td>
+					<td>
+						<%=searchProfiles.get(i).getLocation() %>
+					</td>
 				</tr>
 			<% } %>		
 			</tbody>
@@ -37,5 +39,27 @@ String search = request.getParameter("search");
 	</div>
 	<br />
 	<h2>Tr&aring;der</h2>
-	
+	<div class="span12">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Tr&aring;d</th>
+					<th>Beskrivelse</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for (int i = 0; i < searchTopics.size(); i++) { %>
+				<tr>
+					<td>
+						<a href="?page=topic&topicId=<%=searchTopics.get(i).getId() %>">
+						<%=searchTopics.get(i).getName() %></a>
+					</td>
+					<td>
+						<%= searchTopics.get(i).getDescription() %>
+					</td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
+	</div>
 <%	} %>

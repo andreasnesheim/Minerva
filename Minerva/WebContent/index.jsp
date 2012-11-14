@@ -143,10 +143,6 @@ BODY {
 <%	}%>
 
 
-
-
-
-
 </div><!-- end CONTAINER -->
 
 <%-- Include javascript files at bottom to load page faster --%>
