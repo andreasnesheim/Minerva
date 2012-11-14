@@ -76,4 +76,12 @@
     <servlet-name>search</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>addfeedback</servlet-name>
+    <servlet-class>servlet.AddFeedbackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addfeedback</servlet-name>
+    <url-pattern>/addfeedback</url-pattern>
+  </servlet-mapping>
 </web-app>

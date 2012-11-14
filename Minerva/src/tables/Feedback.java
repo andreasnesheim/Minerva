@@ -15,7 +15,7 @@ public class Feedback {
 	private long id;
 	
 	private long senderId;
-	private long revieverId;
+	private long recieverId;
 	private String header;
 	private String feedback;
 
@@ -30,12 +30,12 @@ public class Feedback {
 		this.senderId = senderId;
 	}
 
-	public long getRevieverId() {
-		return revieverId;
+	public long getRecieverId() {
+		return recieverId;
 	}
 
-	public void setRevieverId(long revieverId) {
-		this.revieverId = revieverId;
+	public void setRecieverId(long recieverId) {
+		this.recieverId = recieverId;
 	}
 
 	public String getFeedback() {

@@ -1,14 +1,10 @@
-<%@ page import="Connection.ProfileCon"%>
-<%@ page import="Connection.TopicCon"%>
-<%@ page import="tables.Profile"%>
-<%@ page import="tables.Topic"%>
+<%@ page import="Connection.*"%>
+<%@ page import="tables.*"%>
 <%@ page import="java.util.List"%>
 
 <%	
 	int profileId = Integer.parseInt(request.getParameter("profileId"));
 	Long sessionId = (Long) request.getSession().getAttribute("id");
-	Long id = 0L;
-	boolean isMyProfile = false;
 	Profile profile = null;
 	
 	if (sessionId == profileId) 
@@ -20,6 +16,7 @@
 	String image = profile.getImage();
 	List<Topic> topicsPersonIsMentorIn = TopicCon.getTopicsMentorIn(profileId);
 	List<Topic> topicsPersonIsTraineeIn = TopicCon.getTopicsTraineeIn(profileId);
+	List<Feedback> personsFeedback = FeedbackCon.getUsersFeedback(profileId);
 	
 	int tableSize = 0;
 	int table1 = topicsPersonIsMentorIn.size();
@@ -137,33 +134,27 @@
 				</table>
 			</div>
 		</div>
+		<% for (int j = 0; j<personsFeedback.size(); j++) { %>
 		<div class="well">
-			<p class="lead">Good Teacher!</p>
-			Took a course in Java beginner with mr. Jajevski and Lorem ipsum
-			dolor sit amet Consectetur adipiscing elit Integer molestie lorem at
-			massa Facilisis in pretium Faucibus porta lacus fringilla vel Aenean
-			sit amet erat nunc Eget porttitor loremnisl aliquet Nulla volutpat
-			aliquam velit Lorem ipsum dolor sit amet Consectetur adipiscing elit
-			Integer molestie lorem at massa Facilisis in pretium nisl aliquet
-			Nulla volutpat aliquam velit <br> <br> <i> By Andreas
-				Nesheim 01.01.2012</i>
-
+			<p class="lead"><%=personsFeedback.get(j).getHeader() %></p>
+			<%=personsFeedback.get(j).getFeedback() %><br><br>
+			<i>Skrevet av <%=ProfileCon.getProfile(personsFeedback.get(j).getSenderId()).getFirstName()%> 
+			<%=ProfileCon.getProfile(personsFeedback.get(j).getSenderId()).getLastName()%></i>
 		</div>
+		<% } %>
+		
 		<div class="well">
-			<p class="lead">OK!</p>
-			Took a course in Java beginner with mr. Jajevski and it was OK! Also
-			i would like to add velit Lorem ipsum dolor sit amet Consectetur
-			adipiscing elit Integer molestie lorem at massa Facilisis in pretium
-			nisl aliquet Nulla volutpat aliquam velit <br> <br>
-			<dfn> By Rikard Finnesand 01.11.2012</dfn>
-
+				<form action="addfeedback" method="post">
+					Overskrift: <input type="text" name="header"><br>
+					<textarea class="field span8" name="info" id="textarea" rows="6"
+					placeholder="Skriv din kommentar her..."></textarea>
+					<input type="hidden" name="senderId" value="<%=sessionId%>"/>
+					<input type="hidden" name="recieverId" value="<%=profileId%>"/>
+					<br><button type="submit" class="btn btn-success">Legg til kommentar</button>
+				</form>
 		</div>
-		<div class="well">
-
-			<textarea class="field span8" id="textarea" rows="6"
-				placeholder="Add your comment here..."></textarea>
-			<button type="submit" class="btn btn-success">Send</button>
-		</div>
+		
+		
 		<!--  		<footer class="modal-footer">
 		<CENTER> Copyright Rikard Finnesand
 			25.10.2012  </CENTER>
