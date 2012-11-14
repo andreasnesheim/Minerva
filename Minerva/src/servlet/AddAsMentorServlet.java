@@ -35,8 +35,13 @@ public class AddAsMentorServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TopicCon.addMentorToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
-		response.sendRedirect("?page=topic&topicId="+request.getParameter("topicId"));
+		if (request.getSession().getAttribute("id") != null) {
+			TopicCon.addMentorToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
+			response.sendRedirect("?page=topic&topicId="+request.getParameter("topicId"));
+		}
+		else {
+			response.sendRedirect("?page=error");
+		}
 	}
 
 }
