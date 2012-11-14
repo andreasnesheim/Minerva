@@ -1,0 +1,1 @@
+Du må logge inn for å få tilgang til denne funksjonen. Klikk "Logg inn med Google" til høyre for å få tilgang.

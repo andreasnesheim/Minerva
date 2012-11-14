@@ -45,13 +45,21 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for (int i = 0; i < mentors.size(); i++) { %>
+			<% for (int i = 0; i < mentors.size(); i++) { 
+				if (session.getAttribute("id") != null) {	%>
+			
 				<tr>
 					<td><a href="?page=viewprofile&profileId=<%=mentors.get(i).getUserId()%>"><%=mentors.get(i).getFirstName()%> <%=mentors.get(i).getLastName()%></a></td>
 					<td><%=mentors.get(i).getLocation()%></td>
 					<td>Rating</td>
 				</tr>
-			<% } %>
+			<% } else { %>
+					<tr>
+					<td><a href="?page=error"><%=mentors.get(i).getFirstName()%> <%=mentors.get(i).getLastName()%></a></td>
+					<td><%=mentors.get(i).getLocation()%></td>
+					<td>Rating</td>
+				</tr>
+				<% } } %>
 			</tbody>
 		</table>
 	</div>
