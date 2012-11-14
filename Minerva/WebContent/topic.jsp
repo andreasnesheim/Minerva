@@ -4,6 +4,7 @@
 
 <%
 	List<Profile> mentors = TopicCon.getListOfMentorsInTopic(Long.parseLong(request.getParameter("topicId")));
+	Topic currentTopic = TopicCon.getTopic(Long.parseLong(request.getParameter("topicId")));
 %>
 
 <div id="mainpage" class="row">
@@ -37,8 +38,8 @@
 
 	<div class="span2">
 	<form action="AddAsMentorServlet" method="post">
-		<button class="btn btn-small" type="button">Legg meg til som mentor</button>
-		<input type="hidden" name="topicId" value="<%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))) %>"/>
+		<button class="btn btn-small" type="submit">Legg meg til som mentor</button>
+		<input type="hidden" name="topicId" value="<%=currentTopic.getId() %>"/>
 		<input type="hidden" name="userId" value="<%=request.getSession().getAttribute("id") %>"/>
 		</form>
 	</div>

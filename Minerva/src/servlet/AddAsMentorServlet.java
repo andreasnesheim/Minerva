@@ -37,8 +37,11 @@ public class AddAsMentorServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		long topicId = Long.parseLong(request.getParameter("topicId"));
 		long userId = Long.parseLong(request.getParameter("userId"));
-		TopicCon.addMentorToTopic(userId, topicId);
-		response.sendRedirect("?page=topic&topicId="+topicId);
+		System.out.println();
+		System.out.println("TopicId: " + topicId);
+		System.out.println();
+		TopicCon.addMentorToTopic(Long.parseLong(request.getParameter("userId")), Long.parseLong(request.getParameter("topicId")));
+		response.sendRedirect("?page=topic&topicId="+request.getParameter("topicId"));
 	}
 
 }
