@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Connection.ProfileCon;
+
 import mail.GoogleMail;
 
 /**
@@ -38,13 +40,13 @@ public class MailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		from ="no.reply.minerva";
 		sender = (String)request.getSession().getAttribute("email");
-		to = request.getParameter("reciever");
+		to = ProfileCon.getEmail(Long.parseLong(request.getParameter("recieverId")));
 		signature = "This is a mail sent from us by the user " + sender;
 		password = "minerva1234";
 		subject = request.getParameter("subject");
 		message = request.getParameter("message");
 		GoogleMail.Send(from, password, to, subject, message);
-		response.sendRedirect("?page=viewprofile");
+		response.sendRedirect("?page=viewprofile&profileId=" + request.getParameter("recieverId"));
 	}
 
 }
