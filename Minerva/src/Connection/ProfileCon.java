@@ -252,12 +252,35 @@ public class ProfileCon {
 			results2 = crit.list();
 			results3 = null;
 		} else {
-			// Finner de med likt fornavn OG etternavn
+			// Finner de med likt fornavn OG etternavn OG lokasjon
 			crit = session.createCriteria(Profile.class)
 					.add(Restrictions.like("lastName", lname + "%"))
 					.add(Restrictions.like("firstName", fname + "%"));
 			results = crit.list();
+
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			crit = session.createCriteria(Profile.class)
+					.add(Restrictions.or(
+							Restrictions.and(
+									Restrictions.like("location", splitNames[0] + "%"), Restrictions.like("lastName", lname + "%")),
+									Restrictions.and(
+											Restrictions.like("lastName", fname +"%"), Restrictions.like("location", lname +"%"))
+							));
+			results.addAll(crit.list());
 			
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			crit = session.createCriteria(Profile.class)
+					.add(Restrictions.or(
+							Restrictions.and(
+									Restrictions.like("location", splitNames[0] + "%"), Restrictions.like("firstName", lname + "%")),
+									Restrictions.and(
+											Restrictions.like("firstName", fname +"%"), Restrictions.like("location", lname +"%"))
+							));
+			results.addAll(crit.list());
+			System.out.println(crit.list().toString());
+
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			// Finner de med likt etternavn OG ULIKT fornavn
@@ -273,17 +296,36 @@ public class ProfileCon {
 					.add(Restrictions.like("firstName", fname + "%"))
 					.add(Restrictions.not(Restrictions.like("lastName","%" +  lname + "%")));
 			results3 = crit.list();
+			
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			crit = session.createCriteria(Profile.class)
+					.add(Restrictions.like("firstName", lname + "%"));
+			results.addAll(crit.list());
+			
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			crit = session.createCriteria(Profile.class)
+					.add(Restrictions.like("lastName", lname + "%"));
+			results.addAll(crit.list());
+			
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			crit = session.createCriteria(Profile.class)
+					.add(Restrictions.like("lastName", fname));
+			results.addAll(crit.list());
+			
 		}
 		results.addAll(results2);
 		try {
-		results.addAll(results3); } catch (Exception e) {}
+			results.addAll(results3); } catch (Exception e) {}
 		for (int i=0; i<results.size(); i++) {
 			System.out.println(results.get(i).getUserId() + " " + results.get(i).getFirstName() + " " + results.get(i).getLastName());
 		}
 
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		
+
 		List<Profile> results4 = new ArrayList<Profile>();
 		List<Profile> resultsAll = new ArrayList<Profile>();
 
@@ -295,11 +337,11 @@ public class ProfileCon {
 			newCriterion = Restrictions.like("location", splitNames[i]+"%");
 			criterion = Restrictions.or(criterion, newCriterion);
 		}
-		
+
 		crit.add(criterion);
 		results4 = crit.list();
 		resultsAll.addAll(results4);
-		
+
 		boolean found = false;
 		for (int k = 0; k<results.size(); k++) {
 			found = false;
@@ -315,8 +357,8 @@ public class ProfileCon {
 			}
 
 		}
-		
-		
+
+
 		return resultsAll;
 	}
 	public static String getEmail(long id) {
