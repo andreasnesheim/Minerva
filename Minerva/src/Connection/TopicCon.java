@@ -64,6 +64,8 @@ public class TopicCon {
 		}
 
 		session.getTransaction().commit();
+		
+		result = Sort.sortTopicsByName(result);
 
 		return result;
 	}
@@ -95,6 +97,8 @@ public class TopicCon {
 		mentorsToArray.addAll(mentors);
 		
 		session.getTransaction().commit();
+		
+		mentorsToArray = Sort.sortProfilesByName(mentorsToArray);
 		return mentorsToArray;
 	}
 	
@@ -109,6 +113,7 @@ public class TopicCon {
 		traineesToArray.addAll(trainees);
 		
 		session.getTransaction().commit();
+		traineesToArray = Sort.sortProfilesByName(traineesToArray);
 		return traineesToArray;
 	}
 
@@ -163,7 +168,7 @@ public class TopicCon {
 		topicsToArray.addAll(topics);
 
 		session.getTransaction().commit();
-//		session.close();
+		topicsToArray = Sort.sortTopicsByName(topicsToArray);
 
 		
 		return topicsToArray;
@@ -183,7 +188,7 @@ public class TopicCon {
 		topicsToArray.addAll(topics);
 
 		session.getTransaction().commit();
-//		session.close();
+		topicsToArray = Sort.sortTopicsByName(topicsToArray);
 		
 
 		return topicsToArray;

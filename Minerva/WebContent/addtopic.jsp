@@ -1,5 +1,9 @@
+<%@ page import="Connection.*"%>
+
 <h1>Legg til tråd</h1>
-<br />
+<p>&#187;&nbsp;
+<em><%= CategoryCon.getSubCategory(Long.parseLong(request.getParameter("subcategoryId"))).getName() %></em>
+</p>
 <div class="row">
 	<form action="addtopic?subcategoryId=<%=request.getParameter("subcategoryId") %>"
 			method="post" class="form-horizontal well span6">

@@ -12,15 +12,15 @@ public class CreateInserts {
 	 */
 	public static void main(String[] args) {
 
-//		createUsers();
+		createUsers();
 //		createMainCategories();
 //		createSubCategories();
 //		createTopics();
-		linkingPersonToTopic();
+//		linkingPersonToTopic();
 		
 //		createProfilesEkstra();
 		
-
+//hrur	
 	}
 
 	private static void createUsers() {
