@@ -12,22 +12,22 @@ public class CreateInserts {
 	 */
 	public static void main(String[] args) {
 
-		createUsers();
+//		createUsers();
 //		createMainCategories();
 //		createSubCategories();
 //		createTopics();
 //		linkingPersonToTopic();
 		
-//		createProfilesEkstra();
-		
+//	createProfilesEkstra();
+		ProfileCon.searchProfiles("tom");
 //hrur	
 	}
 
 	private static void createUsers() {
-		ProfileCon.createUser("test45", "WIkfnsjv", "Ola", "Normann", "NO","tomt","dyr","man",30);
-        ProfileCon.createUser("hjem@gogle.com", "AksmvIRJo", "Hans", "Hansen", "NO","tomt","ikke noe","dame",0);
-        ProfileCon.createUser("test@gogle.com", "FoTijasdmN", "Oskar", "Berg", "NO","","sove","usikker",22);
-        ProfileCon.createUser("ekstra@gogle.com", "PkcNuqsS", "Tom", "Trulsen", "NO","tomt","musikk","begge",23);
+//		ProfileCon.createUser("test45", "WIkfnsjv", "joacim", "Normann", "NO","tomt","dyr","man",30);
+//        ProfileCon.createUser("hjem@gogle.com", "AksmvIRJo", "Hans", "Hansen", "NO","tomt","ikke noe","dame",0);
+//        ProfileCon.createUser("test@gogle.com", "FoTijasdmN", "Oskar", "Berg", "NO","","sove","usikker",22);
+        ProfileCon.createUser("ekstra@gogle.com", "PkcNuqsS", "Tom", "NISSDAL", "NO","tomt","musikk","begge",23);
 
 
 	}
