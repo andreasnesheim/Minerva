@@ -5,8 +5,9 @@ String search = request.getParameter("search");
 %>
 <form action="search" class="form-search" method="post">
 	<div class="input-append">
-		<input type="text" name="searchQuery" class="span2 search-query" />
-		<button type="submit" class="btn">S&oslash;k</button>
+		<input type="text" name="searchQuery" class="span2 search-query"
+			value="<% if (search != null) out.print(search); %>" />
+		<button type="submit" class="btn"><i class="icon-search"></i></button>
 	</div>
 </form>
 
@@ -51,8 +52,8 @@ String search = request.getParameter("search");
 			<% for (int i = 0; i < searchTopics.size(); i++) { %>
 				<tr>
 					<td>
-						<a href="?page=topic&topicId=<%=searchTopics.get(i).getId() %>">
-						<%=searchTopics.get(i).getName() %></a>
+						<a href="?page=topic&topicId=<%= searchTopics.get(i).getId() %>">
+						<%= searchTopics.get(i).getName() %></a>
 					</td>
 					<td>
 						<%= searchTopics.get(i).getDescription() %>
