@@ -11,12 +11,11 @@
 		<ul class="breadcrumb">
 			<li><a href="?page=categories">Emner</a> <span class="divider">/</span></li>
 			<li><a href="?page=categories"><%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getSubCategory().getMainCategory().getName()%></a> <span class="divider">/</span></li>
-			<li><a href="?page=categories&subcategoryId=<%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getSubCategory().getName() %>">
+			<li><a href="?page=subcategory&subcategoryId=<%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getSubCategory().getId() %>">
 			<%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getSubCategory().getName()%></a> <span class="divider">/</span></li>
 			<li class="active"><%=TopicCon.getTopic(Long.parseLong(request.getParameter("topicId"))).getName()%></li>
 		</ul>
 	</div>
-
 
 
 	<div id="table" class="span12">
