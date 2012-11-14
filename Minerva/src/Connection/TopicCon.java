@@ -84,19 +84,32 @@ public class TopicCon {
 	}
 	
 	
-	public static Set<Profile> getListOfMentorsInTopic(long topicId) {
+	public static List<Profile> getListOfMentorsInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
+		
 		Topic topic = (Topic) session.get(Topic.class, topicId);
+		Set<Profile> mentors = topic.getMentors();
+		
+		List<Profile> mentorsToArray = new ArrayList<Profile>();
+		mentorsToArray.addAll(mentors);
+		
 		session.getTransaction().commit();
-		return topic.getMentors();
+		return mentorsToArray;
 	}
-	public static Set<Profile> getListOfTraineesInTopic(long topicId) {
+	
+	public static List<Profile> getListOfTraineesInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
+		
 		Topic topic = (Topic) session.get(Topic.class, topicId);
+		Set<Profile> trainees = topic.getTrainees();
+		
+		List<Profile> traineesToArray = new ArrayList<Profile>();
+		traineesToArray.addAll(trainees);
+		
 		session.getTransaction().commit();
-		return topic.getTrainees();
+		return traineesToArray;
 	}
 
 	public static int getNumberOfMentorInTopic (long topicId) {
@@ -152,9 +165,7 @@ public class TopicCon {
 		session.getTransaction().commit();
 //		session.close();
 
-		if (topicsToArray.size() == 0) {
-			return null;
-		}
+		
 		return topicsToArray;
 
 	}
@@ -173,9 +184,7 @@ public class TopicCon {
 
 		session.getTransaction().commit();
 //		session.close();
-		if (topicsToArray.size() == 0) {
-			return null;
-		}
+		
 
 		return topicsToArray;
 

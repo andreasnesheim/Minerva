@@ -5,12 +5,20 @@
 <%@ page import="java.util.List"%>
 
 <%	
-	Long id = (Long) session.getAttribute("id");
-	Profile profile = ProfileCon.getProfile(id);
-	String image = profile.getImage();
+	int profileId = Integer.parseInt(request.getParameter("profileId"));
+	Long sessionId = (Long) request.getSession().getAttribute("id");
+	Long id = 0L;
+	boolean isMyProfile = false;
+	Profile profile = null;
+	if (sessionId == profileId) 
+		profile = ProfileCon.getProfile(sessionId);
+	else
+		profile = ProfileCon.getProfile(profileId);
 	
-	List<Topic> topicsPersonIsMentorIn = TopicCon.getTopicsMentorIn(1);
-	List<Topic> topicsPersonIsTraineeIn = TopicCon.getTopicsTraineeIn(1);
+	
+	String image = profile.getImage();
+	List<Topic> topicsPersonIsMentorIn = TopicCon.getTopicsMentorIn(profileId);
+	List<Topic> topicsPersonIsTraineeIn = TopicCon.getTopicsTraineeIn(profileId);
 	
 	int tableSize = 0;
 	int table1 = topicsPersonIsMentorIn.size();
@@ -38,6 +46,14 @@
 			<div id="brukernavn" class="well span4">
 				<h1><%=profile.getFirstName() %> <%=profile.getLastName() %></h1>
 			</div>
+			
+			<% if (sessionId == profileId) { %>
+			
+			<div id="editProfile_button" class="well span2 pull-right">
+				<a href="?page=editprofile" class="btn btn-primary">Endre profil</a>
+			</div>
+			
+			<% } else { %>
 			
 			<div id="sendMessage_button" class="well span2 pull-right">
 				<a href="#myModal" class="btn btn-success" data-toggle="modal"><i
@@ -71,9 +87,8 @@
 				</div>
 			</div>
 			
-				<a href="?page=editprofile"><button type="submit" class="btn btn-primary">Endre profil</button></a>
+			<% } %>
 			
-
 
 			<br>
 			<div class="row-fluid">
