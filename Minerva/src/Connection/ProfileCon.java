@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.nio.channels.SeekableByteChannel;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 import tables.*;
@@ -279,6 +281,42 @@ public class ProfileCon {
 			System.out.println(results.get(i).getUserId() + " " + results.get(i).getFirstName() + " " + results.get(i).getLastName());
 		}
 
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		
+		List<Profile> results4 = new ArrayList<Profile>();
+		List<Profile> resultsAll = new ArrayList<Profile>();
+
+		crit = session.createCriteria(Profile.class);
+		Criterion criterion = Restrictions.like("location", splitNames[0]+"%");
+		Criterion newCriterion;
+
+		for(int i = 1; i<splitNames.length; i++) {
+			newCriterion = Restrictions.like("location", splitNames[i]+"%");
+			criterion = Restrictions.or(criterion, newCriterion);
+		}
+		
+		crit.add(criterion);
+		results4 = crit.list();
+		resultsAll.addAll(results4);
+		
+		boolean found = false;
+		for (int k = 0; k<results.size(); k++) {
+			found = false;
+			for (int l = 0; l<resultsAll.size(); l++){
+
+				if (results.get(k).getUserId() == resultsAll.get(l).getUserId()) {
+					found = true;
+				}
+
+			}
+			if (!found) {
+				resultsAll.add(results.get(k));
+			}
+
+		}
+		
+		
 		return results;
 	}
 	public static String getEmail(long id) {
