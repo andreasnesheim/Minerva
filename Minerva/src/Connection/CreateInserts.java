@@ -20,7 +20,7 @@ public class CreateInserts {
 		
 //		createProfilesEkstra();
 		
-
+//hrur	
 	}
 
 	private static void createUsers() {
