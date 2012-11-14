@@ -117,7 +117,7 @@ BODY {
 		<jsp:include page="subcategory.jsp" />
 <%	}
 
- 	// HTML leafnodes
+ 	// Topics
 	if (contentPage.equals("topic")) {%>
 		<%@ include file="topic.jsp" %>
 <%	}
