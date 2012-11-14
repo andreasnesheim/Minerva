@@ -17,23 +17,13 @@
 		</ul>
 	</div>
 
-
 	<div id="table" class="span12">
-
 		<h1>Mentorer i valgt tråd</h1>
-		
-		<% 
-		
-		%>
-
 		<br>
-
 		<table class="table table-hover">
-		
 			<tr>
 				<th>Mentor</th>
-				<th>Lokasjon</th>
-				
+				<th>Lokasjon</th>	
 			</tr>
 			<% for (int i=0; i<mentors.size(); i++) { %>
 			<tr>
@@ -45,13 +35,10 @@
 		</table>
 	</div>
 
-
 	<div class="span2">
 		<button class="btn btn-small" type="button">Legg meg til som mentor</button>
 	</div>
 	<div class="span2">
 		<button class="btn btn-small" type="button">Legg meg til som trainee</button>
 	</div>
-
 </div>
-
