@@ -17,8 +17,8 @@
 			<label>Interesser <input type="text" name="interests" class="span3 pull-right" /></label><br>
 			<label>Kjønn 
 			<select class="span3 pull-right" name="sex">
-  				<option value="male">Mann</option>
-  				<option value="female">Kvinne</option>
+  				<option value="Mann">Mann</option>
+  				<option value="Kvinne">Kvinne</option>
 			</select>
 			</label>
 			<br>

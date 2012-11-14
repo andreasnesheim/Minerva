@@ -79,7 +79,7 @@ public class UploadImageServlet extends HttpServlet {
                 		String imagePathInProject = "img\\profile\\";
                         
                 		ProfileCon.changeProfile (5, null, null, null, null, null, null, null, imagePathInProject + fileName); 
-                        response.sendRedirect("?page=viewprofile");
+                        response.sendRedirect("?page=viewprofile&profileId=" + request.getSession().getAttribute("id"));
                     }
                 }
             } catch (FileUploadException e) {
