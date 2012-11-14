@@ -15,7 +15,7 @@ import mail.GoogleMail;
 @WebServlet("/MailServlet")
 public class MailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String signature, to, from, subject, message, password;
+	private String signature, to, from, subject, message, password, sender;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -36,11 +36,11 @@ public class MailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		from ="minervatester";
-//		from.replaceAll("@gmail.com", "");
-		signature = "This is a mail sent from us by the user " + from;
-		to = "evilmonkey2k5@gmail.com";
-		password = "minervatester1234";
+		from ="no.reply.minerva";
+		sender = (String)request.getSession().getAttribute("email");
+		to = request.getParameter("reciever");
+		signature = "This is a mail sent from us by the user " + sender;
+		password = "minerva1234";
 		subject = request.getParameter("subject");
 		message = request.getParameter("message");
 		GoogleMail.Send(from, password, to, subject, message);
