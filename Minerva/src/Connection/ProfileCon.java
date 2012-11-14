@@ -317,7 +317,7 @@ public class ProfileCon {
 		}
 		
 		
-		return results;
+		return resultsAll;
 	}
 	public static String getEmail(long id) {
 
