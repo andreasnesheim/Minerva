@@ -12,7 +12,7 @@ public class CreateInserts {
 		createTopics();
 		linkingPersonToTopic();
 	}
-
+	// Lager User's og Profile's
 	private static void createUsers() {
 		ProfileCon.createUser("bash@github.com", "WIkfnsjv", "Ola", "Nordmann", "NO","tomt","dyr","mann",30);
         ProfileCon.createUser("him@gmail.com", "AksmvIRJo", "Hans", "Hansen", "NO","tomt","ikke noe","dame",13);
@@ -20,12 +20,14 @@ public class CreateInserts {
         ProfileCon.createUser("xtra@gigolo.com", "PkcNuqsS", "Tom", "Trulsen", "NO","tomt","musikk","begge",23);
 	}
 	
+	// Lager MainCategories
 	private static void createMainCategories(){
 		CategoryCon.createMainCategory("Objektorientert programmering");
 		CategoryCon.createMainCategory("Webprogrammering");
 		CategoryCon.createMainCategory("Nettverksteknologi");
 	}
 	
+	// Lager SubCategories
 	private static void createSubCategories(){
 		CategoryCon.createSubCategory("Java", 1);
 		CategoryCon.createSubCategory("C/C++", 1);
@@ -43,6 +45,7 @@ public class CreateInserts {
 		CategoryCon.createSubCategory("Linux", 3);
 	}
 	
+	// Lager Topics
 	private static void createTopics() {
 		TopicCon.createTopic("Sockets", "Socket-programmering i Java", 1);
 		TopicCon.createTopic("GUI", "Graphical User Interface i Java", 1);
@@ -72,6 +75,7 @@ public class CreateInserts {
 		TopicCon.createTopic("Server-kommandoer", "Kommando for DNS-oppsett", 12);
 	}
 	
+	// Linker personer til topics
 	private static void linkingPersonToTopic(){
 		// Ola Nordmann er mentor i Java Sockets
 		TopicCon.addMentorToTopic(1, 1);
@@ -90,4 +94,43 @@ public class CreateInserts {
 		// Tom Trulsen er elev i Java GUI
 		TopicCon.addTraineeToTopic(4, 2);
 	}
+<<<<<<< HEAD
+=======
+
+	// denne klassen lager bare profiler uten user så ikke kjør denne mer
+	public static void createProfilesEkstra(){
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		Profile daniel = new Profile();
+		daniel.setFirstName("Daniel");
+		daniel.setLastName("Jajevski");
+		daniel.setInformation("blabla-informasjon!!!!!");
+		daniel.setLocation("Fister, Hjelmeland");
+		
+		Profile rolf = new Profile();
+		rolf.setFirstName("Rolf Andreas");
+		rolf.setLastName("Boiten");
+		rolf.setInformation("test");
+		rolf.setLocation("Gjerstad");
+		
+		Profile bard = new Profile();
+		bard.setFirstName("Bård");
+		bard.setLastName("Helland");
+		bard.setInformation("enda en test");
+		bard.setLocation("Stavanger");
+		
+		Profile andy = new Profile();
+		andy.setFirstName("Andreas");
+		andy.setLastName("Nesheim");
+		andy.setInformation("test igjen");
+		andy.setLocation("Tasta");
+		
+		session.save(daniel); // doesn't save here
+		session.save(rolf); // doesn't save here
+		session.save(bard); // doesn't save here
+		session.save(andy); // doesn't save here
+		session.getTransaction().commit();
+	}
+>>>>>>> 0a27eddde5fb768ce327a6523e1feae2cd0c2bb0
 }

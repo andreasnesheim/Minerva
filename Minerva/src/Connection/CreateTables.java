@@ -10,6 +10,8 @@ public class CreateTables {
 	/**
 	 * @param args
 	 */
+	
+	// Lagrer alle tabellene i MySQL databasen
 	public static void main(String[] args) {
 		AnnotationConfiguration config = new AnnotationConfiguration();
 		config.addAnnotatedClass(Profile.class);
@@ -22,5 +24,6 @@ public class CreateTables {
 		config.configure("hibernate.cfg.xml");
 		
 		new SchemaExport(config).create(true, true);	
+
 	}
 }
