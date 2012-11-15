@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
+
+import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 import Connection.ProfileCon;
 
@@ -65,10 +68,14 @@ public class UploadImageServlet extends HttpServlet {
  
                         //OBS! Endre stringen "usernamePath" til å peke brukernavn på ditt system!!
                         //Hvis du har lagt workspace en annen plass, endre stringen "pathname" til å peke på workspacen.
-                        String usernamePath = "Andreas";
-                        String pathname = "C:\\Users\\" + usernamePath + "\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
-                     
-                        File path = new File(pathname + "/profile");
+                        
+//                        String usernamePath = "Andy";
+//                        String pathname = "C:\\Users\\" + usernamePath + "\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
+                        
+                        
+                        String p = session.getServletContext().getRealPath("/img");
+                        System.out.println(p);
+                        File path = new File(p + "/profile");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }

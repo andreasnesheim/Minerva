@@ -94,43 +94,5 @@ public class CreateInserts {
 		// Tom Trulsen er elev i Java GUI
 		TopicCon.addTraineeToTopic(4, 2);
 	}
-<<<<<<< HEAD
-=======
 
-	// denne klassen lager bare profiler uten user så ikke kjør denne mer
-	public static void createProfilesEkstra(){
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-
-		Profile daniel = new Profile();
-		daniel.setFirstName("Daniel");
-		daniel.setLastName("Jajevski");
-		daniel.setInformation("blabla-informasjon!!!!!");
-		daniel.setLocation("Fister, Hjelmeland");
-		
-		Profile rolf = new Profile();
-		rolf.setFirstName("Rolf Andreas");
-		rolf.setLastName("Boiten");
-		rolf.setInformation("test");
-		rolf.setLocation("Gjerstad");
-		
-		Profile bard = new Profile();
-		bard.setFirstName("Bård");
-		bard.setLastName("Helland");
-		bard.setInformation("enda en test");
-		bard.setLocation("Stavanger");
-		
-		Profile andy = new Profile();
-		andy.setFirstName("Andreas");
-		andy.setLastName("Nesheim");
-		andy.setInformation("test igjen");
-		andy.setLocation("Tasta");
-		
-		session.save(daniel); // doesn't save here
-		session.save(rolf); // doesn't save here
-		session.save(bard); // doesn't save here
-		session.save(andy); // doesn't save here
-		session.getTransaction().commit();
-	}
->>>>>>> 0a27eddde5fb768ce327a6523e1feae2cd0c2bb0
 }
