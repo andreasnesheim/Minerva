@@ -20,7 +20,7 @@ public class CreateInserts {
 //		createProfilesEkstra();
 
 	}
-
+	// Lager User's og Profile's
 	private static void createUsers() {
 		ProfileCon.createUser("bash@github.com", "WIkfnsjv", "Ola", "Nordmann", "NO","tomt","dyr","mann",30);
         ProfileCon.createUser("him@gmail.com", "AksmvIRJo", "Hans", "Hansen", "NO","tomt","ikke noe","dame",13);
@@ -28,12 +28,14 @@ public class CreateInserts {
         ProfileCon.createUser("xtra@gigolo.com", "PkcNuqsS", "Tom", "Trulsen", "NO","tomt","musikk","begge",23);
 	}
 	
+	// Lager MainCategories
 	private static void createMainCategories(){
 		CategoryCon.createMainCategory("Objektorientert programmering");
 		CategoryCon.createMainCategory("Webprogrammering");
 		CategoryCon.createMainCategory("Nettverksteknologi");
 	}
 	
+	// Lager SubCategories
 	private static void createSubCategories(){
 		CategoryCon.createSubCategory("Java", 1);
 		CategoryCon.createSubCategory("C/C++", 1);
@@ -51,6 +53,7 @@ public class CreateInserts {
 		CategoryCon.createSubCategory("Linux", 3);
 	}
 	
+	// Lager Topics
 	private static void createTopics() {
 		TopicCon.createTopic("Sockets", "Socket-programmering i Java", 1);
 		TopicCon.createTopic("GUI", "Graphical User Interface i Java", 1);
@@ -62,6 +65,7 @@ public class CreateInserts {
 		TopicCon.createTopic("Font-stilering", "Endre stil på fonter ved hjelp av CSS", 6);
 	}
 	
+	// Linker personer til topics
 	private static void linkingPersonToTopic(){
 		// Ola Nordmann er mentor i Java Sockets
 		TopicCon.addMentorToTopic(1, 1);
@@ -83,6 +87,7 @@ public class CreateInserts {
 		TopicCon.addTraineeToTopic(4, 2);
 	}
 
+	// denne klassen lager bare profiler uten user så ikke kjør denne mer
 	public static void createProfilesEkstra(){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();

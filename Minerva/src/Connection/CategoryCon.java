@@ -26,6 +26,7 @@ public class CategoryCon {
 		session.getTransaction().commit();
 
 	}
+	
 	// Lager et SubCategory objekt og lagrer det i databasen, med navnet på kategorien som inparameter og hvilke MainCategory den ligger under
 	public static void createSubCategory(String name, long mainCategory) {
 
@@ -40,34 +41,37 @@ public class CategoryCon {
 		session.getTransaction().commit();
 
 	}
+	
 	// Henter ut SubCategory'en med id
 	public static SubCategory getSubCategory(long id) {
 
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 
 
-        SubCategory subCategory = (SubCategory) session.get(SubCategory.class, id);
-        session.getTransaction().commit();  
+		SubCategory subCategory = (SubCategory) session.get(SubCategory.class, id);
+		session.getTransaction().commit();  
 
-        return subCategory;
+		return subCategory;
 
-    }
+	}
+	
 	// Henter ut MainCategory'en med id
 	public static MainCategory getMainCategory(long id) {
 
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 
 
-        MainCategory mainCategory = (MainCategory) session.get(MainCategory.class, id);
-        session.getTransaction().commit();  
+		MainCategory mainCategory = (MainCategory) session.get(MainCategory.class, id);
+		session.getTransaction().commit();  
 
-        return mainCategory;
+		return mainCategory;
 
-    }
+	}
+	
 	// Henter ut alle MainCategory'ene
 	public static List<MainCategory> getMainCategories() {
 
@@ -82,6 +86,7 @@ public class CategoryCon {
 		return result;
 
 	}
+	
 	// Henter ut alle SubCategory'ene
 	public static List<SubCategory> getSubCategories() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
