@@ -13,6 +13,7 @@ import tables.User;
 
 public class FeedbackCon {
 	
+	// Lager et Feedback objekt og lagrer det i databasen
 	public static void createFeedback(String header, String info, long recieverId, long senderId) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -30,6 +31,7 @@ public class FeedbackCon {
 
 	}
 	
+	// Henter ut et Feedback objekt med id
 	public static Feedback getFeedback(long id) {
 
 
@@ -44,6 +46,7 @@ public class FeedbackCon {
 
     }
 	
+	// Ender Feedback objektet med riktig id
 	public static void changeFeedback(long id ,String newHeader, String newInfo) {
 
 		Feedback feedback = null;
@@ -65,6 +68,7 @@ public class FeedbackCon {
 
 	}
 	
+	// Lister opp alle Feedback objekter ifra databasen
 	public static List<Feedback> getFeedbacks() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -83,6 +87,7 @@ public class FeedbackCon {
 		return result;
 	}
 	
+	// Lister opp alle Feedback objekter ifra databasen med riktig reciverId
 	public static List<Feedback> getUsersFeedback(long id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
