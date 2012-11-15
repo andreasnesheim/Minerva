@@ -52,8 +52,8 @@ BODY {
  		 <%} %>
 	</div><!-- end ROW -->
   
-  <%--	NAVIGATION	--%>
-  <div class="row"><!-- begin ROW -->
+	<%--	NAVIGATION	--%>
+	<div class="row"><!-- begin ROW -->
     	<div class="span12">
 			<div class="navbar"><div class="navbar-inner"><div class="container">
 				<a class="brand" href="./">Minerva</a>
@@ -71,15 +71,12 @@ BODY {
 				 	<a href="?page=news"><i class="icon-list-alt"></i>&nbsp;Nyheter</a>
 				 </li>
 				 <!-- <li class="divider-vertical"></li> -->
-				 <li<%if(contentPage.equals("search"))out.print(" class=\"active\"");%>>
-				 	<a href="?page=search"><i class="icon-search"></i>&nbsp;S&oslash;k</a>
-				 </li>
-				 <!-- <li class="divider-vertical"></li> -->
 				 <li<%if(contentPage.equals("info"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=info"><i class="icon-asterisk"></i>&nbsp;Informasjon</a>
 				 </li>
 				</ul>
-				<% if (!contentPage.equals("search")) { %>
+				
+				<%-- SEARCH FORM --%>
 				<form action="search" class="form-search navbar-search pull-right" method="post">
 					<div class="input-append">
 						<input type="text" name="searchQuery" class="input-medium search-query"
@@ -87,7 +84,7 @@ BODY {
 						<button type="submit" class="btn"><i class="icon-search"></i></button>
 					</div>
 				</form>	
-				<% } %>
+				
 			</div></div></div>
     	</div>
   </div><!-- end ROW -->
@@ -119,12 +116,12 @@ BODY {
  	if (contentPage.equals("info")) {%>
 		<jsp:include page="info.jsp" />
 <%	}
-
+	
  	//	Subcategories
 	if (contentPage.equals("subcategory")) {%>
 		<jsp:include page="subcategory.jsp" />
 <%	}
-
+	
  	// Topics
 	if (contentPage.equals("topic")) {%>
 		<%@ include file="topic.jsp" %>

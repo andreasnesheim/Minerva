@@ -64,7 +64,7 @@ public class UploadImageServlet extends HttpServlet {
                         String fileName = item.getName();
  
                         //OBS! Endre denne stringen til å peke på din workspace!!
-                        String pathname = "C:\\Users\\Andy\\Desktop\\MinervaWorkspace\\Minerva\\Minerva\\WebContent\\img";
+                        String pathname = "C:\\Users\\bruker\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
                      
                         File path = new File(pathname + "/profile");
                         if (!path.exists()) {

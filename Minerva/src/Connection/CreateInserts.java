@@ -11,11 +11,10 @@ public class CreateInserts {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-//		createUsers();
-//		createMainCategories();
-//		createSubCategories();
-//		createTopics();
+		createUsers();
+		createMainCategories();
+		createSubCategories();
+		createTopics();
 		linkingPersonToTopic();
 		
 //		createProfilesEkstra();
@@ -23,12 +22,10 @@ public class CreateInserts {
 	}
 
 	private static void createUsers() {
-		ProfileCon.createUser("test45", "WIkfnsjv", "Ola", "Normann", "NO","tomt","dyr","man",30);
-        ProfileCon.createUser("hjem@gogle.com", "AksmvIRJo", "Hans", "Hansen", "NO","tomt","ikke noe","dame",0);
-        ProfileCon.createUser("test@gogle.com", "FoTijasdmN", "Oskar", "Berg", "NO","","sove","usikker",22);
-        ProfileCon.createUser("ekstra@gogle.com", "PkcNuqsS", "Tom", "Trulsen", "NO","tomt","musikk","begge",23);
-
-
+		ProfileCon.createUser("bash@github.com", "WIkfnsjv", "Ola", "Nordmann", "NO","tomt","dyr","mann",30);
+        ProfileCon.createUser("him@gmail.com", "AksmvIRJo", "Hans", "Hansen", "NO","tomt","ikke noe","dame",13);
+        ProfileCon.createUser("test@yahoo.no", "FoTijasdmN", "Oskar", "Berg", "NO","","sove","usikker",22);
+        ProfileCon.createUser("xtra@gigolo.com", "PkcNuqsS", "Tom", "Trulsen", "NO","tomt","musikk","begge",23);
 	}
 	
 	private static void createMainCategories(){
@@ -54,28 +51,36 @@ public class CreateInserts {
 		CategoryCon.createSubCategory("Linux", 3);
 	}
 	
-	private static void createTopics(){
+	private static void createTopics() {
 		TopicCon.createTopic("Sockets", "Socket-programmering i Java", 1);
 		TopicCon.createTopic("GUI", "Graphical User Interface i Java", 1);
 		TopicCon.createTopic("Nybegynner", "Java for nybegynnere", 1);
-		TopicCon.createTopic("Tr&aring;dh&aring;dtering", "Tråder i Java", 1);
+		TopicCon.createTopic("Tr&aring;dh&aring;ndtering", "Tråder i Java", 1);
 		
 		TopicCon.createTopic("Form-elementer", "Form-elementer", 5);
 		
 		TopicCon.createTopic("Font-stilering", "Endre stil på fonter ved hjelp av CSS", 6);
-//		TopicCon.createTopic("Tull 2.0", "Implementasjon av tull 2.0", 3);
 	}
 	
 	private static void linkingPersonToTopic(){
-		//Ola Normann er mentor i Tull 2.0
-//		TopicCon.addMentorToTopic(1, 3);
-		TopicCon.addMentorToTopic(1, 2);
+		// Ola Nordmann er mentor i Java Sockets
 		TopicCon.addMentorToTopic(1, 1);
+		// Hans Hansen er mentor i Java GUI 
+		TopicCon.addMentorToTopic(2, 2);
+		// Oskar Berg er mentor i Java Nybegynner
+		TopicCon.addMentorToTopic(3, 3);
+		// Tom Trulsen er mentor i Java Trådhåndtering
+		TopicCon.addMentorToTopic(4, 4);
 		
 		
-		//Ola Normann er trainee innen java3d og tcp
-		TopicCon.addTraineeToTopic(5, 2);
-		TopicCon.addTraineeToTopic(1, 1);
+		// Ola Nordmann er elev i HTML Form-elementer
+		TopicCon.addTraineeToTopic(1, 5);
+		// Hans Hansen er elev i CSS Font-stilering
+		TopicCon.addTraineeToTopic(2, 6);
+		// Oskar Berg er elev i Java Sockets
+		TopicCon.addTraineeToTopic(3, 1);
+		// Tom Trulsen er elev i Java GUI
+		TopicCon.addTraineeToTopic(4, 2);
 	}
 
 	public static void createProfilesEkstra(){
@@ -86,10 +91,10 @@ public class CreateInserts {
 		daniel.setFirstName("Daniel");
 		daniel.setLastName("Jajevski");
 		daniel.setInformation("blabla-informasjon!!!!!");
-		daniel.setLocation("Stavanger");
+		daniel.setLocation("Fister, Hjelmeland");
 		
 		Profile rolf = new Profile();
-		rolf.setFirstName("Rolf");
+		rolf.setFirstName("Rolf Andreas");
 		rolf.setLastName("Boiten");
 		rolf.setInformation("test");
 		rolf.setLocation("Gjerstad");
