@@ -46,6 +46,8 @@ public class ProfileCon {
 		session.getTransaction().commit();
 
 	}
+	
+	// Henter ut User id til User med email og thirdPartId lik parameterne
 	public static long getUserId(String email, String thirdPartId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -57,7 +59,8 @@ public class ProfileCon {
 		List<User> results = crit.list();
 		return results.get(0).getId();
 	}
-
+	
+	// Henter ut Profil med riktig id
 	public static Profile getProfile(long id) {
 
 
@@ -72,6 +75,7 @@ public class ProfileCon {
 
 	}
 
+	// Endrer variablene lagret i Profile'en med riktig id
 	public static void changeProfile(long id, String newFirstName, String newLastName, String newLocation, String newInformation, String newInterests, String newSex, String newAge, String newImage) {
 
 		Profile profile = null;
@@ -110,12 +114,10 @@ public class ProfileCon {
 		session.update(profile);
 
 		session.getTransaction().commit();
-		//session.close();
-
-
-		//        return true;
+		
 	}
 
+	// Lagrer en Profile i databasen som er koblet til User'en den får som innparameter
 	public static Profile createProfile(String FirstName, String LastName, String Location, String information, String interests, String sex, int age, User user) {
 
 
@@ -142,7 +144,7 @@ public class ProfileCon {
 		return profile;
 	}
 
-
+	// Lister opp alle User objektene i databasen
 	public static List<User> getListOfUsersInDatabase() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -154,6 +156,7 @@ public class ProfileCon {
 		return users;
 	}
 
+	// Lister opp alle Profile objektene i databasen
 	public static List<Profile> getListOfProfilesInDatabase() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -165,6 +168,7 @@ public class ProfileCon {
 		return profiles;
 	}
 
+	// Sjekker om email adressen allerede finnes i databasen
 	public static boolean emailExcists(String email) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -193,33 +197,7 @@ public class ProfileCon {
 		return false;
 	}
 
-	//    public static void uploadImage(long id, String fileString) {
-	//    	 Profile profile = null;
-	//
-	//         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	//         session.beginTransaction();
-	//
-	//         profile = (Profile) session.get(Profile.class, id);
-	// 
-	//        //save image into database
-	//    	File file = new File(fileString);
-	//        byte[] bFile = new byte[(int) file.length()];
-	// 
-	//        try {
-	//	     FileInputStream fileInputStream = new FileInputStream(file);
-	//	     //convert file into array of bytes
-	//	     fileInputStream.read(bFile);
-	//	     fileInputStream.close();
-	//        } catch (Exception e) {
-	//	     e.printStackTrace();
-	//        }
-	// 
-	//        profile.setImage(bFile);
-	// 
-	//        session.update(profile);
-	//
-	//        session.getTransaction().commit();
-	//    }
+	// Søker i databasen etter Profile objekter med fornavn, etternavn eller lokasjon lik søkeordene
 	public static List<Profile> searchProfiles(String search) {
 		List<Profile> results, results2, results3;
 
@@ -231,10 +209,6 @@ public class ProfileCon {
 			if (i<splitNames.length - 2)
 				fname += " ";
 		}
-		//
-		System.out.println("fornavn: " + fname);
-		System.out.println("etternavn: " + lname);
-		//
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -319,9 +293,7 @@ public class ProfileCon {
 		results.addAll(results2);
 		try {
 			results.addAll(results3); } catch (Exception e) {}
-		for (int i=0; i<results.size(); i++) {
-			System.out.println(results.get(i).getUserId() + " " + results.get(i).getFirstName() + " " + results.get(i).getLastName());
-		}
+		
 
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -361,6 +333,8 @@ public class ProfileCon {
 
 		return resultsAll;
 	}
+	
+	// Henter ut email til Profile'en med riktig id
 	public static String getEmail(long id) {
 
 

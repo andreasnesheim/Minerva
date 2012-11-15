@@ -7,9 +7,11 @@ String categoryId = request.getParameter("categoryId");
 String subcategoryId = request.getParameter("subcategoryId");
 List<SubCategory> subCategories = CategoryCon.getSubCategories();
 List<Topic> topics = TopicCon.getTopics(Integer.parseInt(subcategoryId));
-%>
 
-<div id="mainpage" class="row">
+
+//	UNDERKATEGORI FINNES
+if (Integer.parseInt(subcategoryId) <= subCategories.size()) { %>
+<div class="row">
 	<div id="breadcrumb" class="span6">
 		<ul class="breadcrumb">
 			<li>
@@ -26,7 +28,26 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(subcategoryId));
 			</li>
 		</ul>
 	</div>
-
+</div>
+<%
+	//	INGEN TRÅDER
+	if (topics.isEmpty()) { %>
+<div class="row">
+	<div class="span12">
+		<h1>
+			<%= subCategories.get(Integer.parseInt(subcategoryId) - 1).getName() %>
+		</h1>
+		<br />
+		<p class="text-info">
+			Ingen tr&aring;der opprettet.<br />
+			<a href="?page=addtopic&subcategoryId=<%=subcategoryId%>">Opprett en ny tr&aring;d&nbsp;&#187;</a>
+		</p>
+	</div>
+</div>
+<%	}
+	//	FINNES TRÅDER
+	else { %>
+<div class="row">
 	<div id="table" class="span12">
 		<h1>
 			<%= subCategories.get(Integer.parseInt(subcategoryId) - 1).getName() %>
@@ -57,9 +78,9 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(subcategoryId));
 			</tbody>
 		</table>
 	</div>
-	
-	<% if (request.getParameter("email") != null || session.getAttribute("email") != null) { %>
-	<div class="span4">
+</div>
+<%	if (request.getParameter("email") != null || session.getAttribute("email") != null) { %>
+	<div class="row"><div class="span4">
 		<div class="well">
 			<p>
 				Kan du ikke finne tr&aring;den du leter etter?
@@ -69,6 +90,20 @@ List<Topic> topics = TopicCon.getTopics(Integer.parseInt(subcategoryId));
 				Legg til ny tr&aring;d
 			</button>
 		</div>
+	</div></div>
+	<% }
+	}
+}
+
+
+//	UNDERKATEGORI FINNES IKKE
+else { %>
+<div class="row">
+	<div class="span12">
+		<p class="text-error">
+			Underkategorien du pr&oslash;ver &aring; finne, eksisterer ikke.<br />
+			<a href="?page=categories">&#171;&nbsp;G&aring; tilbake til emner</a>
+		</p>
 	</div>
-	<%} %>
 </div>
+<% } %>

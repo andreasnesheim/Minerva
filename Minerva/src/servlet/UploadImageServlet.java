@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
+
+import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 import Connection.ProfileCon;
 
@@ -63,22 +66,27 @@ public class UploadImageServlet extends HttpServlet {
                     if (!item.isFormField()) {
                         String fileName = item.getName();
  
-                        //OBS! Endre denne stringen til å peke på din workspace!!
-                        String pathname = "C:\\Users\\bruker\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
-                     
-                        File path = new File(pathname + "/profile");
+                        //OBS! Endre stringen "usernamePath" til å peke brukernavn på ditt system!!
+                        //Hvis du har lagt workspace en annen plass, endre stringen "pathname" til å peke på workspacen.
+                        
+//                        String usernamePath = "Andy";
+//                        String pathname = "C:\\Users\\" + usernamePath + "\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
+                        
+                        
+                        String p = session.getServletContext().getRealPath("/img");
+                        System.out.println(p);
+                        File path = new File(p + "/profile");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }
  
                         File uploadedFile = new File(path + "/" + fileName);
-                        System.out.println(uploadedFile.getAbsolutePath());
                         
                         item.write(uploadedFile);
                 		
                 		String imagePathInProject = "img\\profile\\";
                         
-                		ProfileCon.changeProfile (5, null, null, null, null, null, null, null, imagePathInProject + fileName); 
+                		ProfileCon.changeProfile ((long) request.getSession().getAttribute("id"), null, null, null, null, null, null, null, imagePathInProject + fileName); 
                         response.sendRedirect("?page=viewprofile&profileId=" + request.getSession().getAttribute("id"));
                     }
                 }
