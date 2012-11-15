@@ -7,7 +7,6 @@ String categoryId = request.getParameter("categoryId");
 String subcategoryId = request.getParameter("subcategoryId");
 List<SubCategory> subCategories = CategoryCon.getSubCategories();
 List<Topic> topics = TopicCon.getTopics(Integer.parseInt(subcategoryId));
-System.out.println("=========================\n"+ topics.size() +"\n==========");
 
 
 //	UNDERKATEGORI FINNES
