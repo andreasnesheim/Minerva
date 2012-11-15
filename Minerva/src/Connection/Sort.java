@@ -8,7 +8,7 @@ import tables.*;
 public class Sort {
 
 
-
+	// Sorterer listen etter fornavn på Profile objektene
 	public static List<Profile> sortProfilesByName (List<Profile> innList) {
 
 		List<Profile> newList= new ArrayList<Profile>();
@@ -30,7 +30,8 @@ public class Sort {
 		}
 		return newList;
 	}
-		
+	
+		// Sorterer listen etter lokasjon på Profile objektene
 		public static List<Profile> sortProfilesByLocation (List<Profile> innList) {
 
 			List<Profile> newList= new ArrayList<Profile>();
@@ -56,6 +57,7 @@ public class Sort {
 		return newList;
 	}
 		
+		// Sorterer listen etter navn på Topic objektene
 		public static List<Topic> sortTopicsByName (List<Topic> innList) {
 
 			List<Topic> newList= new ArrayList<Topic>();

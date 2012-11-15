@@ -5,7 +5,7 @@ String search = request.getParameter("search");
 %>
 <form action="search" class="form-search" method="post">
 	<div class="input-append">
-		<input type="text" name="searchQuery" class="span2 search-query"
+		<input type="text" name="searchQuery" class="input-xlarge search-query"
 			value="<% if (search != null) out.print(search); %>" />
 		<button type="submit" class="btn"><i class="icon-search"></i></button>
 	</div>
@@ -15,7 +15,7 @@ String search = request.getParameter("search");
 	List<Profile> searchProfiles = ProfileCon.searchProfiles(search);
 	List<Topic> searchTopics = TopicCon.searchTopics(search);%>
 	<h2>Profiler</h2>
-	<div class="span12">
+	<div class="row"><div class="span12">
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
@@ -37,10 +37,10 @@ String search = request.getParameter("search");
 			<% } %>		
 			</tbody>
 		</table>
-	</div>
+	</div></div>
 	<br />
 	<h2>Tr&aring;der</h2>
-	<div class="span12">
+	<div class="row"><div class="span12">
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
@@ -62,5 +62,5 @@ String search = request.getParameter("search");
 			<% } %>
 			</tbody>
 		</table>
-	</div>
+	</div></div>
 <%	} %>

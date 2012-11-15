@@ -6,11 +6,12 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import tables.*;
 
-
 public class CreateTables {
 	/**
 	 * @param args
 	 */
+	
+	// Lagrer alle tabellene i MySQL databasen
 	public static void main(String[] args) {
 		AnnotationConfiguration config = new AnnotationConfiguration();
 		config.addAnnotatedClass(Profile.class);
@@ -22,11 +23,7 @@ public class CreateTables {
 		config.addAnnotatedClass(Topic.class);
 		config.configure("hibernate.cfg.xml");
 		
-		new SchemaExport(config).create(true, true);
-		
-//		System.out.println("taofmaofonfjanfjnjoafnjoanfjonajfnjanfjanjofnajonfjoan");
-		
-		
+		new SchemaExport(config).create(true, true);	
 
 	}
 }

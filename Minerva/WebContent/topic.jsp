@@ -30,11 +30,23 @@ Topic currentTopic = TopicCon.getTopic(topicId);
 			</li>
 		</ul>
 	</div>
-
+</div>
+<div class="row">
+	<div class="span12">
+		<h1><%= TopicCon.getTopic(topicId).getName() %></h1>
+	</div>
+	<div class="span12">
+		<dl>
+			<dt>Beskrivelse:</dt>
+			<dd><em>
+			<%= TopicCon.getTopic(topicId).getDescription() %>
+			</em></dd>
+		</dl>
+	</div>
+</div>
+<div class="row">
 	<div id="table" class="span12">
-		<h1>
-			Mentorer i <em><%= TopicCon.getTopic(topicId).getName() %></em>
-		</h1>
+		<h3>Mentorer</h3>
 		<br />
 		<table class="table table-bordered table-striped">
 			<thead>

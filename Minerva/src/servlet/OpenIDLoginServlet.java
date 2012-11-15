@@ -79,7 +79,6 @@ public class OpenIDLoginServlet extends HttpServlet {
 					if (authSuccess.hasExtension(AxMessage.OPENID_NS_AX)) {
 						FetchResponse fetchResp = (FetchResponse) authSuccess.getExtension(AxMessage.OPENID_NS_AX);
 
-						System.out.println("openID verifiedID: " + verifiedID);
 						email = fetchResp.getAttributeValue("email");
 						firstname = fetchResp.getAttributeValue("firstname");
 						lastname = fetchResp.getAttributeValue("lastname");
@@ -114,13 +113,9 @@ public class OpenIDLoginServlet extends HttpServlet {
 
 						// Sending results to index.jsp
 						if (!userExistsInDB) {							
-							httpResponse.sendRedirect("?page=topic");
+							httpResponse.sendRedirect("?page=categories");
 						} else {
-							httpResponse.sendRedirect("index.jsp?openid=" + verifiedID
-								+ "&email= " + email + "&firstname="
-								+ firstname + "&lastname=" + lastname
-								+ "&country=" + country + "&language="
-								+ language);
+							httpResponse.sendRedirect("index.jsp");
 						}
 
 					} else { // OP has not sent any attribute
