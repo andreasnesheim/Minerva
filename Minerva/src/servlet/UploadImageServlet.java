@@ -63,8 +63,10 @@ public class UploadImageServlet extends HttpServlet {
                     if (!item.isFormField()) {
                         String fileName = item.getName();
  
-                        //OBS! Endre denne stringen til å peke på din workspace!!
-                        String pathname = "C:\\Users\\bruker\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
+                        //OBS! Endre stringen "usernamePath" til å peke brukernavn på ditt system!!
+                        //Hvis du har lagt workspace en annen plass, endre stringen "pathname" til å peke på workspacen.
+                        String usernamePath = "Andreas";
+                        String pathname = "C:\\Users\\" + usernamePath + "\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
                      
                         File path = new File(pathname + "/profile");
                         if (!path.exists()) {
@@ -72,13 +74,12 @@ public class UploadImageServlet extends HttpServlet {
                         }
  
                         File uploadedFile = new File(path + "/" + fileName);
-                        System.out.println(uploadedFile.getAbsolutePath());
                         
                         item.write(uploadedFile);
                 		
                 		String imagePathInProject = "img\\profile\\";
                         
-                		ProfileCon.changeProfile (5, null, null, null, null, null, null, null, imagePathInProject + fileName); 
+                		ProfileCon.changeProfile ((long) request.getSession().getAttribute("id"), null, null, null, null, null, null, null, imagePathInProject + fileName); 
                         response.sendRedirect("?page=viewprofile&profileId=" + request.getSession().getAttribute("id"));
                     }
                 }

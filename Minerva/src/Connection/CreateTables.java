@@ -6,7 +6,6 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import tables.*;
 
-
 public class CreateTables {
 	/**
 	 * @param args
@@ -22,11 +21,6 @@ public class CreateTables {
 		config.addAnnotatedClass(Topic.class);
 		config.configure("hibernate.cfg.xml");
 		
-		new SchemaExport(config).create(true, true);
-		
-//		System.out.println("taofmaofonfjanfjnjoafnjoanfjonajfnjanfjanjofnajonfjoan");
-		
-		
-
+		new SchemaExport(config).create(true, true);	
 	}
 }
