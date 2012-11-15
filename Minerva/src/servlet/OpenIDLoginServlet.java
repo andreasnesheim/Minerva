@@ -113,7 +113,7 @@ public class OpenIDLoginServlet extends HttpServlet {
 
 						// Sending results to index.jsp
 						if (!userExistsInDB) {							
-							httpResponse.sendRedirect("?page=topic");
+							httpResponse.sendRedirect("?page=categories");
 						} else {
 							httpResponse.sendRedirect("index.jsp");
 						}
