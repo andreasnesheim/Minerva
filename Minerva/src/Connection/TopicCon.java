@@ -16,7 +16,7 @@ import tables.*;
 
 public class TopicCon {
 
-
+	// Lager et Topic objekt og lagrer det i databasen, med navnet på kategorien og beskrivelse som inparameter og hvilke SubCategory den ligger under
 	public static void createTopic(String name, String description, long subCategoryId) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -32,7 +32,8 @@ public class TopicCon {
 		session.getTransaction().commit();
 
 	}
-
+	
+	// Endrer Topic med riktig id
 	public static void changeTopic(long id ,String newName, String newDescription) {
 
 		Topic topic = null;
@@ -54,6 +55,7 @@ public class TopicCon {
 
 	}
 
+	// Lister opp alle Topic's som har riktig subCategory
 	public static List<Topic> getTopics(int subCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -74,6 +76,7 @@ public class TopicCon {
 		return result;
 	}
 
+	// Henter ut Topic med riktig id
 	public static Topic getTopic(long id) {
 
 
@@ -90,6 +93,7 @@ public class TopicCon {
 	}
 
 
+	// Henter ut alle mentorene i en Topic
 	public static List<Profile> getListOfMentorsInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -106,6 +110,7 @@ public class TopicCon {
 		return mentorsToArray;
 	}
 
+	// Henter ut alle elevene i en Topic
 	public static List<Profile> getListOfTraineesInTopic(long topicId) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -121,14 +126,17 @@ public class TopicCon {
 		return traineesToArray;
 	}
 
+	// Henter ut antall mentorer i en Topic
 	public static int getNumberOfMentorInTopic (long topicId) {
 		return getListOfMentorsInTopic(topicId).size();
 	}
 
+	// Henter ut antall elevene i en Topic
 	public static int getNumberOfTraineesInTopic (long topicId) {
 		return getListOfTraineesInTopic(topicId).size();
 	}
 
+	// Legger til en mentor (foreign key Profile) til Topic
 	public static void addMentorToTopic(long profileId, long topicId) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -144,6 +152,7 @@ public class TopicCon {
 		session.getTransaction().commit();
 	}
 
+	// Legger til en elev (foreign key Profile) til Topic
 	public static void addTraineeToTopic(long profileId, long topicId) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -160,6 +169,7 @@ public class TopicCon {
 		session.getTransaction().commit();
 	}
 
+	// Henter ut alle Topic'ene en Profile er elev i
 	public static List<Topic> getTopicsTraineeIn(long profileId) {
 
 
@@ -180,6 +190,7 @@ public class TopicCon {
 
 	}
 
+	// Henter ut alle Topic'ene en Profile er mentor i
 	public static List<Topic> getTopicsMentorIn(long profileId) {
 
 
@@ -200,52 +211,66 @@ public class TopicCon {
 
 	}
 
+	// Søker etter Topic's som innholder søkeordene i navn eller description
+	// prioriterer Topic's hvor navnet er blandt søkeordene og deretter description
 	public static List<Topic> searchTopics(String innString) {
 
-
+		// splitter strengen i flere søke ord
 		String[] search = innString.split("\\s");
+		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 
+		// Lager listene
 		List<Topic> results1 = new ArrayList<Topic>();
 		List<Topic> results2 = new ArrayList<Topic>();
 		List<Topic> resultsAll = new ArrayList<Topic>();
 
+		
+		// Lager et søke kriteria ved å sjekke om navnet er likt første søkeordet
 		Criteria crit = session.createCriteria(Topic.class);
 		Criterion criterion = Restrictions.like("name", search[0]+"%");
 		Criterion newCriterion;
 
+		// Sjekker om navnet er likt de neste søke ordene
 		for(int i = 1; i<search.length; i++) {
 			newCriterion = Restrictions.like("name", search[i]+"%");
 			criterion = Restrictions.or(criterion, newCriterion);
 		}
 
+		
 		crit.add(criterion);
 		results1 = crit.list();
 
+		// Lager et søke kriteria ved å sjekke om description er likt første søkeordet
 		Criteria crit2 = session.createCriteria(Topic.class);
 		Criterion criterion2 = Restrictions.like("name", search[0]+"%");
 		Criterion newCriterion2;
 
+		// Sjekke om description er likt de neste søkeordene
 		for(int j = 0; j<search.length; j++) {
 			newCriterion2 = Restrictions.like("description", search[j]+"%");
 			criterion2 = Restrictions.or(criterion2, newCriterion2);
 		}
 		crit2.add(criterion2);
 		results2 = crit2.list();
+		
+		// Legger til alle topics som har navn likt et av søkeordene
 		resultsAll.addAll(results1);
 
-		boolean found = false;
+		boolean alreadyInDatabase = false;
+		
+		// Legger til alle topics som har description likt et av søkeordene og som ikke ligger i resultsAll i fra før av
 		for (int k = 0; k<results2.size(); k++) {
-			found = false;
+			alreadyInDatabase = false;
 			for (int l = 0; l<resultsAll.size(); l++){
 
 				if (results2.get(k).getId() == resultsAll.get(l).getId()) {
-					found = true;
+					alreadyInDatabase = true;
 				}
 
 			}
-			if (!found) {
+			if (!alreadyInDatabase) {
 				resultsAll.add(results2.get(k));
 			}
 
