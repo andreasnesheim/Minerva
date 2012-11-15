@@ -77,6 +77,7 @@ BODY {
 				</ul>
 				
 				<%-- SEARCH FORM --%>
+				<% if (!contentPage.equals("search")) { %>
 				<form action="search" class="form-search navbar-search pull-right" method="post">
 					<div class="input-append">
 						<input type="text" name="searchQuery" class="input-medium search-query"
@@ -84,7 +85,7 @@ BODY {
 						<button type="submit" class="btn"><i class="icon-search"></i></button>
 					</div>
 				</form>	
-				
+				<% } %>
 			</div></div></div>
     	</div>
   </div><!-- end ROW -->
@@ -98,54 +99,58 @@ BODY {
 <%	}
 
 	//	Categories
- 	if (contentPage.equals("categories")) {%>
+	else if (contentPage.equals("categories")) {%>
 		<%@ include file="categories.jsp" %>
 <%	}
 	
 	//	News
- 	if (contentPage.equals("news")) {%>
+ 	else if (contentPage.equals("news")) {%>
 		<%@ include file="news.jsp" %>
 <%	}
 	
 	//	Search
-	if (contentPage.equals("search")) {%>
+	else if (contentPage.equals("search")) {%>
 		<jsp:include page="search.jsp"></jsp:include>
 <%	}
 	
 	//	Information
- 	if (contentPage.equals("info")) {%>
+ 	else if (contentPage.equals("info")) {%>
 		<jsp:include page="info.jsp" />
 <%	}
 	
  	//	Subcategories
-	if (contentPage.equals("subcategory")) {%>
+	else if (contentPage.equals("subcategory")) {%>
 		<jsp:include page="subcategory.jsp" />
 <%	}
 	
  	// Topics
-	if (contentPage.equals("topic")) {%>
+	else if (contentPage.equals("topic")) {%>
 		<%@ include file="topic.jsp" %>
 <%	}
  	
  	// View profile
- 	if (contentPage.equals("viewprofile")) {%>
+ 	else if (contentPage.equals("viewprofile")) {%>
 		<%@ include file="viewprofile.jsp" %>
 <%	}
  	
  	//	Edit profile
- 	if (contentPage.equals("editprofile")) {%>
+ 	else if (contentPage.equals("editprofile")) {%>
 		<%@ include file="editprofile.jsp" %>
 <%	}	
  	
  	// Add (sub)topic
- 	if (contentPage.equals("addtopic")) {%>
+ 	else if (contentPage.equals("addtopic")) {%>
 		<%@ include file="addtopic.jsp" %>	
 <%	}
  	
  	//	Error message
- 	if (contentPage.equals("error")) {%>
+ 	else if (contentPage.equals("error")) {%>
 		<%@ include file="error.jsp" %>	
-<%	}%>
+<%	}
+
+ 	else {%>
+ 		<%@ include file="home.jsp" %>
+ 	<% } %>
 
 
 </div><!-- end CONTAINER -->
