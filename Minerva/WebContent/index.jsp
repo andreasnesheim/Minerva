@@ -52,8 +52,8 @@ BODY {
  		 <%} %>
 	</div><!-- end ROW -->
   
-  <%--	NAVIGATION	--%>
-  <div class="row"><!-- begin ROW -->
+	<%--	NAVIGATION	--%>
+	<div class="row"><!-- begin ROW -->
     	<div class="span12">
 			<div class="navbar"><div class="navbar-inner"><div class="container">
 				<a class="brand" href="./">Minerva</a>
@@ -71,14 +71,12 @@ BODY {
 				 	<a href="?page=news"><i class="icon-list-alt"></i>&nbsp;Nyheter</a>
 				 </li>
 				 <!-- <li class="divider-vertical"></li> -->
-				 <li<%if(contentPage.equals("search"))out.print(" class=\"active\"");%>>
-				 	<a href="?page=search"><i class="icon-search"></i>&nbsp;S&oslash;k</a>
-				 </li>
-				 <!-- <li class="divider-vertical"></li> -->
 				 <li<%if(contentPage.equals("info"))out.print(" class=\"active\"");%>>
 				 	<a href="?page=info"><i class="icon-asterisk"></i>&nbsp;Informasjon</a>
 				 </li>
 				</ul>
+				
+				<%-- SEARCH FORM --%>
 				<% if (!contentPage.equals("search")) { %>
 				<form action="search" class="form-search navbar-search pull-right" method="post">
 					<div class="input-append">
@@ -101,54 +99,58 @@ BODY {
 <%	}
 
 	//	Categories
- 	if (contentPage.equals("categories")) {%>
+	else if (contentPage.equals("categories")) {%>
 		<%@ include file="categories.jsp" %>
 <%	}
 	
 	//	News
- 	if (contentPage.equals("news")) {%>
+ 	else if (contentPage.equals("news")) {%>
 		<%@ include file="news.jsp" %>
 <%	}
 	
 	//	Search
-	if (contentPage.equals("search")) {%>
+	else if (contentPage.equals("search")) {%>
 		<jsp:include page="search.jsp"></jsp:include>
 <%	}
 	
 	//	Information
- 	if (contentPage.equals("info")) {%>
+ 	else if (contentPage.equals("info")) {%>
 		<jsp:include page="info.jsp" />
 <%	}
-
+	
  	//	Subcategories
-	if (contentPage.equals("subcategory")) {%>
+	else if (contentPage.equals("subcategory")) {%>
 		<jsp:include page="subcategory.jsp" />
 <%	}
-
+	
  	// Topics
-	if (contentPage.equals("topic")) {%>
+	else if (contentPage.equals("topic")) {%>
 		<%@ include file="topic.jsp" %>
 <%	}
  	
  	// View profile
- 	if (contentPage.equals("viewprofile")) {%>
+ 	else if (contentPage.equals("viewprofile")) {%>
 		<%@ include file="viewprofile.jsp" %>
 <%	}
  	
  	//	Edit profile
- 	if (contentPage.equals("editprofile")) {%>
+ 	else if (contentPage.equals("editprofile")) {%>
 		<%@ include file="editprofile.jsp" %>
 <%	}	
  	
  	// Add (sub)topic
- 	if (contentPage.equals("addtopic")) {%>
+ 	else if (contentPage.equals("addtopic")) {%>
 		<%@ include file="addtopic.jsp" %>	
 <%	}
  	
  	//	Error message
- 	if (contentPage.equals("error")) {%>
+ 	else if (contentPage.equals("error")) {%>
 		<%@ include file="error.jsp" %>	
-<%	}%>
+<%	}
+
+ 	else {%>
+ 		<%@ include file="home.jsp" %>
+ 	<% } %>
 
 
 </div><!-- end CONTAINER -->

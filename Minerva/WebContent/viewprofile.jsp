@@ -34,9 +34,9 @@
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
 			<% if (image != null) { %>
-				<img src="<%=image%>">
+				<img src="<%=image%>" />
 				<% } else { %>
-				<img src="img/imagenull.png">
+				<img src="img/imagenull.png" />
 				<% } %>
 				
 			</div>
@@ -55,7 +55,7 @@
 			
 			<div id="sendMessage_button" class="well span2 pull-right">
 				<a href="#myModal" class="btn btn-success" data-toggle="modal"><i
-					class="icon-envelope icon-white"></i>Send Message</a>
+					class="icon-envelope icon-white"></i>&nbsp;Send melding</a>
 			</div>
 			<div class="modal hide" id="myModal" aria-hidden="true">
 
@@ -87,28 +87,28 @@
 			
 			<% } %>
 			
-
+			
 			<br>
 			<div class="row-fluid">
 				<div class="well span12">
-					<b>Age:</b> <%=profile.getAge() %> <br>
-					<strong>Location:</strong> <%=profile.getLocation() %><br>
-					<strong>Interests:</strong> <%=profile.getInterests() %><br>
-					<strong>Sex:</strong> <%=profile.getSex() %><br>
+					<b>Alder:</b> <%=profile.getAge() %> <br>
+					<strong>Sted:</strong> <%=profile.getLocation() %><br>
+					<strong>Interesser:</strong> <%=profile.getInterests() %><br>
+					<strong>Kj&oslash;nn:</strong> <%=profile.getSex() %><br>
 
 				</div>
 				<div class="span12">
-					<strong>Bio:</strong> <%=profile.getInformation() %><br>
+					<strong>Biografi:</strong> <%=profile.getInformation() %><br>
 				</div>
 			</div>
 
 			<div class="row-fluid">
-				<table class="table table-striped">
+				<table class="table table-bordered table-striped">
 
 					<thead>
 						<tr>
-							<th>Mentor i: </th>
-							<th>Trainee i: </th>
+							<th>Mentor i:</th>
+							<th>Elev i:</th>
 
 						</tr>
 					</thead>
@@ -116,17 +116,33 @@
 					
 					<% for (int i=0; i<tableSize; i++) { %>
 						<tr>
-					<% if (topicsPersonIsMentorIn.size() > i) {  %>
+						<% if (topicsPersonIsMentorIn.size() > i) {  %>
 						
-							<td><%= topicsPersonIsMentorIn.get(i).getName() %></td>
+							<td>
+								<a href="?page=subcategory&subcategoryId=<%=TopicCon.getTopic(topicsPersonIsMentorIn.get(i).getId()).getSubCategory().getId()%>">
+									<%= TopicCon.getTopic(topicsPersonIsMentorIn.get(i).getId()).getSubCategory().getName() %></a>
+								&#187;
+								<a href="?page=topic&topicId=<%=topicsPersonIsMentorIn.get(i).getId()%>">
+									<%= topicsPersonIsMentorIn.get(i).getName() %></a>
+							</td>
 							
-					<% } else { %>
+						<% } else { %>
 							<td></td>
-					<% } if (topicsPersonIsTraineeIn.size() > i) { %>		
+						<% } if (topicsPersonIsTraineeIn.size() > i) { %>		
 							
-							<td><%= topicsPersonIsTraineeIn.get(i).getName() %></td>
+							<td>
+								<a href="?page=subcategory&subcategoryId=<%=TopicCon.getTopic(topicsPersonIsTraineeIn.get(i).getId()).getSubCategory().getId()%>">
+									<%= TopicCon.getTopic(topicsPersonIsTraineeIn.get(i).getId()).getSubCategory().getName() %>
+								</a>
+								&#187;
+								<a href="?page=topic&topicId=<%=topicsPersonIsTraineeIn.get(i).getId()%>">
+									<%= topicsPersonIsTraineeIn.get(i).getName() %>
+								</a>
+							</td>
 							
-							<% } %>
+						<% } else { %>
+							<td></td>
+						<% } %>
 						</tr>
 					<% } %>
 						
