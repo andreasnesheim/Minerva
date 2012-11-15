@@ -66,16 +66,17 @@ public class UploadImageServlet extends HttpServlet {
                     if (!item.isFormField()) {
                         String fileName = item.getName();
  
-                        //OBS! Endre stringen "usernamePath" til å peke brukernavn på ditt system!!
-                        //Hvis du har lagt workspace en annen plass, endre stringen "pathname" til å peke på workspacen.
+                     
+                        //String workspacePath = "C:/Users/Andy/Desktop/MinervaWorkspace/Minerva/Minerva/WebContent/img";
+                        //String pathname = workspacePath;
                         
-//                        String usernamePath = "Andy";
-//                        String pathname = "C:\\Users\\" + usernamePath + "\\Documents\\GitHub\\Minerva\\Minerva\\WebContent\\img";
+                        //Denne funker i dette tilfellet, men hvis dette skulle ha ligget på en server hadde det fungert
+                        //ved å legge inn en eksplisitt path utenfor prosjektet.
+                        String pathname = session.getServletContext().getRealPath("/img");
                         
                         
-                        String p = session.getServletContext().getRealPath("/img");
-                        System.out.println(p);
-                        File path = new File(p + "/profile");
+                        System.out.println(pathname);
+                        File path = new File(pathname + "/profile");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }
