@@ -71,11 +71,11 @@ String image = profile.getImage();
 		</select>
 	</label>
 	<br />
-	<strong>Informasjon:</strong>
+	<strong>Biografi:</strong>
 	<br />
 	<textarea class="field span6" id="textarea" name="information" rows="6"><% if (information != null) out.print(information); %></textarea>
 	<br />
-	<input type="hidden" name="image" />
+	<input type="hidden" name="deleteImage" />
 	<button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i>&nbsp;Lagre endringer</button>
 </form>
 </div>
