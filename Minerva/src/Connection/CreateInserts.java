@@ -1,10 +1,5 @@
 package Connection;
 
-import org.hibernate.Session;
-
-import tables.Profile;
-import tables.User;
-
 public class CreateInserts {
 
 	/**
@@ -16,9 +11,6 @@ public class CreateInserts {
 		createSubCategories();
 		createTopics();
 		linkingPersonToTopic();
-		
-//		createProfilesEkstra();
-
 	}
 	// Lager User's og Profile's
 	private static void createUsers() {
@@ -60,9 +52,27 @@ public class CreateInserts {
 		TopicCon.createTopic("Nybegynner", "Java for nybegynnere", 1);
 		TopicCon.createTopic("Tr&aring;dh&aring;ndtering", "Tråder i Java", 1);
 		
+		TopicCon.createTopic("C++ structs", "C++ structures og bruk av dem", 2);
+		
+		TopicCon.createTopic("Actions", "Bruk av actions", 3);
+		
+		TopicCon.createTopic("Fork i Python", "Bruk av fork() i Python", 4);
+		
 		TopicCon.createTopic("Form-elementer", "Form-elementer", 5);
 		
 		TopicCon.createTopic("Font-stilering", "Endre stil på fonter ved hjelp av CSS", 6);
+		
+		TopicCon.createTopic("Ajax", "Data fra server med Ajax", 7);
+		
+		TopicCon.createTopic("Pakkesniffing", "Pakkesniffing", 8);
+		
+		TopicCon.createTopic("Sette opp DNS", "Hvordan sette opp egen DNS", 9);
+		
+		TopicCon.createTopic("Organized Unit", "Bruk av OU", 10);
+		
+		TopicCon.createTopic("Trustee", "bruk av Trustee", 11);
+		
+		TopicCon.createTopic("Server-kommandoer", "Kommando for DNS-oppsett", 12);
 	}
 	
 	// Linker personer til topics
@@ -75,8 +85,6 @@ public class CreateInserts {
 		TopicCon.addMentorToTopic(3, 3);
 		// Tom Trulsen er mentor i Java Trådhåndtering
 		TopicCon.addMentorToTopic(4, 4);
-		
-		
 		// Ola Nordmann er elev i HTML Form-elementer
 		TopicCon.addTraineeToTopic(1, 5);
 		// Hans Hansen er elev i CSS Font-stilering
@@ -87,39 +95,4 @@ public class CreateInserts {
 		TopicCon.addTraineeToTopic(4, 2);
 	}
 
-	// denne klassen lager bare profiler uten user så ikke kjør denne mer
-	public static void createProfilesEkstra(){
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-
-		Profile daniel = new Profile();
-		daniel.setFirstName("Daniel");
-		daniel.setLastName("Jajevski");
-		daniel.setInformation("blabla-informasjon!!!!!");
-		daniel.setLocation("Fister, Hjelmeland");
-		
-		Profile rolf = new Profile();
-		rolf.setFirstName("Rolf Andreas");
-		rolf.setLastName("Boiten");
-		rolf.setInformation("test");
-		rolf.setLocation("Gjerstad");
-		
-		Profile bard = new Profile();
-		bard.setFirstName("Bård");
-		bard.setLastName("Helland");
-		bard.setInformation("enda en test");
-		bard.setLocation("Stavanger");
-		
-		Profile andy = new Profile();
-		andy.setFirstName("Andreas");
-		andy.setLastName("Nesheim");
-		andy.setInformation("test igjen");
-		andy.setLocation("Tasta");
-		
-		session.save(daniel); // doesn't save here
-		session.save(rolf); // doesn't save here
-		session.save(bard); // doesn't save here
-		session.save(andy); // doesn't save here
-		session.getTransaction().commit();
-	}
 }
