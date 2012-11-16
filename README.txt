@@ -19,4 +19,7 @@ For å kjøre dette prosjektet må følgende ting settes opp/endres:
 Hvis du opplever problemer med å laste opp bilde til profilen, gå inn på UploadImageServlet.java i
 src/servlet, gå til linje 70, avkommenter denne og neste linje og kommenter koden på linje 75.
 
+NB! Dette har blitt utviklet ved bruk av Tomcat Server. Vedlagt ligger en PDF for oppsett av Tomcat for å få dette
+til å kjøre.
+
 
