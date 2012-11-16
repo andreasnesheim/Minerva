@@ -23,25 +23,26 @@ String image = profile.getImage();
 	</div>
 </div>
 <div class="row">
-	<% if (!image.isEmpty()) { %>
 	<div class="span2">
 		<ul class="thumbnails">
 			<li class="well">
-				<img src="<%= image %>" alt="Profilbilde" />
+				<% if (image != null) { %>
+				<p><img src="<%= image %>" alt="Profilbilde" /></p>
+				<form action="storeuserinfo" method="post">
+					<button class="btn btn-inverse" type="submit">Slett bilde</button>
+					<input type="hidden" name="deleteImage" value="reset" />
+				</form>
+				<%} else { %>
+				<img src="img/imagenull.png" alt="Standard profilbilde" />
+				<% } %>
 			</li>
 		</ul>
 	</div>
-	<% } %>
-	<div class="span5">
+	<div class="span4">
 		<form action="uploadimage" class="well" enctype="multipart/form-data" method="post">
-			Endre bilde: <input type="file" name="file" />
+			Endre bilde:<br />
+			<input type="file" name="file" /><br />
 			<button class="btn" type="submit">Last opp</button>
-		</form>
-	</div>
-	<div class="span5">
-		<form action="storeuserinfo" class="well" method="post">
-			<button class="btn btn-inverse" type="submit">Slett bilde</button>
-			<input type="hidden" name="deleteImage" value="reset" />
 		</form>
 	</div>
 </div>
