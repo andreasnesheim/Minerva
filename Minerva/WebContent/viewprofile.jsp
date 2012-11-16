@@ -61,14 +61,14 @@
 
 				<div class="modal-header">
 					<h2>
-						Send e-mail til person <small>Denne e-mailen er privat</small>
+						Send e-post til <%=profile.getFirstName() %>&nbsp;<%=profile.getLastName() %><br /><small>Denne e-posten er privat</small>
 					</h2>
 				</div>
 				<div class="modal-body">
 					<form action="mail" method="post">
 						<label>Emne: </label> <input type="text" class="span8" name="subject"
 							placeholder="Emnetittel " /><br> 
-							<label>Skriv din melding her</label>
+							<label>Melding:</label>
 						<textarea class="field span8" id="textarea" rows="6" name="message"
 							placeholder="Skriv din melding her..."></textarea>
 						<br> <br>
