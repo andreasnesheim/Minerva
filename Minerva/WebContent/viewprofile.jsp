@@ -48,7 +48,7 @@
 			<% if (sessionId == profileId) { %>
 			
 			<div id="editProfile_button" class="well span2 pull-right">
-				<a href="?page=editprofile" class="btn btn-primary">Endre profil</a>
+				<a href="?page=editprofile" class="btn btn-primary"><i class="icon-edit icon-white"></i>&nbsp;Endre profil</a>
 			</div>
 			
 			<% } else { %>
