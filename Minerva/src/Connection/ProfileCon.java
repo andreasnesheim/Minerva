@@ -219,13 +219,13 @@ public class ProfileCon {
 
 		if (splitNames.length == 1) {
 			crit = session.createCriteria(Profile.class)
-					.add(Restrictions.like("lastName", lname + "%"));
+					.add(Restrictions.like("lastName", "%" + lname + "%"));
 			results = crit.list();
 
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			crit = session.createCriteria(Profile.class)
-					.add(Restrictions.like("firstName", lname + "%"));
+					.add(Restrictions.like("firstName", "%" +lname + "%"));
 			results2 = crit.list();
 			results3 = null;
 		} else {

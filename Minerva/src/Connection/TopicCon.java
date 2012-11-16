@@ -273,7 +273,8 @@ public class TopicCon {
 			}
 
 		}
-
+		for (int i=0; i<resultsAll.size(); i++)
+			System.out.println(resultsAll.get(i).getName());
 		return resultsAll;
 
 	}

@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="Connection.TopicCon"%>
 <%@page import="Connection.ProfileCon,tables.*,java.util.*"%>
 <%
-String search = request.getParameter("search");
+String search = (String)request.getSession().getAttribute("search");
+request.getSession().removeAttribute("search");
 %>
 <form action="search" class="form-search" method="post">
 	<div class="input-append">

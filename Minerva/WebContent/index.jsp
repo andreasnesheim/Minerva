@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%--@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"--%>
 <html lang="no">
 <head>
 <title>Minerva</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="Eclipse Juno" />
 <meta name="author" content="dj,rab,bhb,jaj,aan,rf" />
 <link rel="shortcut icon" href="img/favicon.ico" />

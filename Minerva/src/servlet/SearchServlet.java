@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +34,9 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchQuery = request.getParameter("searchQuery");
-		response.sendRedirect("?page=search&search="+ searchQuery);
+		String searchQuery = URLDecoder
+		        .decode(new String(request.getParameter("searchQuery")), "UTF-8");
+		request.getSession().setAttribute("search", searchQuery);
+		response.sendRedirect("?page=search&search=" + searchQuery);
 	}
 }
