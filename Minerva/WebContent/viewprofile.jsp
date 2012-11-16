@@ -158,8 +158,9 @@
 			<%=ProfileCon.getProfile(personsFeedback.get(j).getSenderId()).getLastName()%></i>
 		</div>
 		<% } %>
-		
+		<% if (sessionId != profileId) { %>
 		<div class="well">
+		<h3>Legg til kommentar</h3>
 				<form action="addfeedback" method="post">
 					Overskrift: <input type="text" name="header"><br>
 					<textarea class="field span8" name="info" id="textarea" rows="6"
@@ -169,12 +170,5 @@
 					<br><button type="submit" class="btn btn-success">Legg til kommentar</button>
 				</form>
 		</div>
-		
-		
-		<!--  		<footer class="modal-footer">
-		<CENTER> Copyright Rikard Finnesand
-			25.10.2012  </CENTER>
-
-			</footer> 
-		-->
+		<% } %>
 	</div>
