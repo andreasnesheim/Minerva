@@ -65,7 +65,9 @@ public class UploadImageServlet extends HttpServlet {
  
                     if (!item.isFormField()) {
                         String fileName = item.getName();
- 
+                        if (fileName.isEmpty()) {
+                        	response.sendRedirect("?page=editprofile");
+                        }
                      
                         //String workspacePath = "C:/Users/Andy/Desktop/MinervaWorkspace/Minerva/Minerva/WebContent/img";
                         //String pathname = workspacePath;

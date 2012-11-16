@@ -34,9 +34,9 @@
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
 			<% if (image != null) { %>
-				<img src="<%=image%>" />
+				<img src="<%=image%>" alt="Profilbilde" />
 				<% } else { %>
-				<img src="img/imagenull.png" />
+				<img src="img/imagenull.png" alt="Standard profilbilde" />
 				<% } %>
 				
 			</div>
