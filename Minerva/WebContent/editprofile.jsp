@@ -71,7 +71,7 @@ String image = profile.getImage();
 		</select>
 	</label>
 	<br />
-	<strong>Informasjon:</strong>
+	<strong>Biografi:</strong>
 	<br />
 	<textarea class="field span6" id="textarea" name="information" rows="6"><% if (information != null) out.print(information); %></textarea>
 	<br />
