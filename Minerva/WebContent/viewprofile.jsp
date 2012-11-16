@@ -98,7 +98,7 @@
 
 				</div>
 				<div class="span12">
-					<strong>Biografi:</strong> <%=profile.getInformation() %><br>
+					<strong>Informasjon:</strong> <%=profile.getInformation() %><br>
 				</div>
 			</div>
 
