@@ -91,14 +91,14 @@
 			<br>
 			<div class="row-fluid">
 				<div class="well span12">
-					<b>Alder:</b> <%=profile.getAge() %> <br>
-					<strong>Sted:</strong> <%=profile.getLocation() %><br>
-					<strong>Interesser:</strong> <%=profile.getInterests() %><br>
-					<strong>Kj&oslash;nn:</strong> <%=profile.getSex() %><br>
+					<b>Alder:</b> <%= profile.getAge() %> <br>
+					<strong>Sted:</strong> <% if (profile.getLocation() != null) out.print(profile.getLocation()); %><br>
+					<strong>Interesser:</strong> <% if (profile.getInterests() != null) out.print(profile.getInterests()); %><br>
+					<strong>Kj&oslash;nn:</strong> <% if (profile.getSex() != null) out.print(profile.getSex()); %><br>
 
 				</div>
 				<div class="span12">
-					<strong>Biografi:</strong> <%=profile.getInformation() %><br>
+					<strong>Biografi:</strong> <% if (profile.getInformation() != null) out.print(profile.getInformation()); %><br>
 				</div>
 			</div>
 
