@@ -34,9 +34,9 @@
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
 			<% if (image != null) { %>
-				<img src="<%=image%>" />
+				<img src="<%=image%>" alt="Profilbilde" />
 				<% } else { %>
-				<img src="img/imagenull.png" />
+				<img src="img/imagenull.png" alt="Standard profilbilde" />
 				<% } %>
 				
 			</div>
@@ -48,7 +48,7 @@
 			<% if (sessionId == profileId) { %>
 			
 			<div id="editProfile_button" class="well span2 pull-right">
-				<a href="?page=editprofile" class="btn btn-primary">Endre profil</a>
+				<a href="?page=editprofile" class="btn btn-primary"><i class="icon-edit icon-white"></i>&nbsp;Endre profil</a>
 			</div>
 			
 			<% } else { %>
@@ -61,14 +61,14 @@
 
 				<div class="modal-header">
 					<h2>
-						Send e-mail til person <small>Denne e-mailen er privat</small>
+						Send e-post til <%=profile.getFirstName() %>&nbsp;<%=profile.getLastName() %><br /><small>Denne e-posten er privat</small>
 					</h2>
 				</div>
 				<div class="modal-body">
 					<form action="mail" method="post">
 						<label>Emne: </label> <input type="text" class="span8" name="subject"
 							placeholder="Emnetittel " /><br> 
-							<label>Skriv din melding her</label>
+							<label>Melding:</label>
 						<textarea class="field span8" id="textarea" rows="6" name="message"
 							placeholder="Skriv din melding her..."></textarea>
 						<br> <br>
@@ -91,14 +91,14 @@
 			<br>
 			<div class="row-fluid">
 				<div class="well span12">
-					<b>Alder:</b> <%=profile.getAge() %> <br>
-					<strong>Sted:</strong> <%=profile.getLocation() %><br>
-					<strong>Interesser:</strong> <%=profile.getInterests() %><br>
-					<strong>Kj&oslash;nn:</strong> <%=profile.getSex() %><br>
+					<b>Alder:</b> <%= profile.getAge() %> <br>
+					<strong>Sted:</strong> <% if (profile.getLocation() != null) out.print(profile.getLocation()); %><br>
+					<strong>Interesser:</strong> <% if (profile.getInterests() != null) out.print(profile.getInterests()); %><br>
+					<strong>Kj&oslash;nn:</strong> <% if (profile.getSex() != null) out.print(profile.getSex()); %><br>
 
 				</div>
 				<div class="span12">
-					<strong>Biografi:</strong> <%=profile.getInformation() %><br>
+					<strong>Informasjon:</strong> <% if (profile.getInformation() != null) out.print(profile.getInformation()); %><br>
 				</div>
 			</div>
 

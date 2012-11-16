@@ -15,7 +15,7 @@ import Connection.ProfileCon;
 @WebServlet("/StoreUserInfoServlet")
 public class StoreUserInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String firstname, lastname, location, interests, sex, age, information;
+	private String firstname, lastname, location, interests, sex, age, information, deleteImage;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,9 +44,12 @@ public class StoreUserInfoServlet extends HttpServlet {
 		interests = request.getParameter("interests");
 		sex = request.getParameter("sex");
 		information = request.getParameter("information");
+		deleteImage = request.getParameter("deleteImage");
+		
+		
 		
 		ProfileCon.changeProfile((long) request.getSession().getAttribute("id"), firstname, lastname, location, information,
-				interests, sex, age, null);
+				interests, sex, age, deleteImage);
 		
 		response.sendRedirect("?page=viewprofile&profileId=" + request.getSession().getAttribute("id"));
 		

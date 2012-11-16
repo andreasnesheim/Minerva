@@ -39,8 +39,11 @@ if (Integer.parseInt(subcategoryId) <= subCategories.size()) { %>
 		</h1>
 		<br />
 		<p class="text-info">
-			Ingen tr&aring;der opprettet.<br />
+			Ingen tr&aring;der opprettet.
+			<% if (request.getParameter("email") != null || session.getAttribute("email") != null) { %>
+			<br />
 			<a href="?page=addtopic&subcategoryId=<%=subcategoryId%>">Opprett en ny tr&aring;d&nbsp;&#187;</a>
+			<% } %>
 		</p>
 	</div>
 </div>
