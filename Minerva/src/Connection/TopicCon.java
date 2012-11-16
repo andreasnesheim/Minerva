@@ -56,7 +56,7 @@ public class TopicCon {
 	}
 
 	// Lister opp alle Topic's som har riktig subCategory
-	public static List<Topic> getTopics(int subCategory) {
+	public static List<Topic> getTopics(long subCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 

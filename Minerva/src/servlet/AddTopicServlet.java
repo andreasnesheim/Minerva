@@ -1,11 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import tables.Topic;
 
 import Connection.TopicCon;
 
@@ -39,7 +43,16 @@ public class AddTopicServlet extends HttpServlet {
 		String description = request.getParameter("description");
 		String subcategoryId = request.getParameter("subcategoryId");
 		TopicCon.createTopic(name, description, Long.parseLong(subcategoryId));
-		response.sendRedirect("?page=categories");
+		List<Topic> topics = TopicCon.getTopics(Long.parseLong(subcategoryId));
+		Topic topic = null;
+		for (int i=0; i<topics.size(); i++)
+			if (name.equals(topics.get(i).getName()))
+				topic = topics.get(i);
+		if (topic == null) {
+			response.sendRedirect("?page=subcategory&subcategoryId=" + Long.parseLong(subcategoryId));
+			return;
+		}
+		response.sendRedirect("?page=topic&topicId=" + topic.getId());
 	}
 
 }
