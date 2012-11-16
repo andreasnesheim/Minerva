@@ -107,8 +107,11 @@ public class ProfileCon {
 			int newAgeInInt = Integer.parseInt(newAge);
 			profile.setAge(newAgeInInt);
 		}
-		if (newImage  != "" && newImage != null ) {
-			profile.setImage(newImage);
+		if ((newImage  != "" && newImage != null ) || newImage.equals("reset")) {
+			if (newImage.equals("reset"))
+				profile.setImage(null);
+			else
+				profile.setImage(newImage);
 		}
 
 		session.update(profile);

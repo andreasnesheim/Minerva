@@ -34,9 +34,9 @@
 		<div id="bilde" class="row-fluid">
 			<div class="well span2">
 			<% if (image != null) { %>
-				<img src="<%=image%>" />
+				<img src="<%=image%>" alt="Profilbilde" />
 				<% } else { %>
-				<img src="img/imagenull.png" />
+				<img src="img/imagenull.png" alt="Standard profilbilde" />
 				<% } %>
 				
 			</div>
@@ -48,7 +48,7 @@
 			<% if (sessionId == profileId) { %>
 			
 			<div id="editProfile_button" class="well span2 pull-right">
-				<a href="?page=editprofile" class="btn btn-primary">Endre profil</a>
+				<a href="?page=editprofile" class="btn btn-primary"><i class="icon-edit icon-white"></i>&nbsp;Endre profil</a>
 			</div>
 			
 			<% } else { %>
