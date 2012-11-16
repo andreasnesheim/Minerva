@@ -3,8 +3,8 @@
 <%@ page import="java.util.List"%>
 
 <%	
-	int profileId = Integer.parseInt(request.getParameter("profileId"));
-	Long sessionId = (Long) request.getSession().getAttribute("id");
+	long profileId = Long.parseLong(request.getParameter("profileId"));
+	long sessionId = (Long)request.getSession().getAttribute("id");
 	Profile profile = null;
 	
 	if (sessionId == profileId) 
