@@ -6,7 +6,7 @@
 String categoryId = request.getParameter("categoryId");
 String subcategoryId = request.getParameter("subcategoryId");
 List<SubCategory> subCategories = CategoryCon.getSubCategories();
-List<Topic> topics = TopicCon.getTopics(Integer.parseInt(subcategoryId));
+List<Topic> topics = TopicCon.getTopics(Long.parseLong(subcategoryId));
 
 
 //	UNDERKATEGORI FINNES
@@ -20,11 +20,11 @@ if (Integer.parseInt(subcategoryId) <= subCategories.size()) { %>
 			</li>
 			<li>
 				<a href="?page=categories&categoryId=<%= CategoryCon.getSubCategory(Long.parseLong(subcategoryId)).getMainCategory().getId() %>">
-					<%= CategoryCon.getSubCategory(Integer.parseInt(subcategoryId)).getMainCategory().getName() %></a>
+					<%= CategoryCon.getSubCategory(Long.parseLong(subcategoryId)).getMainCategory().getName() %></a>
 				<span class="divider">/</span>
 			</li>
 			<li class="active">
-				<%= CategoryCon.getSubCategory(Integer.parseInt(subcategoryId)).getName() %>
+				<%= CategoryCon.getSubCategory(Long.parseLong(subcategoryId)).getName() %>
 			</li>
 		</ul>
 	</div>
