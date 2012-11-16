@@ -29,7 +29,7 @@ String image = profile.getImage();
 				<% if (image != null) { %>
 				<p><img src="<%= image %>" alt="Profilbilde" /></p>
 				<form action="storeuserinfo" method="post">
-					<button class="btn btn-inverse" type="submit">Slett bilde</button>
+					<button class="btn btn-inverse" type="submit"><i class="icon-remove icon-white"></i>&nbsp;Slett bilde</button>
 					<input type="hidden" name="deleteImage" value="reset" />
 				</form>
 				<%} else { %>
@@ -42,7 +42,7 @@ String image = profile.getImage();
 		<form action="uploadimage" class="well" enctype="multipart/form-data" method="post">
 			Endre bilde:<br />
 			<input type="file" name="file" /><br />
-			<button class="btn" type="submit">Last opp</button>
+			<button class="btn" type="submit"><i class="icon-upload"></i>&nbsp;Last opp</button>
 		</form>
 	</div>
 </div>
@@ -76,6 +76,6 @@ String image = profile.getImage();
 	<textarea class="field span6" id="textarea" name="information" rows="6"><% if (information != null) out.print(information); %></textarea>
 	<br />
 	<input type="hidden" name="image" />
-	<button type="submit" class="btn btn-primary">Lagre endringer</button>
+	<button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i>&nbsp;Lagre endringer</button>
 </form>
 </div>
