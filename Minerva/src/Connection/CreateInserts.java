@@ -14,7 +14,7 @@ public class CreateInserts {
 	}
 	// Lager User's og Profile's
 	private static void createUsers() {
-		ProfileCon.createUser("bash@github.com", "WIkfnsjv", "Ola", "Nordmann", "NO","tomt","dyr","mann",30);
+		ProfileCon.createUser("minervatester@gmail", "WIkfnsjv", "Ola", "Nordmann", "Stavanger","Jeg er en bla bla bla bladi blad ibla","Spillprogrammering og slikt","Mann",30);
         ProfileCon.createUser("him@gmail.com", "AksmvIRJo", "Hans", "Hansen", "NO","tomt","ikke noe","dame",13);
         ProfileCon.createUser("test@yahoo.no", "FoTijasdmN", "Oskar", "Berg", "NO","","sove","usikker",22);
         ProfileCon.createUser("xtra@gigolo.com", "PkcNuqsS", "Tom", "Trulsen", "NO","tomt","musikk","begge",23);

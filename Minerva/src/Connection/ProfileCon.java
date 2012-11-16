@@ -280,14 +280,14 @@ public class ProfileCon {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			crit = session.createCriteria(Profile.class)
-					.add(Restrictions.like("lastName", lname + "%"));
+					.add(Restrictions.like("lastName","%"+ lname + "%"));
 			results.addAll(crit.list());
 			
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			crit = session.createCriteria(Profile.class)
-					.add(Restrictions.like("lastName", fname));
-			results.addAll(crit.list());
+					.add(Restrictions.like("lastName", "%" + fname + "%"));
+			results.addAll(crit.list()); 
 			
 		}
 		results.addAll(results2);
@@ -302,11 +302,11 @@ public class ProfileCon {
 		List<Profile> resultsAll = new ArrayList<Profile>();
 
 		crit = session.createCriteria(Profile.class);
-		Criterion criterion = Restrictions.like("location", splitNames[0]+"%");
+		Criterion criterion = Restrictions.like("location","%" + splitNames[0]+"%");
 		Criterion newCriterion;
 
 		for(int i = 1; i<splitNames.length; i++) {
-			newCriterion = Restrictions.like("location", splitNames[i]+"%");
+			newCriterion = Restrictions.like("location", "%"+ splitNames[i]+"%");
 			criterion = Restrictions.or(criterion, newCriterion);
 		}
 

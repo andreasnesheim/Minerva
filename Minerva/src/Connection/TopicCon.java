@@ -229,27 +229,25 @@ public class TopicCon {
 		
 		// Lager et søke kriteria ved å sjekke om navnet er likt første søkeordet
 		Criteria crit = session.createCriteria(Topic.class);
-		Criterion criterion = Restrictions.like("name", search[0]+"%");
+		Criterion criterion = Restrictions.like("name","%"+ search[0]+"%");
 		Criterion newCriterion;
 
 		// Sjekker om navnet er likt de neste søke ordene
 		for(int i = 1; i<search.length; i++) {
-			newCriterion = Restrictions.like("name", search[i]+"%");
+			newCriterion = Restrictions.like("name", "%"+search[i]+"%");
 			criterion = Restrictions.or(criterion, newCriterion);
 		}
-
-		
 		crit.add(criterion);
 		results1 = crit.list();
 
 		// Lager et søke kriteria ved å sjekke om description er likt første søkeordet
 		Criteria crit2 = session.createCriteria(Topic.class);
-		Criterion criterion2 = Restrictions.like("name", search[0]+"%");
+		Criterion criterion2 = Restrictions.like("name","%"+ search[0]+"%");
 		Criterion newCriterion2;
 
 		// Sjekke om description er likt de neste søkeordene
-		for(int j = 0; j<search.length; j++) {
-			newCriterion2 = Restrictions.like("description", search[j]+"%");
+		for(int j = 1; j<search.length; j++) {
+			newCriterion2 = Restrictions.like("description", "%" + search[j]+"%");
 			criterion2 = Restrictions.or(criterion2, newCriterion2);
 		}
 		crit2.add(criterion2);
