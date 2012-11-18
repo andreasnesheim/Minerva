@@ -81,7 +81,6 @@
 
 				<div class="modal-footer">
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Lukk</button>
-
 				</div>
 			</div>
 			
@@ -97,8 +96,15 @@
 					<strong>Kj&oslash;nn:</strong> <% if (profile.getSex() != null) out.print(profile.getSex()); %><br>
 
 				</div>
+			</div>
+			<div class="row-fluid">
 				<div class="span12">
-					<strong>Informasjon:</strong> <% if (profile.getInformation() != null) out.print(profile.getInformation()); %><br>
+					<dl>
+						<dt>Informasjon:</dt>
+						<dd>
+							<% if (profile.getInformation() != null) out.print(profile.getInformation()); %>
+						</dd>
+					</dl>
 				</div>
 			</div>
 
